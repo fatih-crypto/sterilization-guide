@@ -23,38 +23,24 @@
             font-weight: bold;
             margin: 10px 0;
         }
-        .radio-group {
-            display: flex;
-            gap: 20px;
-        }
-        .yes-btn {
-            background-color: #90EE90;
-            border: 1px solid #333;
-            padding: 2px 10px;
-        }
-        .no-btn {
-            background-color: #98FB98;
-            border: 1px solid #333;
-            padding: 2px 10px;
-        }
         input[type="text"] {
             width: 200px;
             padding: 5px;
+            margin-bottom: 5px;
         }
         label {
             display: block;
             margin-bottom: 5px;
+        }
+        #lastVaccineDate {
+            display: none;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
         <h1 style="text-align: center;">DİŞİ KEDİ KISIRLAŞTIRMA TALEBİ-BİLGİ FORMU</h1>
-        
-        <div class="form-group">
-            <label>Hayvan Sahibi Adı-Soyadı:</label>
-            <input type="text" name="owner_name">
-        </div>
 
         <div class="form-group">
             <label>1. Kedinizin cinsiyeti nedir?</label>
@@ -68,18 +54,16 @@
 
         <div class="form-group">
             <label>3. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?</label>
-            <div class="radio-group">
-                <span class="yes-btn">Evet</span>
-                <span class="no-btn">Hayır</span>
-            </div>
+            <input type="text" name="fertility">
             <p class="warning-text">Kısırlaştırma operasyonu geri dönüşümsüz bir işlemdir ve ameliyat sonrasında kedinizin gebe kalması mümkün değildir.</p>
         </div>
 
         <div class="form-group">
-            <label>4. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?/yapıldı mı? Son aşılama tarihi?</label>
-            <div class="radio-group">
-                <span class="yes-btn">Evet</span>
-                <span class="no-btn">Hayır</span>
+            <label>4. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?/yapıldı mı?</label>
+            <input type="text" id="vaccines" name="vaccines" oninput="checkVaccineAnswer(this.value)">
+            <div id="lastVaccineDate">
+                <label>Son aşılama tarihi:</label>
+                <input type="text" name="last_vaccine_date">
             </div>
             <p class="warning-text">Kısırlaştırma acil ve zorunlu bir işlem değildir. Hayvan sağlığı ve insan sağlığı öncelikli olarak göz önünde bulundurulmalıdır. Kedinizin koruyucu (karma ve kuduz) aşıları yapılmalıdır. (Bu uygulamalar için iç hastalıkları kliniğine yönlendir. Uygulamaların bitiminden 10 gün sonra randevu için tekrar görüşülmesini öner.)</p>
         </div>
@@ -89,10 +73,7 @@
             <input type="text" name="heat_cycle">
 
             <label>Şuan kızgınlık (östrüs) davranışları gösteriyor mu? (Aşırı miyavlama-bağırma, lordozis-yere uzanma, belini çukurlaştırma, arkasını-kuyruğunu kaldırma- yuvarlanma, sürtünme davranışları)</label>
-            <div class="radio-group">
-                <span class="yes-btn">Evet</span>
-                <span class="no-btn">Hayır</span>
-            </div>
+            <input type="text" name="current_heat">
             <p class="warning-text">(Kızgınlık belirtileri ortalama 7 gün (1-21 gün) sürer. Kedinin davranışları normale döndüğünde randevu için tekrar görüşülmesini öner.)</p>
             <p class="warning-text">Kızgınlık dönemindeki kediler için operasyon riskleri daha yüksektir. Bu yüzden ameliyat kızgınlık dönemi atlatıldıktan sonra yapılmalıdır. İdeal olan Kısırlaştırma operasyonu için bu davranışların sonlanması beklenmelidir.</p>
         </div>
@@ -123,5 +104,16 @@
             <input type="text" name="surgery_history">
         </div>
     </div>
+
+    <script>
+        function checkVaccineAnswer(value) {
+            const lastVaccineDate = document.getElementById('lastVaccineDate');
+            if (value.toLowerCase().includes('evet')) {
+                lastVaccineDate.style.display = 'block';
+            } else {
+                lastVaccineDate.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
