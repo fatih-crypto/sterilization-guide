@@ -36,10 +36,10 @@
             display: inline-block;
             margin-right: 15px;
         }
-        #lastVaccineDate {
+        .conditional-section {
             display: none;
-            margin-top: 10px;
             margin-left: 20px;
+            margin-top: 10px;
         }
         .radio-group {
             margin: 10px 0;
@@ -51,8 +51,13 @@
         <h1 style="text-align: center;">DİŞİ KEDİ KISIRLAŞTIRMA TALEBİ-BİLGİ FORMU</h1>
 
         <div class="form-group">
-            <label>1. Kedinizin cinsiyeti nedir?</label>
-            <input type="text" name="cat_gender">
+            <label>1. Kediniz dişi mi?</label>
+            <div class="radio-group">
+                <input type="radio" id="gender_yes" name="gender" value="evet">
+                <label for="gender_yes" class="radio-label">Evet</label>
+                <input type="radio" id="gender_no" name="gender" value="hayır">
+                <label for="gender_no" class="radio-label">Hayır</label>
+            </div>
         </div>
 
         <div class="form-group">
@@ -69,12 +74,12 @@
         <div class="form-group">
             <label>4. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?/yapıldı mı?</label>
             <div class="radio-group">
-                <input type="radio" id="vaccines_yes" name="vaccines" value="evet" onclick="showVaccineDate(true)">
+                <input type="radio" id="vaccines_yes" name="vaccines" value="evet" onclick="showSection('lastVaccineDate', true)">
                 <label for="vaccines_yes" class="radio-label">Evet</label>
-                <input type="radio" id="vaccines_no" name="vaccines" value="hayır" onclick="showVaccineDate(false)">
+                <input type="radio" id="vaccines_no" name="vaccines" value="hayır" onclick="showSection('lastVaccineDate', false)">
                 <label for="vaccines_no" class="radio-label">Hayır</label>
             </div>
-            <div id="lastVaccineDate">
+            <div id="lastVaccineDate" class="conditional-section">
                 <label>Son aşılama tarihi:</label>
                 <input type="text" name="last_vaccine_date">
             </div>
@@ -82,11 +87,29 @@
         </div>
 
         <div class="form-group">
-            <label>5. Kediniz geçmişte kızgınlık davranışları gösterdi mi? En son ne zaman gösterdi? Bu belirtiler ne zaman sonlandı? Çiftleşti mi?</label>
-            <input type="text" name="heat_cycle">
+            <label>5. Kediniz geçmişte kızgınlık davranışları gösterdi mi?</label>
+            <div class="radio-group">
+                <input type="radio" id="heat_history_yes" name="heat_history" value="evet" onclick="showSection('heatHistoryDetails', true)">
+                <label for="heat_history_yes" class="radio-label">Evet</label>
+                <input type="radio" id="heat_history_no" name="heat_history" value="hayır" onclick="showSection('heatHistoryDetails', false)">
+                <label for="heat_history_no" class="radio-label">Hayır</label>
+            </div>
+            <div id="heatHistoryDetails" class="conditional-section">
+                <label>En son ne zaman gösterdi?</label>
+                <input type="text" name="last_heat_date">
+                <label>Bu belirtiler ne zaman sonlandı?</label>
+                <input type="text" name="heat_end_date">
+                <label>Çiftleşti mi?</label>
+                <input type="text" name="mating_status">
+            </div>
 
             <label>Şuan kızgınlık (östrüs) davranışları gösteriyor mu? (Aşırı miyavlama-bağırma, lordozis-yere uzanma, belini çukurlaştırma, arkasını-kuyruğunu kaldırma- yuvarlanma, sürtünme davranışları)</label>
-            <input type="text" name="current_heat">
+            <div class="radio-group">
+                <input type="radio" id="current_heat_yes" name="current_heat" value="evet">
+                <label for="current_heat_yes" class="radio-label">Evet</label>
+                <input type="radio" id="current_heat_no" name="current_heat" value="hayır">
+                <label for="current_heat_no" class="radio-label">Hayır</label>
+            </div>
             <p class="warning-text">(Kızgınlık belirtileri ortalama 7 gün (1-21 gün) sürer. Kedinin davranışları normale döndüğünde randevu için tekrar görüşülmesini öner.)</p>
             <p class="warning-text">Kızgınlık dönemindeki kediler için operasyon riskleri daha yüksektir. Bu yüzden ameliyat kızgınlık dönemi atlatıldıktan sonra yapılmalıdır. İdeal olan Kısırlaştırma operasyonu için bu davranışların sonlanması beklenmelidir.</p>
         </div>
@@ -104,7 +127,16 @@
 
         <div class="form-group">
             <label>8. Kedinizin bilinen kronik bir hastalığı var mı?</label>
-            <input type="text" name="chronic_disease">
+            <div class="radio-group">
+                <input type="radio" id="chronic_yes" name="chronic" value="evet" onclick="showSection('chronicDetails', true)">
+                <label for="chronic_yes" class="radio-label">Evet</label>
+                <input type="radio" id="chronic_no" name="chronic" value="hayır" onclick="showSection('chronicDetails', false)">
+                <label for="chronic_no" class="radio-label">Hayır</label>
+            </div>
+            <div id="chronicDetails" class="conditional-section">
+                <label>Hastalığı açıklayınız:</label>
+                <input type="text" name="chronic_details">
+            </div>
         </div>
 
         <div class="form-group">
@@ -113,15 +145,24 @@
         </div>
 
         <div class="form-group">
-            <label>10. Kediniz geçmişte herhangi bir ameliyat geçirdi mi? Geçirdiyse anesteziye karşı aşırı duyarlılık şekillendi mi?</label>
-            <input type="text" name="surgery_history">
+            <label>10. Kediniz geçmişte herhangi bir ameliyat geçirdi mi?</label>
+            <div class="radio-group">
+                <input type="radio" id="surgery_yes" name="surgery" value="evet" onclick="showSection('surgeryDetails', true)">
+                <label for="surgery_yes" class="radio-label">Evet</label>
+                <input type="radio" id="surgery_no" name="surgery" value="hayır" onclick="showSection('surgeryDetails', false)">
+                <label for="surgery_no" class="radio-label">Hayır</label>
+            </div>
+            <div id="surgeryDetails" class="conditional-section">
+                <label>Anesteziye karşı aşırı duyarlılık şekillendi mi?</label>
+                <input type="text" name="anesthesia_sensitivity">
+            </div>
         </div>
     </div>
 
     <script>
-        function showVaccineDate(show) {
-            const lastVaccineDate = document.getElementById('lastVaccineDate');
-            lastVaccineDate.style.display = show ? 'block' : 'none';
+        function showSection(sectionId, show) {
+            const section = document.getElementById(sectionId);
+            section.style.display = show ? 'block' : 'none';
         }
     </script>
 </body>
