@@ -32,9 +32,17 @@
             display: block;
             margin-bottom: 5px;
         }
+        .radio-label {
+            display: inline-block;
+            margin-right: 15px;
+        }
         #lastVaccineDate {
             display: none;
             margin-top: 10px;
+            margin-left: 20px;
+        }
+        .radio-group {
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -60,7 +68,12 @@
 
         <div class="form-group">
             <label>4. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?/yapıldı mı?</label>
-            <input type="text" id="vaccines" name="vaccines" oninput="checkVaccineAnswer(this.value)">
+            <div class="radio-group">
+                <input type="radio" id="vaccines_yes" name="vaccines" value="evet" onclick="showVaccineDate(true)">
+                <label for="vaccines_yes" class="radio-label">Evet</label>
+                <input type="radio" id="vaccines_no" name="vaccines" value="hayır" onclick="showVaccineDate(false)">
+                <label for="vaccines_no" class="radio-label">Hayır</label>
+            </div>
             <div id="lastVaccineDate">
                 <label>Son aşılama tarihi:</label>
                 <input type="text" name="last_vaccine_date">
@@ -106,13 +119,9 @@
     </div>
 
     <script>
-        function checkVaccineAnswer(value) {
+        function showVaccineDate(show) {
             const lastVaccineDate = document.getElementById('lastVaccineDate');
-            if (value.toLowerCase().includes('evet')) {
-                lastVaccineDate.style.display = 'block';
-            } else {
-                lastVaccineDate.style.display = 'none';
-            }
+            lastVaccineDate.style.display = show ? 'block' : 'none';
         }
     </script>
 </body>
