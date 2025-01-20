@@ -1,11 +1,48 @@
 <!DOCTYPE html>
-<!-- Head ve style kısmı aynı kalacak -->
+<html lang="tr">
 <head>
-    <!-- Önceki style içeriği aynı -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dişi Kedi Kısırlaştırma Talebi-Bilgi Formu</title>
     <style>
-        /* Mevcut stiller aynı kalacak */
-        .hidden {
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .warning-text {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .radio-label {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        .conditional-section {
             display: none;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        .radio-group {
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -14,12 +51,12 @@
         <h1 style="text-align: center;">DİŞİ KEDİ KISIRLAŞTIRMA TALEBİ-BİLGİ FORMU</h1>
 
         <div class="form-group">
-            <label>1. Kedinizin cinsiyeti nedir?</label>
+            <label>1. Kediniz dişi mi?</label>
             <div class="radio-group">
-                <input type="radio" id="gender_female" name="gender" value="dişi" onclick="handleGenderChange('dişi')">
-                <label for="gender_female" class="radio-label">Dişi</label>
-                <input type="radio" id="gender_male" name="gender" value="erkek" onclick="handleGenderChange('erkek')">
-                <label for="gender_male" class="radio-label">Erkek</label>
+                <input type="radio" id="gender_yes" name="gender" value="evet">
+                <label for="gender_yes" class="radio-label">Evet</label>
+                <input type="radio" id="gender_no" name="gender" value="hayır">
+                <label for="gender_no" class="radio-label">Hayır</label>
             </div>
         </div>
 
@@ -28,7 +65,7 @@
             <input type="text" name="cat_age">
         </div>
 
-        <div class="form-group hidden" id="fertility_question">
+        <div class="form-group">
             <label>3. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?</label>
             <div class="radio-group">
                 <input type="radio" id="fertility_yes" name="fertility" value="evet">
@@ -39,10 +76,51 @@
             <p class="warning-text">Kısırlaştırma operasyonu geri dönüşümsüz bir işlemdir ve ameliyat sonrasında kedinizin gebe kalması mümkün değildir.</p>
         </div>
 
-        <!-- 4. ve 5. sorular aynı kalacak -->
+        <div class="form-group">
+            <label>4. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?/yapıldı mı?</label>
+            <div class="radio-group">
+                <input type="radio" id="vaccines_yes" name="vaccines" value="evet" onclick="showSection('lastVaccineDate', true)">
+                <label for="vaccines_yes" class="radio-label">Evet</label>
+                <input type="radio" id="vaccines_no" name="vaccines" value="hayır" onclick="showSection('lastVaccineDate', false)">
+                <label for="vaccines_no" class="radio-label">Hayır</label>
+            </div>
+            <div id="lastVaccineDate" class="conditional-section">
+                <label>Son aşılama tarihi:</label>
+                <input type="text" name="last_vaccine_date">
+            </div>
+            <p class="warning-text">Kısırlaştırma acil ve zorunlu bir işlem değildir. Hayvan sağlığı ve insan sağlığı öncelikli olarak göz önünde bulundurulmalıdır. Kedinizin koruyucu (karma ve kuduz) aşıları yapılmalıdır. (Bu uygulamalar için iç hastalıkları kliniğine yönlendir. Uygulamaların bitiminden 10 gün sonra randevu için tekrar görüşülmesini öner.)</p>
+        </div>
 
-        <div class="form-group hidden" id="birth_question">
-            <label>6. Kediniz geçmişte doğum yaptı mı?</label>
+        <div class="form-group">
+            <label>5. Kediniz geçmişte kızgınlık davranışları gösterdi mi?</label>
+            <div class="radio-group">
+                <input type="radio" id="heat_history_yes" name="heat_history" value="evet" onclick="showSection('heatHistoryDetails', true)">
+                <label for="heat_history_yes" class="radio-label">Evet</label>
+                <input type="radio" id="heat_history_no" name="heat_history" value="hayır" onclick="showSection('heatHistoryDetails', false)">
+                <label for="heat_history_no" class="radio-label">Hayır</label>
+            </div>
+            <div id="heatHistoryDetails" class="conditional-section">
+                <label>En son ne zaman gösterdi?</label>
+                <input type="text" name="last_heat_date">
+                <label>Bu belirtiler ne zaman sonlandı?</label>
+                <input type="text" name="heat_end_date">
+                <label>Çiftleşti mi?</label>
+                <input type="text" name="mating_status">
+            </div>
+
+            <label>Şuan kızgınlık (östrüs) davranışları gösteriyor mu? (Aşırı miyavlama-bağırma, lordozis-yere uzanma, belini çukurlaştırma, arkasını-kuyruğunu kaldırma- yuvarlanma, sürtünme davranışları)</label>
+            <div class="radio-group">
+                <input type="radio" id="current_heat_yes" name="current_heat" value="evet">
+                <label for="current_heat_yes" class="radio-label">Evet</label>
+                <input type="radio" id="current_heat_no" name="current_heat" value="hayır">
+                <label for="current_heat_no" class="radio-label">Hayır</label>
+            </div>
+            <p class="warning-text">(Kızgınlık belirtileri ortalama 7 gün (1-21 gün) sürer. Kedinin davranışları normale döndüğünde randevu için tekrar görüşülmesini öner.)</p>
+            <p class="warning-text">Kızgınlık dönemindeki kediler için operasyon riskleri daha yüksektir. Bu yüzden ameliyat kızgınlık dönemi atlatıldıktan sonra yapılmalıdır. İdeal olan Kısırlaştırma operasyonu için bu davranışların sonlanması beklenmelidir.</p>
+        </div>
+
+        <div class="form-group">
+            <label>6. Kediniz doğum yaptı mı?</label>
             <div class="radio-group">
                 <input type="radio" id="birth_yes" name="birth_history" value="evet" onclick="showSection('birthDetails', true)">
                 <label for="birth_yes" class="radio-label">Evet</label>
@@ -52,6 +130,8 @@
             <div id="birthDetails" class="conditional-section">
                 <label>En son ne zaman doğum yaptı?</label>
                 <input type="text" name="last_birth_date">
+                <label>Kaç yavru doğdu?</label>
+                <input type="text" name="puppy_count">
                 <label>Şuan emziriyor mu?</label>
                 <div class="radio-group">
                     <input type="radio" id="nursing_yes" name="nursing" value="evet">
@@ -59,31 +139,55 @@
                     <input type="radio" id="nursing_no" name="nursing" value="hayır">
                     <label for="nursing_no" class="radio-label">Hayır</label>
                 </div>
+                <label>Yavrular kaç günlük?</label>
+                <input type="text" name="puppy_age">
             </div>
             <p class="warning-text">Kısırlaştırma doğumdan 45 gün sonra ya da yavrular sütten kesildikten sonra yapılabilir.</p>
         </div>
 
-        <!-- Diğer sorular aynı kalacak -->
+        <div class="form-group">
+            <label>7. Kedinizi nerede (evde-bahçede-serbest) barındırıyorsunuz? Evinizde kısırlaştırılmamış erkek kedi var mı? Çiftleşmiş olma ihtimali var mı?</label>
+            <input type="text" name="living_conditions">
+        </div>
 
+        <div class="form-group">
+            <label>8. Kedinizin bilinen kronik bir hastalığı var mı?</label>
+            <div class="radio-group">
+                <input type="radio" id="chronic_yes" name="chronic" value="evet" onclick="showSection('chronicDetails', true)">
+                <label for="chronic_yes" class="radio-label">Evet</label>
+                <input type="radio" id="chronic_no" name="chronic" value="hayır" onclick="showSection('chronicDetails', false)">
+                <label for="chronic_no" class="radio-label">Hayır</label>
+            </div>
+            <div id="chronicDetails" class="conditional-section">
+                <label>Hastalığı açıklayınız:</label>
+                <input type="text" name="chronic_details">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>9. Kedinize son 2 hafta içerisinde herhangi bir tedavi uygulandı mı? Uygulandıysa açıklama.</label>
+            <input type="text" name="recent_treatment">
+        </div>
+
+        <div class="form-group">
+            <label>10. Kediniz geçmişte herhangi bir ameliyat geçirdi mi?</label>
+            <div class="radio-group">
+                <input type="radio" id="surgery_yes" name="surgery" value="evet" onclick="showSection('surgeryDetails', true)">
+                <label for="surgery_yes" class="radio-label">Evet</label>
+                <input type="radio" id="surgery_no" name="surgery" value="hayır" onclick="showSection('surgeryDetails', false)">
+                <label for="surgery_no" class="radio-label">Hayır</label>
+            </div>
+            <div id="surgeryDetails" class="conditional-section">
+                <label>Anesteziye karşı aşırı duyarlılık şekillendi mi?</label>
+                <input type="text" name="anesthesia_sensitivity">
+            </div>
+        </div>
     </div>
 
     <script>
         function showSection(sectionId, show) {
             const section = document.getElementById(sectionId);
             section.style.display = show ? 'block' : 'none';
-        }
-
-        function handleGenderChange(gender) {
-            const fertilityQuestion = document.getElementById('fertility_question');
-            const birthQuestion = document.getElementById('birth_question');
-            
-            if (gender === 'dişi') {
-                fertilityQuestion.classList.remove('hidden');
-                birthQuestion.classList.remove('hidden');
-            } else {
-                fertilityQuestion.classList.add('hidden');
-                birthQuestion.classList.add('hidden');
-            }
         }
     </script>
 </body>
