@@ -51,12 +51,17 @@
         <h1 style="text-align: center;">DİŞİ KEDİ KISIRLAŞTIRMA TALEBİ-BİLGİ FORMU</h1>
 
         <div class="form-group">
-            <label>1. Kediniz dişi mi?</label>
+            <label>1. Kediniz gebe mi?</label>
             <div class="radio-group">
-                <input type="radio" id="gender_yes" name="gender" value="evet">
-                <label for="gender_yes" class="radio-label">Evet</label>
-                <input type="radio" id="gender_no" name="gender" value="hayır">
-                <label for="gender_no" class="radio-label">Hayır</label>
+                <input type="radio" id="pregnant_yes" name="pregnant" value="evet" onclick="showSection('pregnancyDetails', true)">
+                <label for="pregnant_yes" class="radio-label">Evet</label>
+                <input type="radio" id="pregnant_no" name="pregnant" value="hayır" onclick="showSection('pregnancyDetails', false)">
+                <label for="pregnant_no" class="radio-label">Hayır</label>
+            </div>
+            <div id="pregnancyDetails" class="conditional-section">
+                <label>Yaklaşık kaç günlük gebe?</label>
+                <input type="text" name="pregnancy_duration">
+                <p class="warning-text">Gebelik döneminde kısırlaştırma operasyonu yapılmaz.</p>
             </div>
         </div>
 
@@ -67,7 +72,12 @@
 
         <div class="form-group">
             <label>3. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?</label>
-            <input type="text" name="fertility">
+            <div class="radio-group">
+                <input type="radio" id="fertility_yes" name="fertility" value="evet">
+                <label for="fertility_yes" class="radio-label">Evet</label>
+                <input type="radio" id="fertility_no" name="fertility" value="hayır">
+                <label for="fertility_no" class="radio-label">Hayır</label>
+            </div>
             <p class="warning-text">Kısırlaştırma operasyonu geri dönüşümsüz bir işlemdir ve ameliyat sonrasında kedinizin gebe kalması mümkün değildir.</p>
         </div>
 
@@ -115,8 +125,28 @@
         </div>
 
         <div class="form-group">
-            <label>6. Kediniz geçmişte doğum yaptı mı? En son ne zaman doğum yaptı? Şuan emziriyor mu?</label>
-            <input type="text" name="birth_history">
+            <label>6. Kediniz doğum yaptı mı?</label>
+            <div class="radio-group">
+                <input type="radio" id="birth_yes" name="birth_history" value="evet" onclick="showSection('birthDetails', true)">
+                <label for="birth_yes" class="radio-label">Evet</label>
+                <input type="radio" id="birth_no" name="birth_history" value="hayır" onclick="showSection('birthDetails', false)">
+                <label for="birth_no" class="radio-label">Hayır</label>
+            </div>
+            <div id="birthDetails" class="conditional-section">
+                <label>En son ne zaman doğum yaptı?</label>
+                <input type="text" name="last_birth_date">
+                <label>Kaç yavru doğdu?</label>
+                <input type="text" name="puppy_count">
+                <label>Şuan emziriyor mu?</label>
+                <div class="radio-group">
+                    <input type="radio" id="nursing_yes" name="nursing" value="evet">
+                    <label for="nursing_yes" class="radio-label">Evet</label>
+                    <input type="radio" id="nursing_no" name="nursing" value="hayır">
+                    <label for="nursing_no" class="radio-label">Hayır</label>
+                </div>
+                <label>Yavrular kaç günlük?</label>
+                <input type="text" name="puppy_age">
+            </div>
             <p class="warning-text">Kısırlaştırma doğumdan 45 gün sonra ya da yavrular sütten kesildikten sonra yapılabilir.</p>
         </div>
 
