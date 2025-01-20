@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dişi Kedi Kısırlaştırma Talebi-Bilgi Formu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .warning-text {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+        .yes-btn {
+            background-color: #90EE90;
+            border: 1px solid #333;
+            padding: 2px 10px;
+        }
+        .no-btn {
+            background-color: #98FB98;
+            border: 1px solid #333;
+            padding: 2px 10px;
+        }
+        input[type="text"], 
+        input[type="tel"] {
+            width: 200px;
+            padding: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 style="text-align: center;">DİŞİ KEDİ KISIRLAŞTIRMA TALEBİ-BİLGİ FORMU</h1>
+        
+        <div class="form-group">
+            <label>Hayvan Sahibi Adı-Soyadı:</label>
+            <input type="text" name="owner_name">
+            
+            <label>Telefon:</label>
+            <input type="tel" name="phone">
+        </div>
+
+        <div class="form-group">
+            <label>1. Kedinizin ırkı nedir?</label>
+            <input type="text" name="cat_breed">
+            
+            <label>Cinsiyeti nedir?</label>
+            <input type="text" name="cat_gender">
+        </div>
+
+        <div class="form-group">
+            <label>2. Kediniz kaç yaşındadır? (En erken 4 aylık olmalıdır.) (Kaç kg? sorusu eklenebilir)</label>
+            <input type="text" name="cat_age">
+        </div>
+
+        <div class="form-group">
+            <label>3. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?</label>
+            <div class="radio-group">
+                <span class="yes-btn">Evet</span>
+                <span class="no-btn">Hayır</span>
+            </div>
+            <p class="warning-text">Kısırlaştırma operasyonu geri dönüşümsüz bir işlemdir ve ameliyat sonrasında kedinizin gebe kalması mümkün değildir.</p>
+        </div>
+
+        <div class="form-group">
+            <label>4. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?/yapıldı mı? Son aşılama tarihi?</label>
+            <div class="radio-group">
+                <span class="yes-btn">Evet</span>
+                <span class="no-btn">Hayır</span>
+            </div>
+            <p class="warning-text">Kısırlaştırma acil ve zorunlu bir işlem değildir. Hayvan sağlığı ve insan sağlığı öncelikli olarak göz önünde bulundurulmalıdır. Kedinizin koruyucu (karma ve kuduz) aşıları yapılmalıdır. (Bu uygulamalar için iç hastalıkları kliniğine yönlendir. Uygulamaların bitiminden 10 gün sonra randevu için tekrar görüşülmesini öner.)</p>
+        </div>
+
+        <div class="form-group">
+            <label>5. Kediniz geçmişte kızgınlık davranışları gösterdi mi? En son ne zaman gösterdi? Bu belirtiler ne zaman sonlandı? Çiftleşti mi?</label>
+            <input type="text" name="heat_cycle">
+
+            <label>Şuan kızgınlık (östrüs) davranışları gösteriyor mu? (Aşırı miyavlama-bağırma, lordozis-yere uzanma, belini çukurlaştırma, arkasını-kuyruğunu kaldırma- yuvarlanma, sürtünme davranışları)</label>
+            <div class="radio-group">
+                <span class="yes-btn">Evet</span>
+                <span class="no-btn">Hayır</span>
+            </div>
+            <p class="warning-text">(Kızgınlık belirtileri ortalama 7 gün (1-21 gün) sürer. Kedinin davranışları normale döndüğünde randevu için tekrar görüşülmesini öner.)</p>
+            <p class="warning-text">Kızgınlık dönemindeki kediler için operasyon riskleri daha yüksektir. Bu yüzden ameliyat kızgınlık dönemi atlatıldıktan sonra yapılmalıdır. İdeal olan Kısırlaştırma operasyonu için bu davranışların sonlanması beklenmelidir.</p>
+        </div>
+
+        <div class="form-group">
+            <label>6. Kediniz geçmişte doğum yaptı mı? En son ne zaman doğum yaptı? Şuan emziriyor mu?</label>
+            <input type="text" name="birth_history">
+            <p class="warning-text">Kısırlaştırma doğumdan 45 gün sonra ya da yavrular sütten kesildikten sonra yapılabilir.</p>
+        </div>
+
+        <div class="form-group">
+            <label>7. Kedinizi nerede (evde-bahçede-serbest) barındırıyorsunuz? Evinizde kısırlaştırılmamış erkek kedi var mı? Çiftleşmiş olma ihtimali var mı?</label>
+            <input type="text" name="living_conditions">
+        </div>
+
+        <div class="form-group">
+            <label>8. Kedinizin bilinen kronik bir hastalığı var mı?</label>
+            <input type="text" name="chronic_disease">
+        </div>
+
+        <div class="form-group">
+            <label>9. Kedinize son 2 hafta içerisinde herhangi bir tedavi uygulandı mı? Uygulandıysa açıklama.</label>
+            <input type="text" name="recent_treatment">
+        </div>
+
+        <div class="form-group">
+            <label>10. Kediniz geçmişte herhangi bir ameliyat geçirdi mi? Geçirdiyse anesteziye karşı aşırı duyarlılık şekillendi mi?</label>
+            <input type="text" name="surgery_history">
+        </div>
+    </div>
+</body>
+</html>
