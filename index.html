@@ -51,12 +51,12 @@
         <h1 style="text-align: center;">DİŞİ KEDİ KISIRLAŞTIRMA TALEBİ-BİLGİ FORMU</h1>
 
         <div class="form-group">
-            <label>1. Kediniz dişi mi?</label>
+            <label>1. Kedinizin cinsiyeti nedir?</label>
             <div class="radio-group">
-                <input type="radio" id="gender_yes" name="gender" value="evet">
-                <label for="gender_yes" class="radio-label">Evet</label>
-                <input type="radio" id="gender_no" name="gender" value="hayır">
-                <label for="gender_no" class="radio-label">Hayır</label>
+                <input type="radio" id="gender_female" name="gender" value="dişi">
+                <label for="gender_female" class="radio-label">Dişi</label>
+                <input type="radio" id="gender_male" name="gender" value="erkek">
+                <label for="gender_male" class="radio-label">Erkek</label>
             </div>
         </div>
 
@@ -120,7 +120,7 @@
         </div>
 
         <div class="form-group">
-            <label>6. Kediniz doğum yaptı mı?</label>
+            <label>6. Kediniz geçmişte doğum yaptı mı?</label>
             <div class="radio-group">
                 <input type="radio" id="birth_yes" name="birth_history" value="evet" onclick="showSection('birthDetails', true)">
                 <label for="birth_yes" class="radio-label">Evet</label>
@@ -130,8 +130,6 @@
             <div id="birthDetails" class="conditional-section">
                 <label>En son ne zaman doğum yaptı?</label>
                 <input type="text" name="last_birth_date">
-                <label>Kaç yavru doğdu?</label>
-                <input type="text" name="puppy_count">
                 <label>Şuan emziriyor mu?</label>
                 <div class="radio-group">
                     <input type="radio" id="nursing_yes" name="nursing" value="evet">
@@ -139,8 +137,6 @@
                     <input type="radio" id="nursing_no" name="nursing" value="hayır">
                     <label for="nursing_no" class="radio-label">Hayır</label>
                 </div>
-                <label>Yavrular kaç günlük?</label>
-                <input type="text" name="puppy_age">
             </div>
             <p class="warning-text">Kısırlaştırma doğumdan 45 gün sonra ya da yavrular sütten kesildikten sonra yapılabilir.</p>
         </div>
