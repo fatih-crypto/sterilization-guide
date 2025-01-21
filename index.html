@@ -601,7 +601,17 @@
                 canProceed = false;
                 issues.push('Gelecekte yavru isteniyor');
             }
-            if (formData.get('vaccines') === 'hayır') {
+
+            // Check if all required treatments are done
+            if (formData.get('vaccines') === 'evet') {
+                const selectedTreatments = form.querySelectorAll('input[name="treatments"]:checked');
+                const treatmentValues = Array.from(selectedTreatments).map(cb => cb.value);
+                
+                if (!treatmentValues.includes('kuduz') || !treatmentValues.includes('karma') || !treatmentValues.includes('parazit')) {
+                    canProceed = false;
+                    issues.push('Tüm aşı ve parazit tedavileri (kuduz, karma, iç-dış parazit) yapılmış olmalıdır');
+                }
+            } else if (formData.get('vaccines') === 'hayır') {
                 canProceed = false;
                 issues.push('Aşıları eksik');
             }
