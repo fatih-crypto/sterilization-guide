@@ -76,8 +76,34 @@
         }
 
         .warning {
-            background-color: #ffecb3;
-            color: #ff6f00;
+            background-color: #ffebee;
+            color: #d32f2f;
+        }
+
+        .submit-button {
+            background-color: #2196F3;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 200px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .submit-button:hover {
+            background-color: #1976D2;
+        }
+
+        .issue-list {
+            color: #d32f2f;
+            margin-top: 10px;
+            padding-left: 20px;
         }
     </style>
 </head>
@@ -172,6 +198,8 @@
                     <label for="chronic_no" class="radio-label">Hayır</label>
                 </div>
             </div>
+
+            <button type="button" id="submitButton" class="submit-button">Formu Onayla</button>
         </form>
 
         <div id="resultMessage" class="result-message"></div>
@@ -180,13 +208,23 @@
     <script>
         const form = document.getElementById('catForm');
         const resultMessage = document.getElementById('resultMessage');
+        const submitButton = document.getElementById('submitButton');
 
-        form.addEventListener('change', function() {
+        submitButton.addEventListener('click', function() {
             const formData = new FormData(form);
             let canProceed = true;
             let issues = [];
 
-            // Check conditions
+            // Her soru cevaplanmış mı kontrol et
+            const allAnswered = Array.from(formData.values()).filter(Boolean).length === 8;
+            if (!allAnswered) {
+                resultMessage.textContent = 'Lütfen tüm soruları cevaplayınız.';
+                resultMessage.className = 'result-message warning';
+                resultMessage.style.display = 'block';
+                return;
+            }
+
+            // Koşulları kontrol et
             if (formData.get('gender') === 'hayır') {
                 canProceed = false;
                 issues.push('Kedi dişi değil');
@@ -216,16 +254,21 @@
                 issues.push('Kronik hastalık mevcut');
             }
 
-            // Display appropriate message
-            if (canProceed && Array.from(formData.values()).filter(Boolean).length === 8) {
+            // Uygun mesajı göster
+            if (canProceed) {
                 resultMessage.textContent = 'Kediniz kısırlaştırma için uygun durumdadır. Randevu alabilirsiniz.';
                 resultMessage.className = 'result-message success';
-                resultMessage.style.display = 'block';
-            } else if (issues.length > 0) {
-                resultMessage.textContent = `Aşağıdaki nedenlerden dolayı kısırlaştırma şu an uygun değildir. Lütfen hastane ile iletişime geçin: ${issues.join(', ')}`;
+            } else {
+                let message = 'Kısırlaştırma şu an uygun değildir. Lütfen hastane ile iletişime geçin.';
+                message += '<ul class="issue-list">';
+                issues.forEach(issue => {
+                    message += `<li>${issue}</li>`;
+                });
+                message += '</ul>';
+                resultMessage.innerHTML = message;
                 resultMessage.className = 'result-message warning';
-                resultMessage.style.display = 'block';
             }
+            resultMessage.style.display = 'block';
         });
     </script>
 </body>
