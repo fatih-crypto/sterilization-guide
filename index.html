@@ -13,7 +13,6 @@
             line-height: 1.6;
         }
 
-        /* Sadece mobil ekranlarda arka plan deseni göster */
         @media (max-width: 768px) {
             body {
                 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 24 24' fill='%231a237e' opacity='0.1'%3E%3Cpath d='M12,8L10.67,8.09C9.81,7.07 7.4,4.5 5,4.5C5,4.5 3.03,7.46 4.96,11.41C4.41,12.24 4.07,12.67 4,13.66L2.07,13.95L2.28,14.93L4.04,14.67L4.18,15.38L2.61,16.32L3.08,17.21L4.53,16.32C5.68,18.76 8.59,20 12,20C15.41,20 18.32,18.76 19.47,16.32L20.92,17.21L21.39,16.32L19.82,15.38L19.96,14.67L21.72,14.93L21.93,13.95L20,13.66C19.93,12.67 19.59,12.24 19.04,11.41C20.97,7.46 19,4.5 19,4.5C16.6,4.5 14.19,7.07 13.33,8.09L12,8Z'/%3E%3C/svg%3E");
@@ -23,20 +22,11 @@
             }
         }
 
-        /* Masaüstü için container genişliği */
         @media (min-width: 769px) {
             body {
                 max-width: 900px;
                 margin: 40px auto;
             }
-        }
-
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
-            color: #1a1a1a;
-            line-height: 1.6;
         }
 
         .form-container {
@@ -77,6 +67,10 @@
             background-color: #f8fafc;
             border: 1px solid #e3e8f0;
             transition: all 0.3s ease;
+        }
+
+        .form-group.hidden {
+            display: none;
         }
 
         .form-group:hover {
@@ -176,27 +170,6 @@
             transform: translateY(1px);
         }
 
-        @keyframes backgroundScroll {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: 120px 120px;
-            }
-        } 80px,
-                    100px 100px;
-            }
-            to {
-                background-position: 
-                    100px 100px,
-                    120px 120px,
-                    140px 140px,
-                    160px 160px,
-                    180px 180px,
-                    200px 200px;
-            }
-        }
-
         .issue-list {
             color: #991b1b;
             margin-top: 15px;
@@ -209,6 +182,11 @@
             height: 18px;
             margin-right: 8px;
             accent-color: #1a237e;
+        }
+
+        @keyframes backgroundScroll {
+            from { background-position: 0 0; }
+            to { background-position: 120px 120px; }
         }
 
         @media (max-width: 768px) {
@@ -230,11 +208,7 @@
     <div class="form-container">
         <h1>DİŞİ KEDİ KISIRLAŞTIRMA TALEBİ-BİLGİ FORMU</h1>
 
-        <form id="catForm" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
-            <!-- Anti-spam gizli alan -->
-            <input type="hidden" name="_captcha" value="true">
-            <input type="hidden" name="_subject" value="Yeni Kısırlaştırma Formu Başvurusu">
-            
+        <form id="catForm">
             <div class="form-group">
                 <label>1. Kediniz dişi mi?</label>
                 <div class="radio-group">
@@ -281,12 +255,22 @@
             </div>
 
             <div class="form-group">
-                <label>5. Kediniz kızgınlıkta mı/kızgınlık davranışı gösteriyor mu?</label>
+                <label>5. Hiç kızgınlık belirtisi gösterdi mi?</label>
                 <div class="radio-group">
-                    <input type="radio" id="heat_yes" name="heat" value="evet">
-                    <label for="heat_yes" class="radio-label">Evet</label>
-                    <input type="radio" id="heat_no" name="heat" value="hayır">
-                    <label for="heat_no" class="radio-label">Hayır</label>
+                    <input type="radio" id="heat_history_yes" name="heat_history" value="evet">
+                    <label for="heat_history_yes" class="radio-label">Evet</label>
+                    <input type="radio" id="heat_history_no" name="heat_history" value="hayır">
+                    <label for="heat_history_no" class="radio-label">Hayır</label>
+                </div>
+            </div>
+
+            <div class="form-group hidden" id="currentHeatGroup">
+                <label>5a. Şuan kızgınlık belirtisi var mı?</label>
+                <div class="radio-group">
+                    <input type="radio" id="current_heat_yes" name="current_heat" value="evet">
+                    <label for="current_heat_yes" class="radio-label">Evet</label>
+                    <input type="radio" id="current_heat_no" name="current_heat" value="hayır">
+                    <label for="current_heat_no" class="radio-label">Hayır</label>
                 </div>
             </div>
 
@@ -303,7 +287,7 @@
             </div>
 
             <div class="form-group">
-                <label>7. Çiftleşmiş olma ihtimali var mı?</label>
+                <label>7. 2 Ay içinde çiftleşmiş olma ihtimali var mı?</label>
                 <div class="radio-group">
                     <input type="radio" id="mating_yes" name="mating" value="evet">
                     <label for="mating_yes" class="radio-label">Evet</label>
@@ -332,23 +316,42 @@
         const form = document.getElementById('catForm');
         const resultMessage = document.getElementById('resultMessage');
         const submitButton = document.getElementById('submitButton');
+        const currentHeatGroup = document.getElementById('currentHeatGroup');
+
+        // Show/hide current heat question based on heat history
+        document.querySelectorAll('input[name="heat_history"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'evet') {
+                    currentHeatGroup.classList.remove('hidden');
+                } else {
+                    currentHeatGroup.classList.add('hidden');
+                    // Clear current heat selection when hiding
+                    document.querySelectorAll('input[name="current_heat"]').forEach(r => r.checked = false);
+                }
+            });
+        });
 
         submitButton.addEventListener('click', function() {
             const formData = new FormData(form);
             let canProceed = true;
             let issues = [];
             
-            // Boş soruları kontrol et
+            // Check for empty questions
             const questions = {
                 'gender': '1. Kediniz dişi mi?',
                 'age': '2. Kediniz kaç aylık?',
                 'fertility': '3. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?',
                 'vaccines': '4. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?',
-                'heat': '5. Kediniz kızgınlıkta mı/kızgınlık davranışı gösteriyor mu?',
+                'heat_history': '5. Hiç kızgınlık belirtisi gösterdi mi?',
                 'birth': '6. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?',
-                'mating': '7. Çiftleşmiş olma ihtimali var mı?',
+                'mating': '7. 2 Ay içinde çiftleşmiş olma ihtimali var mı?',
                 'chronic': '8. Kedinizin bilinen kronik bir hastalığı var mı?'
             };
+
+            // Add current heat question check if heat history is yes
+            if (formData.get('heat_history') === 'evet' && !formData.get('current_heat')) {
+                questions['current_heat'] = '5a. Şuan kızgınlık belirtisi var mı?';
+            }
             
             let emptyQuestions = [];
             for (let [key, question] of Object.entries(questions)) {
@@ -370,7 +373,7 @@
                 return;
             }
 
-            // Koşulları kontrol et
+            // Check conditions
             if (formData.get('gender') === 'hayır') {
                 canProceed = false;
                 issues.push('Kedi dişi değil');
@@ -387,20 +390,24 @@
                 canProceed = false;
                 issues.push('Aşıları eksik');
             }
-            if (formData.get('heat') === 'evet') {
+            if (formData.get('current_heat') === 'evet') {
                 canProceed = false;
-                issues.push('Kedi kızgınlıkta');
+                issues.push('Kedi şu an kızgınlıkta');
             }
             if (formData.get('birth') === 'hayır') {
                 canProceed = false;
                 issues.push('Doğumdan sonra 45 gün geçmemiş');
+            }
+            if (formData.get('mating') === 'evet') {
+                canProceed = false;
+                issues.push('Son 2 ay içinde çiftleşme ihtimali var');
             }
             if (formData.get('chronic') === 'evet') {
                 canProceed = false;
                 issues.push('Kronik hastalık mevcut');
             }
 
-            // Uygun mesajı göster
+            // Show appropriate message
             if (canProceed) {
                 resultMessage.textContent = 'Kediniz kısırlaştırma için uygun durumdadır. Randevu alabilirsiniz.';
                 resultMessage.className = 'result-message success';
