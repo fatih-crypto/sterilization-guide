@@ -13,15 +13,6 @@
             line-height: 1.6;
         }
 
-        @media (max-width: 768px) {
-            body {
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 24 24' fill='%231a237e' opacity='0.1'%3E%3Cpath d='M12,8L10.67,8.09C9.81,7.07 7.4,4.5 5,4.5C5,4.5 3.03,7.46 4.96,11.41C4.41,12.24 4.07,12.67 4,13.66L2.07,13.95L2.28,14.93L4.04,14.67L4.18,15.38L2.61,16.32L3.08,17.21L4.53,16.32C5.68,18.76 8.59,20 12,20C15.41,20 18.32,18.76 19.47,16.32L20.92,17.21L21.39,16.32L19.82,15.38L19.96,14.67L21.72,14.93L21.93,13.95L20,13.66C19.93,12.67 19.59,12.24 19.04,11.41C20.97,7.46 19,4.5 19,4.5C16.6,4.5 14.19,7.07 13.33,8.09L12,8Z'/%3E%3C/svg%3E");
-                background-repeat: space space;
-                background-size: 120px 120px;
-                animation: backgroundScroll 120s linear infinite;
-            }
-        }
-
         @media (min-width: 769px) {
             body {
                 max-width: 900px;
@@ -69,6 +60,30 @@
             transition: all 0.3s ease;
         }
 
+        .form-group.sub-question {
+            margin-left: 40px;
+            border-left: 3px solid #1a237e;
+            margin-top: -15px;
+            padding-left: 22px;
+            background-color: #f8fafc;
+            position: relative;
+        }
+
+        .form-group.sub-question::before {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: -15px;
+            width: 20px;
+            height: 3px;
+            background-color: #1a237e;
+        }
+
+        .form-group.sub-question label {
+            font-size: 15px;
+            color: #2c387e;
+        }
+
         .form-group.hidden {
             display: none;
         }
@@ -90,6 +105,7 @@
             margin: 15px 0;
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .radio-label {
@@ -184,11 +200,6 @@
             accent-color: #1a237e;
         }
 
-        @keyframes backgroundScroll {
-            from { background-position: 0 0; }
-            to { background-position: 120px 120px; }
-        }
-
         @media (max-width: 768px) {
             body {
                 padding: 10px;
@@ -201,6 +212,15 @@
             .form-group {
                 padding: 15px;
             }
+
+            .form-group.sub-question {
+                margin-left: 20px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -212,10 +232,14 @@
             <div class="form-group">
                 <label>1. Kediniz dişi mi?</label>
                 <div class="radio-group">
-                    <input type="radio" id="gender_yes" name="gender" value="evet">
-                    <label for="gender_yes" class="radio-label">Evet</label>
-                    <input type="radio" id="gender_no" name="gender" value="hayır">
-                    <label for="gender_no" class="radio-label">Hayır</label>
+                    <label class="radio-label">
+                        <input type="radio" name="gender" value="evet">
+                        Evet
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="gender" value="hayır">
+                        Hayır
+                    </label>
                 </div>
             </div>
 
@@ -237,72 +261,102 @@
             <div class="form-group">
                 <label>3. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?</label>
                 <div class="radio-group">
-                    <input type="radio" id="fertility_yes" name="fertility" value="evet">
-                    <label for="fertility_yes" class="radio-label">Evet</label>
-                    <input type="radio" id="fertility_no" name="fertility" value="hayır">
-                    <label for="fertility_no" class="radio-label">Hayır</label>
+                    <label class="radio-label">
+                        <input type="radio" name="fertility" value="evet">
+                        Evet
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="fertility" value="hayır">
+                        Hayır
+                    </label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>4. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?/yapıldı mı?</label>
                 <div class="radio-group">
-                    <input type="radio" id="vaccines_yes" name="vaccines" value="evet">
-                    <label for="vaccines_yes" class="radio-label">Evet</label>
-                    <input type="radio" id="vaccines_no" name="vaccines" value="hayır">
-                    <label for="vaccines_no" class="radio-label">Hayır</label>
+                    <label class="radio-label">
+                        <input type="radio" name="vaccines" value="evet">
+                        Evet
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="vaccines" value="hayır">
+                        Hayır
+                    </label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>5. Hiç kızgınlık belirtisi gösterdi mi?</label>
                 <div class="radio-group">
-                    <input type="radio" id="heat_history_yes" name="heat_history" value="evet">
-                    <label for="heat_history_yes" class="radio-label">Evet</label>
-                    <input type="radio" id="heat_history_no" name="heat_history" value="hayır">
-                    <label for="heat_history_no" class="radio-label">Hayır</label>
+                    <label class="radio-label">
+                        <input type="radio" name="heat_history" value="evet">
+                        Evet
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="heat_history" value="hayır">
+                        Hayır
+                    </label>
                 </div>
             </div>
 
-            <div class="form-group hidden" id="currentHeatGroup">
+            <div class="form-group hidden sub-question" id="currentHeatGroup">
                 <label>5a. Şuan kızgınlık belirtisi var mı?</label>
                 <div class="radio-group">
-                    <input type="radio" id="current_heat_yes" name="current_heat" value="evet">
-                    <label for="current_heat_yes" class="radio-label">Evet</label>
-                    <input type="radio" id="current_heat_no" name="current_heat" value="hayır">
-                    <label for="current_heat_no" class="radio-label">Hayır</label>
+                    <label class="radio-label">
+                        <input type="radio" name="current_heat" value="evet">
+                        Evet
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="current_heat" value="hayır">
+                        Hayır
+                    </label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>6. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?</label>
                 <div class="radio-group">
-                    <input type="radio" id="birth_yes" name="birth" value="evet">
-                    <label for="birth_yes" class="radio-label">Evet</label>
-                    <input type="radio" id="birth_no" name="birth" value="hayır">
-                    <label for="birth_no" class="radio-label">Hayır</label>
-                    <input type="radio" id="birth_never" name="birth" value="hiç doğum yapmadı">
-                    <label for="birth_never" class="radio-label">Hiç doğum yapmadı</label>
+                    <label class="radio-label">
+                        <input type="radio" name="birth" value="evet">
+                        Evet
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="birth" value="hayır">
+                        Hayır
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="birth" value="hiç doğum yapmadı">
+                        Hiç doğum yapmadı
+                    </label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>7. 2 Ay içinde çiftleşmiş olma ihtimali var mı?</label>
                 <div class="radio-group">
-                    <input type="radio" id="mating_yes" name="mating" value="evet">
-                    <label for="mating_yes" class="radio-label">Evet</label>
-                    <input type="radio" id="mating_no" name="mating" value="hayır">
-                    <label for="mating_no" class="radio-label">Hayır</label>
+                    <label class="radio-label">
+                        <input type="radio" name="mating" value="evet">
+                        Evet
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="mating" value="hayır">
+                        Hayır
+                    </label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>8. Kedinizin bilinen kronik bir hastalığı var mı?</label>
                 <div class="radio-group">
-                    <input type="radio" id="chronic_yes" name="chronic" value="evet">
-                    <label for="chronic_yes" class="radio-label">Evet</label>
-                    <input type="radio" id="chronic_no" name="chronic" value="hayır">
-                    <label for="chronic_no" class="radio-label">Hayır</label>
+                    <label class="radio-label">
+                        <input type="radio" name="chronic" value="evet">
+                        Evet
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="chronic" value="hayır">
+                        Hayır
+                    </label>
                 </div>
             </div>
 
