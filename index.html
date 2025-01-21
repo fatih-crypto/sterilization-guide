@@ -214,11 +214,34 @@
             const formData = new FormData(form);
             let canProceed = true;
             let issues = [];
+            
+            // Boş soruları kontrol et
+            const questions = {
+                'gender': '1. Kediniz dişi mi?',
+                'age': '2. Kediniz kaç aylık?',
+                'fertility': '3. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?',
+                'vaccines': '4. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?',
+                'heat': '5. Kediniz kızgınlıkta mı/kızgınlık davranışı gösteriyor mu?',
+                'birth': '6. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?',
+                'mating': '7. Çiftleşmiş olma ihtimali var mı?',
+                'chronic': '8. Kedinizin bilinen kronik bir hastalığı var mı?'
+            };
+            
+            let emptyQuestions = [];
+            for (let [key, question] of Object.entries(questions)) {
+                if (!formData.get(key)) {
+                    emptyQuestions.push(question);
+                }
+            }
 
-            // Her soru cevaplanmış mı kontrol et
-            const allAnswered = Array.from(formData.values()).filter(Boolean).length === 8;
-            if (!allAnswered) {
-                resultMessage.textContent = 'Lütfen tüm soruları cevaplayınız.';
+            if (emptyQuestions.length > 0) {
+                let message = 'Lütfen aşağıdaki soruları cevaplayınız:';
+                message += '<ul class="issue-list">';
+                emptyQuestions.forEach(question => {
+                    message += `<li>${question}</li>`;
+                });
+                message += '</ul>';
+                resultMessage.innerHTML = message;
                 resultMessage.className = 'result-message warning';
                 resultMessage.style.display = 'block';
                 return;
