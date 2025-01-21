@@ -118,6 +118,45 @@
             margin-bottom: 4px;
             line-height: 1.5;
         }
+        
+        .treatment-options {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8fafc;
+            border-radius: 4px;
+            border: 1px solid #e3e8f0;
+        }
+
+        .treatment-options.hidden {
+            display: none;
+        }
+
+        .treatment-title {
+            color: #1a237e;
+            font-weight: 500;
+            margin: 0 0 10px 0;
+            font-size: 15px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            color: #4a5568;
+            font-size: 15px;
+        }
+
+        input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            accent-color: #1a237e;
+        }
 
         label {
             font-weight: 500;
@@ -310,6 +349,44 @@
                         Hayır
                     </label>
                 </div>
+                <div class="treatment-options hidden" id="treatmentOptionsYes">
+                    <p class="treatment-title">Yaptırılan tedaviler:</p>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="treatments" value="kuduz">
+                            Kuduz aşısı
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="treatments" value="karma">
+                            Karma aşı
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="treatments" value="parazit">
+                            İç-dış parazit
+                        </label>
+                    </div>
+                </div>
+                <div class="treatment-options hidden" id="treatmentOptionsNo">
+                    <p class="treatment-title">Yaptırılan tedavi var mı?</p>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="treatments" value="kuduz">
+                            Kuduz aşısı
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="treatments" value="karma">
+                            Karma aşı
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="treatments" value="parazit">
+                            İç-dış parazit
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="treatments" value="none">
+                            Hiçbiri
+                        </label>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
@@ -422,6 +499,41 @@
             });
         });
 
+        // Show/hide treatment options based on vaccine question
+        document.querySelectorAll('input[name="vaccines"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const treatmentOptionsYes = document.getElementById('treatmentOptionsYes');
+                const treatmentOptionsNo = document.getElementById('treatmentOptionsNo');
+                
+                // Clear all checkboxes when switching
+                document.querySelectorAll('input[name="treatments"]').forEach(cb => cb.checked = false);
+
+                if (this.value === 'evet') {
+                    treatmentOptionsYes.classList.remove('hidden');
+                    treatmentOptionsNo.classList.add('hidden');
+                } else if (this.value === 'hayır') {
+                    treatmentOptionsYes.classList.add('hidden');
+                    treatmentOptionsNo.classList.remove('hidden');
+                }
+            });
+        });
+
+        // Handle "Hiçbiri" checkbox logic
+        document.querySelectorAll('input[name="treatments"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const noneCheckbox = document.querySelector('input[value="none"]');
+                if (this.value === 'none' && this.checked) {
+                    // If "Hiçbiri" is checked, uncheck all others
+                    document.querySelectorAll('input[name="treatments"]').forEach(cb => {
+                        if (cb !== this) cb.checked = false;
+                    });
+                } else if (this.checked && noneCheckbox?.checked) {
+                    // If any other is checked and "Hiçbiri" was checked, uncheck "Hiçbiri"
+                    noneCheckbox.checked = false;
+                }
+            });
+        });
+
         submitButton.addEventListener('click', function() {
             const formData = new FormData(form);
             let canProceed = true;
@@ -442,6 +554,18 @@
             // Add current heat question check if heat history is yes
             if (formData.get('heat_history') === 'evet' && !formData.get('current_heat')) {
                 questions['current_heat'] = '5a. Şuan kızgınlık belirtisi var mı?';
+            }
+
+            // Check if any treatments are selected when vaccines question is answered
+            if (formData.get('vaccines') === 'evet' || formData.get('vaccines') === 'hayır') {
+                const selectedTreatments = form.querySelectorAll('input[name="treatments"]:checked');
+                if (selectedTreatments.length === 0) {
+                    emptyQuestions.push('4. Lütfen yaptırılan tedavileri işaretleyiniz');
+                }
+                // If "Hiçbiri" is selected, no other option should be selected
+                if (Array.from(selectedTreatments).some(cb => cb.value === 'none') && selectedTreatments.length > 1) {
+                    issues.push('Hiçbiri seçeneği ile birlikte başka tedavi seçilemez');
+                }
             }
             
             let emptyQuestions = [];
