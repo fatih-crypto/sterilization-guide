@@ -312,19 +312,19 @@
        <h1>DİŞİ KEDİ KISIRLAŞTIRMA TALEBİ-BİLGİ FORMU</h1>
 
        <form id="catForm">
-           <div class="form-group">
-               <label>1. Kediniz dişi mi?</label>
-               <div class="radio-group">
-                   <label class="radio-label">
-                       <input type="radio" name="gender" value="evet">
-                       Evet
-                   </label>
-                   <label class="radio-label">
-                       <input type="radio" name="gender" value="hayır">
-                       Hayır
-                   </label>
-               </div>
-           </div>
+         <div class="form-group">
+             <label>1. Kedinizin cinsiyeti nedir?</label>
+             <div class="radio-group">
+                 <label class="radio-label">
+                     <input type="radio" name="gender" value="dişi">
+                     Dişi
+                 </label>
+                 <label class="radio-label">
+                     <input type="radio" name="gender" value="erkek">
+                     Erkek
+                 </label>
+             </div>
+         </div>
 
            <div class="form-group">
                <label>2. Kediniz kaç aylık/yaşında?</label>
@@ -627,7 +627,7 @@
                return;
            }
 
-           if (formData.get('gender') === 'hayır') {
+           if (formData.get('gender') === 'erkek') {
                canProceed = false;
                issues.push('Kedi dişi değil');
            }
