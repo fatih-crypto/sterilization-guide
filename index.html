@@ -670,10 +670,11 @@
                canProceed = false;
                issues.push('Doğumdan sonra 45 gün geçmemiş');
            }
-           if (formData.get('mating') === 'evet') {
-               canProceed = false;
-               issues.push('Son 2 ay içinde çiftleşme ihtimali var');
-           }
+            if (formData.get('mating') === 'evet') {
+                canProceed = false;
+                issues.push('Son 2 ay içinde çiftleşme ihtimali var');
+                warnings.push('Gebelik kontrolü gerekli, veteriner hekiminize danışın');
+            }
            if (formData.get('chronic') === 'evet') {
                canProceed = false;
                issues.push('Kronik hastalık mevcut');
