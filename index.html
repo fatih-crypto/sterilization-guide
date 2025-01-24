@@ -663,7 +663,7 @@
                issues.push('Aşıları eksik');
            }
             if (formData.get('current_heat') === 'evet') {
-               warnings.push('Veteriner hekimin tercihine göre operasyon yapılabilir veya ertelenebilir.');
+               warnings.push('UYARI: Veteriner hekimin tercihine göre operasyon yapılabilir veya ertelenebilir.');
             }
            if (formData.get('birth') === 'hayır') {
                canProceed = false;
@@ -672,12 +672,12 @@
             if (formData.get('mating') === 'evet') {
                 canProceed = false;
                 issues.push('Son 2 ay içinde çiftleşme ihtimali var');
-                warnings.push('Gebelik kontrolü gerekli, veteriner hekiminize danışın');
+                warnings.push('UYARI: Gebelik kontrolü gerekli, veteriner hekiminize danışın');
             }
            if (formData.get('chronic') === 'evet') {
                canProceed = false;
                issues.push('Kronik hastalık mevcut');
-               warnings.push('Kronik hastalığı hakkında veteriner hekiminize detaylı bilgi veriniz.');
+               warnings.push('UYARI: Kronik hastalığı hakkında veteriner hekiminize detaylı bilgi veriniz.');
            }
 
            if (canProceed) {
