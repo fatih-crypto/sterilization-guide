@@ -223,6 +223,12 @@
             border-color: #fecaca;
         }
 
+        .pregnancy-warning {
+            color: #ff6b01;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
         .submit-button {
             background: linear-gradient(90deg, #1a237e, #0d47a1);
             color: white;
@@ -336,7 +342,25 @@
             </div>
 
             <div class="form-group">
-                <label>3. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?</label>
+                <label>3. Kediniz hangi ortamda yaşamaktadır?</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="living_environment" value="ev">
+                        Sadece evde/kapalı ortam
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="living_environment" value="dış">
+                        Sadece dış ortamda
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="living_environment" value="karma">
+                        Hem dış hem kapalı ortamda
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>4. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?</label>
                 <div class="radio-group">
                     <label class="radio-label">
                         <input type="radio" name="fertility" value="evet">
@@ -350,7 +374,7 @@
             </div>
 
             <div class="form-group">
-                <label>4. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?/yapıldı mı?</label>
+                <label>5. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?/yapıldı mı?</label>
                 <div class="radio-group">
                     <label class="radio-label">
                         <input type="radio" name="vaccines" value="evet">
@@ -396,13 +420,13 @@
                         <label class="checkbox-label">
                             <input type="checkbox" name="treatments" value="none">
                             Hiçbiri
-                        </label>
+</label>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label>5. Hiç kızgınlık belirtisi gösterdi mi?</label>
+                <label>6. Hiç kızgınlık belirtisi gösterdi mi?</label>
                 <div class="info-note">
                     <p>Kızgınlık Belirtileri:</p>
                     <ul>
@@ -427,7 +451,7 @@
             </div>
 
             <div class="form-group hidden sub-question" id="currentHeatGroup">
-                <label>5a. Şuan kızgınlık belirtisi var mı?</label>
+                <label>6a. Şuan kızgınlık belirtisi var mı?</label>
                 <div class="radio-group">
                     <label class="radio-label">
                         <input type="radio" name="current_heat" value="evet">
@@ -441,7 +465,7 @@
             </div>
 
             <div class="form-group">
-                <label>6. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?</label>
+                <label>7. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?</label>
                 <div class="radio-group">
                     <label class="radio-label">
                         <input type="radio" name="birth" value="evet">
@@ -459,7 +483,7 @@
             </div>
 
             <div class="form-group">
-                <label>7. 2 Ay içinde çiftleşmiş olma ihtimali var mı?</label>
+                <label>8. 2 Ay içinde çiftleşmiş olma ihtimali var mı?</label>
                 <div class="radio-group">
                     <label class="radio-label">
                         <input type="radio" name="mating" value="evet">
@@ -473,7 +497,7 @@
             </div>
 
             <div class="form-group">
-                <label>8. Kedinizin bilinen kronik bir hastalığı var mı?</label>
+                <label>9. Kedinizin bilinen kronik bir hastalığı var mı?</label>
                 <div class="radio-group">
                     <label class="radio-label">
                         <input type="radio" name="chronic" value="evet">
@@ -550,36 +574,32 @@
             const formData = new FormData(form);
             let canProceed = true;
             let issues = [];
+            let warnings = [];
             
             // Check for empty questions
             const questions = {
                 'gender': '1. Kediniz dişi mi?',
                 'age': '2. Kediniz kaç aylık?',
-                'fertility': '3. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?',
-                'vaccines': '4. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?',
-                'heat_history': '5. Hiç kızgınlık belirtisi gösterdi mi?',
-                'birth': '6. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?',
-                'mating': '7. 2 Ay içinde çiftleşmiş olma ihtimali var mı?',
-                'chronic': '8. Kedinizin bilinen kronik bir hastalığı var mı?'
+                'living_environment': '3. Kediniz hangi ortamda yaşamaktadır?',
+                'fertility': '4. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?',
+                'vaccines': '5. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?',
+                'heat_history': '6. Hiç kızgınlık belirtisi gösterdi mi?',
+                'birth': '7. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?',
+                'mating': '8. 2 Ay içinde çiftleşmiş olma ihtimali var mı?',
+                'chronic': '9. Kedinizin bilinen kronik bir hastalığı var mı?'
             };
 
             // Add current heat question check if heat history is yes
             if (formData.get('heat_history') === 'evet' && !formData.get('current_heat')) {
-                questions['current_heat'] = '5a. Şuan kızgınlık belirtisi var mı?';
+                questions['current_heat'] = '6a. Şuan kızgınlık belirtisi var mı?';
             }
 
-            // Check if any treatments are selected when vaccines question is answered
-            if (formData.get('vaccines') === 'evet' || formData.get('vaccines') === 'hayır') {
-                const selectedTreatments = form.querySelectorAll('input[name="treatments"]:checked');
-                if (selectedTreatments.length === 0) {
-                    emptyQuestions.push('4. Lütfen yaptırılan tedavileri işaretleyiniz');
-                }
-                // If "Hiçbiri" is selected, no other option should be selected
-                if (Array.from(selectedTreatments).some(cb => cb.value === 'none') && selectedTreatments.length > 1) {
-                    issues.push('Hiçbiri seçeneği ile birlikte başka tedavi seçilemez');
-                }
+            // Check environment and add pregnancy warning if needed
+            const environment = formData.get('living_environment');
+            if (environment === 'dış' || environment === 'karma') {
+                warnings.push('Gebe olma durumuna karşı gebelik muayenesi yapılmalıdır');
             }
-            
+
             let emptyQuestions = [];
             for (let [key, question] of Object.entries(questions)) {
                 if (!formData.get(key)) {
@@ -614,7 +634,7 @@
                 issues.push('Gelecekte yavru isteniyor');
             }
 
-            // Check if all required treatments are done
+            // Check treatments
             if (formData.get('vaccines') === 'evet') {
                 const selectedTreatments = form.querySelectorAll('input[name="treatments"]:checked');
                 const treatmentValues = Array.from(selectedTreatments).map(cb => cb.value);
@@ -646,7 +666,11 @@
 
             // Show appropriate message
             if (canProceed) {
-                resultMessage.textContent = 'Kediniz kısırlaştırma için uygun durumdadır. Randevu alabilirsiniz.';
+                let message = 'Kediniz kısırlaştırma için uygun durumdadır. Randevu alabilirsiniz.';
+                if (warnings.length > 0) {
+                    message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
+                }
+                resultMessage.innerHTML = message;
                 resultMessage.className = 'result-message success';
             } else {
                 let message = 'Kısırlaştırma şu an uygun değildir. Lütfen hastane ile iletişime geçin.';
@@ -655,6 +679,9 @@
                     message += `<li>${issue}</li>`;
                 });
                 message += '</ul>';
+                if (warnings.length > 0) {
+                    message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
+                }
                 resultMessage.innerHTML = message;
                 resultMessage.className = 'result-message warning';
             }
