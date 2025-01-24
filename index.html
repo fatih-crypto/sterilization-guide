@@ -373,7 +373,7 @@
 
            <div class="form-group">
                <label>4. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?</label>
-               <div class="radio-group">
+                  <div class="radio-group">
                    <label class="radio-label">
                        <input type="radio" name="fertility" value="evet">
                        Evet
@@ -381,6 +381,10 @@
                    <label class="radio-label">
                        <input type="radio" name="fertility" value="hayır">
                        Hayır
+                   </label>
+                   <label class="radio-label">
+                       <input type="radio" name="fertility" value="kararsızım">
+                       Kararsızım
                    </label>
                </div>
            </div>
@@ -635,9 +639,11 @@
                canProceed = false;
                issues.push('Kedi 4 aylıktan küçük');
            }
-           if (formData.get('fertility') === 'evet') {
+          if (formData.get('fertility') === 'evet') {
                canProceed = false;
                issues.push('Gelecekte yavru isteniyor');
+           } else if (formData.get('fertility') === 'kararsızım') {
+               warnings.push('Cerrahi kısırlaştırma işlemi geri dönüşümsüz bir işlemdir. Kedinizin gebe kalması mümkün değildir. Bu konuda kararınızı kesinleştirdikten sonra kısırlaştırabilirsiniz');
            }
 
            if (formData.get('vaccines') === 'evet') {
