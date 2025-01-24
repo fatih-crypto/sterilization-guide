@@ -1,691 +1,697 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dişi Kedi Kısırlaştırma Talebi-Bilgi Formu</title>
-    <style>
-        body {
-            background-color: #f0f2f5;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            padding: 20px;
-            color: #1a1a1a;
-            line-height: 1.6;
-        }
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dişi Kedi Kısırlaştırma Talebi-Bilgi Formu</title>
+   <style>
+       body {
+           background-color: #f0f2f5;
+           font-family: 'Inter', system-ui, -apple-system, sans-serif;
+           padding: 20px;
+           color: #1a1a1a;
+           line-height: 1.6;
+       }
 
-        @media (min-width: 769px) {
-            body {
-                max-width: 900px;
-                margin: 40px auto;
-            }
-        }
+       @media (min-width: 769px) {
+           body {
+               max-width: 900px;
+               margin: 40px auto;
+           }
+       }
 
-        .form-container {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            padding: 40px;
-            border: none;
-            position: relative;
-            overflow: hidden;
-        }
+       .form-container {
+           background-color: rgba(255, 255, 255, 0.95);
+           border-radius: 12px;
+           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+           padding: 40px;
+           border: none;
+           position: relative;
+           overflow: hidden;
+       }
 
-        .form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #1a237e, #0d47a1);
-        }
+       .form-container::before {
+           content: '';
+           position: absolute;
+           top: 0;
+           left: 0;
+           right: 0;
+           height: 4px;
+           background: linear-gradient(90deg, #1a237e, #0d47a1);
+       }
 
-        h1 {
-            color: #1a237e;
-            font-size: 28px;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #e3e8f0;
-            text-align: center;
-            font-weight: 600;
-            letter-spacing: -0.5px;
-        }
+       h1 {
+           color: #1a237e;
+           font-size: 28px;
+           margin-bottom: 40px;
+           padding-bottom: 20px;
+           border-bottom: 2px solid #e3e8f0;
+           text-align: center;
+           font-weight: 600;
+           letter-spacing: -0.5px;
+       }
 
-        .form-group {
-            margin-bottom: 30px;
-            padding: 25px;
-            border-radius: 8px;
-            background-color: #f8fafc;
-            border: 1px solid #e3e8f0;
-            transition: all 0.3s ease;
-        }
+       .form-group {
+           margin-bottom: 30px;
+           padding: 25px;
+           border-radius: 8px;
+           background-color: #f8fafc;
+           border: 1px solid #e3e8f0;
+           transition: all 0.3s ease;
+       }
 
-        .form-group.sub-question {
-            margin-left: 40px;
-            border-left: 3px solid #1a237e;
-            margin-top: -15px;
-            padding-left: 22px;
-            background-color: #f8fafc;
-            position: relative;
-        }
+       .form-group.sub-question {
+           margin-left: 40px;
+           border-left: 3px solid #1a237e;
+           margin-top: -15px;
+           padding-left: 22px;
+           background-color: #f8fafc;
+           position: relative;
+       }
 
-        .form-group.sub-question::before {
-            content: '';
-            position: absolute;
-            left: -3px;
-            top: -15px;
-            width: 20px;
-            height: 3px;
-            background-color: #1a237e;
-        }
+       .form-group.sub-question::before {
+           content: '';
+           position: absolute;
+           left: -3px;
+           top: -15px;
+           width: 20px;
+           height: 3px;
+           background-color: #1a237e;
+       }
 
-        .form-group.sub-question label {
-            font-size: 15px;
-            color: #2c387e;
-        }
+       .form-group.sub-question label {
+           font-size: 15px;
+           color: #2c387e;
+       }
 
-        .form-group.hidden {
-            display: none;
-        }
+       .form-group.hidden {
+           display: none;
+       }
 
-        .form-group:hover {
-            border-color: #1a237e;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
+       .form-group:hover {
+           border-color: #1a237e;
+           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+       }
 
-        .info-note {
-            background-color: #e8f4fd;
-            border-left: 4px solid #1a237e;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 4px;
-            font-size: 14px;
-        }
+       .info-note {
+           background-color: #e8f4fd;
+           border-left: 4px solid #1a237e;
+           padding: 15px;
+           margin: 10px 0;
+           border-radius: 4px;
+           font-size: 14px;
+       }
 
-        .info-note p {
-            color: #1a237e;
-            font-weight: 600;
-            margin: 0 0 8px 0;
-        }
+       .info-note p {
+           color: #1a237e;
+           font-weight: 600;
+           margin: 0 0 8px 0;
+       }
 
-        .info-note ul {
-            margin: 0;
-            padding-left: 20px;
-            color: #2c387e;
-        }
+       .info-note ul {
+           margin: 0;
+           padding-left: 20px;
+           color: #2c387e;
+       }
 
-        .info-note li {
-            margin-bottom: 4px;
-            line-height: 1.5;
-        }
-        
-        .treatment-options {
-            margin-top: 15px;
-            padding: 15px;
-            background-color: #f8fafc;
-            border-radius: 4px;
-            border: 1px solid #e3e8f0;
-        }
+       .info-note li {
+           margin-bottom: 4px;
+           line-height: 1.5;
+       }
+       
+       .treatment-options {
+           margin-top: 15px;
+           padding: 15px;
+           background-color: #f8fafc;
+           border-radius: 4px;
+           border: 1px solid #e3e8f0;
+       }
 
-        .treatment-options.hidden {
-            display: none;
-        }
+       .treatment-options.hidden {
+           display: none;
+       }
 
-        .treatment-title {
-            color: #1a237e;
-            font-weight: 500;
-            margin: 0 0 10px 0;
-            font-size: 15px;
-        }
+       .treatment-title {
+           color: #1a237e;
+           font-weight: 500;
+           margin: 0 0 10px 0;
+           font-size: 15px;
+       }
 
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+       .checkbox-group {
+           display: flex;
+           flex-direction: column;
+           gap: 12px;
+       }
 
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            color: #4a5568;
-            font-size: 15px;
-        }
+       .checkbox-label {
+           display: flex;
+           align-items: center;
+           color: #4a5568;
+           font-size: 15px;
+       }
 
-        input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            accent-color: #1a237e;
-        }
+       input[type="checkbox"] {
+           width: 16px;
+           height: 16px;
+           margin-right: 8px;
+           accent-color: #1a237e;
+       }
 
-        label {
-            font-weight: 500;
-            margin-bottom: 12px;
-            font-size: 16px;
-            display: block;
-            color: #1a237e;
-        }
+       label {
+           font-weight: 500;
+           margin-bottom: 12px;
+           font-size: 16px;
+           display: block;
+           color: #1a237e;
+       }
 
-        .radio-group {
-            margin: 15px 0;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
+       .radio-group {
+           margin: 15px 0;
+           display: flex;
+           gap: 20px;
+           flex-wrap: wrap;
+       }
 
-        .radio-label {
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            color: #4a5568;
-        }
+       .radio-label {
+           font-size: 15px;
+           display: flex;
+           align-items: center;
+           color: #4a5568;
+       }
 
-        select {
-            width: 200px;
-            padding: 10px 14px;
-            border: 1px solid #e3e8f0;
-            border-radius: 6px;
-            font-size: 15px;
-            background-color: white;
-            color: #4a5568;
-            transition: all 0.2s;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-            background-size: 16px;
-        }
+       select {
+           width: 200px;
+           padding: 10px 14px;
+           border: 1px solid #e3e8f0;
+           border-radius: 6px;
+           font-size: 15px;
+           background-color: white;
+           color: #4a5568;
+           transition: all 0.2s;
+           appearance: none;
+           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+           background-repeat: no-repeat;
+           background-position: right 10px center;
+           background-size: 16px;
+       }
 
-        select:focus {
-            border-color: #1a237e;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
-        }
+       select:focus {
+           border-color: #1a237e;
+           outline: none;
+           box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+       }
 
-        .result-message {
-            margin-top: 30px;
-            padding: 20px;
-            border-radius: 8px;
-            font-weight: 500;
-            display: none;
-            border: 1px solid transparent;
-        }
+       .result-message {
+           margin-top: 30px;
+           padding: 20px;
+           border-radius: 8px;
+           font-weight: 500;
+           display: none;
+           border: 1px solid transparent;
+       }
 
-        .success {
-            background-color: #f0fdf4;
-            color: #166534;
-            border-color: #bbf7d0;
-        }
+       .success {
+           background-color: #f0fdf4;
+           color: #166534;
+           border-color: #bbf7d0;
+       }
 
-        .warning {
-            background-color: #fef2f2;
-            color: #991b1b;
-            border-color: #fecaca;
-        }
+       .warning {
+           background-color: #fef2f2;
+           color: #991b1b;
+           border-color: #fecaca;
+       }
 
-        .pregnancy-warning {
-            color: #ff6b01;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+       .pregnancy-warning {
+           color: #ff6b01;
+           font-weight: bold;
+           margin-top: 10px;
+       }
 
-        .submit-button {
-            background: linear-gradient(90deg, #1a237e, #0d47a1);
-            color: white;
-            padding: 14px 28px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            margin-top: 30px;
-            width: 100%;
-            max-width: 200px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+       .submit-button {
+           background: linear-gradient(90deg, #1a237e, #0d47a1);
+           color: white;
+           padding: 14px 28px;
+           border: none;
+           border-radius: 6px;
+           font-size: 16px;
+           font-weight: 500;
+           cursor: pointer;
+           margin-top: 30px;
+           width: 100%;
+           max-width: 200px;
+           display: block;
+           margin-left: auto;
+           margin-right: auto;
+           transition: all 0.3s ease;
+           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       }
 
-        .submit-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-        }
+       .submit-button:hover {
+           transform: translateY(-1px);
+           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+       }
 
-        .submit-button:active {
-            transform: translateY(1px);
-        }
+       .submit-button:active {
+           transform: translateY(1px);
+       }
 
-        .issue-list {
-            color: #991b1b;
-            margin-top: 15px;
-            padding-left: 20px;
-            line-height: 1.8;
-        }
+       .issue-list {
+           color: #991b1b;
+           margin-top: 15px;
+           padding-left: 20px;
+           line-height: 1.8;
+       }
 
-        input[type="radio"] {
-            width: 18px;
-            height: 18px;
-            margin-right: 8px;
-            accent-color: #1a237e;
-        }
+       input[type="radio"] {
+           width: 18px;
+           height: 18px;
+           margin-right: 8px;
+           accent-color: #1a237e;
+       }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            
-            .form-container {
-                padding: 20px;
-            }
+       .info-note li.with-image {
+           display: flex;
+           align-items: center;
+           gap: 10px;
+       }
 
-            .form-group {
-                padding: 15px;
-            }
+       .info-note img {
+           width: 100px;
+           height: auto;
+           border-radius: 4px;
+       }
 
-            .form-group.sub-question {
-                margin-left: 20px;
-            }
+       @media (max-width: 768px) {
+           body {
+               padding: 10px;
+           }
+           
+           .form-container {
+               padding: 20px;
+           }
 
-            .radio-group {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-    </style>
+           .form-group {
+               padding: 15px;
+           }
+
+           .form-group.sub-question {
+               margin-left: 20px;
+           }
+
+           .radio-group {
+               flex-direction: column;
+               gap: 10px;
+           }
+       }
+   </style>
 </head>
 <body>
-    <div class="form-container">
-        <h1>DİŞİ KEDİ KISIRLAŞTIRMA TALEBİ-BİLGİ FORMU</h1>
+   <div class="form-container">
+       <h1>DİŞİ KEDİ KISIRLAŞTIRMA TALEBİ-BİLGİ FORMU</h1>
 
-        <form id="catForm">
-            <div class="form-group">
-                <label>1. Kediniz dişi mi?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="gender" value="evet">
-                        Evet
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="gender" value="hayır">
-                        Hayır
-                    </label>
-                </div>
-            </div>
+       <form id="catForm">
+           <div class="form-group">
+               <label>1. Kediniz dişi mi?</label>
+               <div class="radio-group">
+                   <label class="radio-label">
+                       <input type="radio" name="gender" value="evet">
+                       Evet
+                   </label>
+                   <label class="radio-label">
+                       <input type="radio" name="gender" value="hayır">
+                       Hayır
+                   </label>
+               </div>
+           </div>
 
-            <div class="form-group">
-                <label>2. Kediniz kaç aylık/yaşında?</label>
-                <select name="age" id="age">
-                    <option value="">Seçiniz</option>
-                    <option value="1">1 aylık</option>
-                    <option value="2">2 aylık</option>
-                    <option value="3">3 aylık</option>
-                    <option value="4">4 aylık</option>
-                    <option value="5">5 aylık</option>
-                    <option value="6">6 aylık</option>
-                    <option value="7">7 aylık</option>
-                    <option value="8">8 aylık</option>
-                    <option value="9">9 aylık</option>
-                    <option value="10">10 aylık</option>
-                    <option value="11">11 aylık</option>
-                    <option value="12">12 aylık</option>
-                    <option value="13">1 yaşında</option>
-                    <option value="24">2 yaşında</option>
-                    <option value="36">3 yaşında</option>
-                    <option value="48">4 yaşında</option>
-                    <option value="60">5 yaşında</option>
-                    <option value="72">6 yaşında</option>
-                    <option value="84">7 yaşında</option>
-                    <option value="96">8+ yaşında</option>
-                </select>
-            </div>
+           <div class="form-group">
+               <label>2. Kediniz kaç aylık/yaşında?</label>
+               <select name="age" id="age">
+                   <option value="">Seçiniz</option>
+                   <option value="1">1 aylık</option>
+                   <option value="2">2 aylık</option>
+                   <option value="3">3 aylık</option>
+                   <option value="4">4 aylık</option>
+                   <option value="5">5 aylık</option>
+                   <option value="6">6 aylık</option>
+                   <option value="7">7 aylık</option>
+                   <option value="8">8 aylık</option>
+                   <option value="9">9 aylık</option>
+                   <option value="10">10 aylık</option>
+                   <option value="11">11 aylık</option>
+                   <option value="12">12 aylık</option>
+                   <option value="13">1 yaşında</option>
+                   <option value="24">2 yaşında</option>
+                   <option value="36">3 yaşında</option>
+                   <option value="48">4 yaşında</option>
+                   <option value="60">5 yaşında</option>
+                   <option value="72">6 yaşında</option>
+                   <option value="84">7 yaşında</option>
+                   <option value="96">8+ yaşında</option>
+               </select>
+           </div>
 
-            <div class="form-group">
-                <label>3. Kediniz hangi ortamda yaşamaktadır?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="living_environment" value="ev">
-                        Sadece evde/kapalı ortam
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="living_environment" value="dış">
-                        Sadece dış ortamda
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="living_environment" value="karma">
-                        Hem dış hem kapalı ortamda
-                    </label>
-                </div>
-            </div>
+           <div class="form-group">
+               <label>3. Kediniz hangi ortamda yaşamaktadır?</label>
+               <div class="radio-group">
+                   <label class="radio-label">
+                       <input type="radio" name="living_environment" value="ev">
+                       Sadece evde/kapalı ortam
+                   </label>
+                   <label class="radio-label">
+                       <input type="radio" name="living_environment" value="dış">
+                       Sadece dış ortamda
+                   </label>
+                   <label class="radio-label">
+                       <input type="radio" name="living_environment" value="karma">
+                       Hem dış hem kapalı ortamda
+                   </label>
+               </div>
+           </div>
 
-            <div class="form-group">
-                <label>4. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="fertility" value="evet">
-                        Evet
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="fertility" value="hayır">
-                        Hayır
-                    </label>
-                </div>
-            </div>
+           <div class="form-group">
+               <label>4. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?</label>
+               <div class="radio-group">
+                   <label class="radio-label">
+                       <input type="radio" name="fertility" value="evet">
+                       Evet
+                   </label>
+                   <label class="radio-label">
+                       <input type="radio" name="fertility" value="hayır">
+                       Hayır
+                   </label>
+               </div>
+           </div>
 
-            <div class="form-group">
-                <label>5. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?/yapıldı mı?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="vaccines" value="evet">
-                        Evet
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="vaccines" value="hayır">
-                        Hayır
-                    </label>
-                </div>
-                <div class="treatment-options hidden" id="treatmentOptionsYes">
-                    <p class="treatment-title">Yaptırılan tedaviler:</p>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="treatments" value="kuduz">
-                            Kuduz aşısı
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="treatments" value="karma">
-                            Karma aşı
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="treatments" value="parazit">
-                            İç-dış parazit
-                        </label>
-                    </div>
-                </div>
-                <div class="treatment-options hidden" id="treatmentOptionsNo">
-                    <p class="treatment-title">Yaptırılan tedavi var mı?</p>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="treatments" value="kuduz">
-                            Kuduz aşısı
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="treatments" value="karma">
-                            Karma aşı
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="treatments" value="parazit">
-                            İç-dış parazit
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="treatments" value="none">
-                            Hiçbiri
-</label>
-                    </div>
-                </div>
-            </div>
+           <div class="form-group">
+               <label>5. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?/yapıldı mı?</label>
+               <div class="radio-group">
+                   <label class="radio-label">
+                       <input type="radio" name="vaccines" value="evet">
+                       Evet
+                   </label>
+                   <label class="radio-label">
+                       <input type="radio" name="vaccines" value="hayır">
+                       Hayır
+                   </label>
+               </div>
+               <div class="treatment-options hidden" id="treatmentOptionsYes">
+                   <p class="treatment-title">Yaptırılan tedaviler:</p>
+                   <div class="checkbox-group">
+                       <label class="checkbox-label">
+                           <input type="checkbox" name="treatments" value="kuduz">
+                           Kuduz aşısı
+                       </label>
+                       <label class="checkbox-label">
+                           <input type="checkbox" name="treatments" value="karma">
+                           Karma aşı
+                       </label>
+                       <label class="checkbox-label">
+                           <input type="checkbox" name="treatments" value="parazit">
+                           İç-dış parazit
+                       </label>
+                   </div>
+               </div>
+               <div class="treatment-options hidden" id="treatmentOptionsNo">
+                   <p class="treatment-title">Yaptırılan tedavi var mı?</p>
+                   <div class="checkbox-group">
+                       <label class="checkbox-label">
+                           <input type="checkbox" name="treatments" value="kuduz">
+                           Kuduz aşısı
+                       </label>
+                       <label class="checkbox-label">
+                           <input type="checkbox" name="treatments" value="karma">
+                           Karma aşı
+                       </label>
+                       <label class="checkbox-label">
+                           <input type="checkbox" name="treatments" value="parazit">
+                           İç-dış parazit
+                       </label>
+                       <label class="checkbox-label">
+                           <input type="checkbox" name="treatments" value="none">
+                           Hiçbiri
+                       </label>
+                   </div>
+               </div>
+           </div>
 
-            <div class="form-group">
-                <label>6. Hiç kızgınlık belirtisi gösterdi mi?</label>
-                <div class="info-note">
-                    <p>Kızgınlık Belirtileri:</p>
-                    <ul>
-                        <li>Normalden daha fazla ilgi beklemesi ve sürtünme isteği</li>
-                        <li>Sürekli yüksek sesle miyavlama</li>
-                        <li>Çiftleşme pozisyonu alma</li>
-                        <li>Daha hareketli ve huzursuz olma</li>
-                        <li>Dışarı çıkma isteğinde artış</li>
-                    </ul>
-                </div>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="heat_history" value="evet">
-                        Evet
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="heat_history" value="hayır">
-                        Hayır
-                    </label>
-                </div>
-            </div>
+           <div class="form-group">
+               <label>6. Hiç kızgınlık belirtisi gösterdi mi?</label>
+               <div class</div>
 
-            <div class="form-group hidden sub-question" id="currentHeatGroup">
-                <label>6a. Şuan kızgınlık belirtisi var mı?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="current_heat" value="evet">
-                        Evet
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="current_heat" value="hayır">
-                        Hayır
-                    </label>
-                </div>
-            </div>
+           <div class="form-group">
+               <label>6. Hiç kızgınlık belirtisi gösterdi mi?</label>
+               <div class="info-note">
+                   <p>Kızgınlık Belirtileri:</p>
+                   <ul>
+                       <li>Normalden daha fazla ilgi beklemesi ve sürtünme isteği</li>
+                       <li>Sürekli yüksek sesle miyavlama</li>
+                       <li class="with-image">
+                           Çiftleşme pozisyonu alma
+                           <img src="kedilerdekizginlik1.jpg" alt="Kedi çiftleşme pozisyonu">
+                       </li>
+                       <li>Daha hareketli ve huzursuz olma</li>
+                       <li>Dışarı çıkma isteğinde artış</li>
+                   </ul>
+               </div>
+               <div class="radio-group">
+                   <label class="radio-label">
+                       <input type="radio" name="heat_history" value="evet">
+                       Evet
+                   </label>
+                   <label class="radio-label">
+                       <input type="radio" name="heat_history" value="hayır">
+                       Hayır
+                   </label>
+               </div>
+           </div>
 
-            <div class="form-group">
-                <label>7. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="birth" value="evet">
-                        Evet
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="birth" value="hayır">
-                        Hayır
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="birth" value="hiç doğum yapmadı">
-                        Hiç doğum yapmadı
-                    </label>
-                </div>
-            </div>
+           <div class="form-group hidden sub-question" id="currentHeatGroup">
+               <label>6a. Şuan kızgınlık belirtisi var mı?</label>
+               <div class="radio-group">
+                   <label class="radio-label">
+                       <input type="radio" name="current_heat" value="evet">
+                       Evet
+                   </label>
+                   <label class="radio-label">
+                       <input type="radio" name="current_heat" value="hayır">
+                       Hayır
+                   </label>
+               </div>
+           </div>
 
-            <div class="form-group">
-                <label>8. Kedinizin son 60 gün içinde çiftleşmiş olma ihtimali var mı?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="mating" value="evet">
-                        Evet
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="mating" value="hayır">
-                        Hayır
-                    </label>
-                </div>
-            </div>
+           <div class="form-group">
+               <label>7. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?</label>
+               <div class="radio-group">
+                   <label class="radio-label">
+                       <input type="radio" name="birth" value="evet">
+                       Evet
+                   </label>
+                   <label class="radio-label">
+                       <input type="radio" name="birth" value="hayır">
+                       Hayır
+                   </label>
+                   <label class="radio-label">
+                       <input type="radio" name="birth" value="hiç doğum yapmadı">
+                       Hiç doğum yapmadı
+                   </label>
+               </div>
+           </div>
 
-            <div class="form-group">
-                <label>9. Kedinizin bilinen kronik bir hastalığı var mı?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="chronic" value="evet">
-                        Evet
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="chronic" value="hayır">
-                        Hayır
-                    </label>
-                </div>
-            </div>
+           <div class="form-group">
+               <label>8. Kedinizin son 60 gün içinde çiftleşmiş olma ihtimali var mı?</label>
+               <div class="radio-group">
+                   <label class="radio-label">
+                       <input type="radio" name="mating" value="evet">
+                       Evet
+                   </label>
+                   <label class="radio-label">
+                       <input type="radio" name="mating" value="hayır">
+                       Hayır
+                   </label>
+               </div>
+           </div>
 
-            <button type="button" id="submitButton" class="submit-button">Formu Onayla</button>
-        </form>
+           <div class="form-group">
+               <label>9. Kedinizin bilinen kronik bir hastalığı var mı?</label>
+               <div class="radio-group">
+                   <label class="radio-label">
+                       <input type="radio" name="chronic" value="evet">
+                       Evet
+                   </label>
+                   <label class="radio-label">
+                       <input type="radio" name="chronic" value="hayır">
+                       Hayır
+                   </label>
+               </div>
+           </div>
 
-        <div id="resultMessage" class="result-message"></div>
-    </div>
+           <button type="button" id="submitButton" class="submit-button">Formu Onayla</button>
+       </form>
 
-    <script>
-        const form = document.getElementById('catForm');
-        const resultMessage = document.getElementById('resultMessage');
-        const submitButton = document.getElementById('submitButton');
-        const currentHeatGroup = document.getElementById('currentHeatGroup');
+       <div id="resultMessage" class="result-message"></div>
+   </div>
 
-        // Show/hide current heat question based on heat history
-        document.querySelectorAll('input[name="heat_history"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'evet') {
-                    currentHeatGroup.classList.remove('hidden');
-                } else {
-                    currentHeatGroup.classList.add('hidden');
-                    // Clear current heat selection when hiding
-                    document.querySelectorAll('input[name="current_heat"]').forEach(r => r.checked = false);
-                }
-            });
-        });
+   <script>
+       const form = document.getElementById('catForm');
+       const resultMessage = document.getElementById('resultMessage');
+       const submitButton = document.getElementById('submitButton');
+       const currentHeatGroup = document.getElementById('currentHeatGroup');
 
-        // Show/hide treatment options based on vaccine question
-        document.querySelectorAll('input[name="vaccines"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                const treatmentOptionsYes = document.getElementById('treatmentOptionsYes');
-                const treatmentOptionsNo = document.getElementById('treatmentOptionsNo');
-                
-                // Clear all checkboxes when switching
-                document.querySelectorAll('input[name="treatments"]').forEach(cb => cb.checked = false);
+       document.querySelectorAll('input[name="heat_history"]').forEach(radio => {
+           radio.addEventListener('change', function() {
+               if (this.value === 'evet') {
+                   currentHeatGroup.classList.remove('hidden');
+               } else {
+                   currentHeatGroup.classList.add('hidden');
+                   document.querySelectorAll('input[name="current_heat"]').forEach(r => r.checked = false);
+               }
+           });
+       });
 
-                if (this.value === 'evet') {
-                    treatmentOptionsYes.classList.remove('hidden');
-                    treatmentOptionsNo.classList.add('hidden');
-                } else if (this.value === 'hayır') {
-                    treatmentOptionsYes.classList.add('hidden');
-                    treatmentOptionsNo.classList.remove('hidden');
-                }
-            });
-        });
+       document.querySelectorAll('input[name="vaccines"]').forEach(radio => {
+           radio.addEventListener('change', function() {
+               const treatmentOptionsYes = document.getElementById('treatmentOptionsYes');
+               const treatmentOptionsNo = document.getElementById('treatmentOptionsNo');
+               
+               document.querySelectorAll('input[name="treatments"]').forEach(cb => cb.checked = false);
 
-        // Handle "Hiçbiri" checkbox logic
-        document.querySelectorAll('input[name="treatments"]').forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                const noneCheckbox = document.querySelector('input[value="none"]');
-                if (this.value === 'none' && this.checked) {
-                    // If "Hiçbiri" is checked, uncheck all others
-                    document.querySelectorAll('input[name="treatments"]').forEach(cb => {
-                        if (cb !== this) cb.checked = false;
-                    });
-                } else if (this.checked && noneCheckbox?.checked) {
-                    // If any other is checked and "Hiçbiri" was checked, uncheck "Hiçbiri"
-                    noneCheckbox.checked = false;
-                }
-            });
-        });
+               if (this.value === 'evet') {
+                   treatmentOptionsYes.classList.remove('hidden');
+                   treatmentOptionsNo.classList.add('hidden');
+               } else if (this.value === 'hayır') {
+                   treatmentOptionsYes.classList.add('hidden');
+                   treatmentOptionsNo.classList.remove('hidden');
+               }
+           });
+       });
 
-        submitButton.addEventListener('click', function() {
-            const formData = new FormData(form);
-            let canProceed = true;
-            let issues = [];
-            let warnings = [];
-            
-            // Check for empty questions
-            const questions = {
-                'gender': '1. Kediniz dişi mi?',
-                'age': '2. Kediniz kaç aylık?',
-                'living_environment': '3. Kediniz hangi ortamda yaşamaktadır?',
-                'fertility': '4. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?',
-                'vaccines': '5. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?',
-                'heat_history': '6. Hiç kızgınlık belirtisi gösterdi mi?',
-                'birth': '7. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?',
-                'mating': '8. 2 Ay içinde çiftleşmiş olma ihtimali var mı?',
-                'chronic': '9. Kedinizin bilinen kronik bir hastalığı var mı?'
-            };
+       document.querySelectorAll('input[name="treatments"]').forEach(checkbox => {
+           checkbox.addEventListener('change', function() {
+               const noneCheckbox = document.querySelector('input[value="none"]');
+               if (this.value === 'none' && this.checked) {
+                   document.querySelectorAll('input[name="treatments"]').forEach(cb => {
+                       if (cb !== this) cb.checked = false;
+                   });
+               } else if (this.checked && noneCheckbox?.checked) {
+                   noneCheckbox.checked = false;
+               }
+           });
+       });
 
-            // Add current heat question check if heat history is yes
-            if (formData.get('heat_history') === 'evet' && !formData.get('current_heat')) {
-                questions['current_heat'] = '6a. Şuan kızgınlık belirtisi var mı?';
-            }
+       submitButton.addEventListener('click', function() {
+           const formData = new FormData(form);
+           let canProceed = true;
+           let issues = [];
+           let warnings = [];
+           
+           const questions = {
+               'gender': '1. Kediniz dişi mi?',
+               'age': '2. Kediniz kaç aylık?',
+               'living_environment': '3. Kediniz hangi ortamda yaşamaktadır?',
+               'fertility': '4. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?',
+               'vaccines': '5. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?',
+               'heat_history': '6. Hiç kızgınlık belirtisi gösterdi mi?',
+               'birth': '7. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?',
+               'mating': '8. 2 Ay içinde çiftleşmiş olma ihtimali var mı?',
+               'chronic': '9. Kedinizin bilinen kronik bir hastalığı var mı?'
+           };
 
-            // Check environment and add pregnancy warning if needed
-            const environment = formData.get('living_environment');
-            if (environment === 'dış' || environment === 'karma') {
-                warnings.push('Kediniz dışarısıyla etkileşim hallinde olduğu için gebe olma durumuna karşı gebelik muayenesi yapılmalıdır');
-            }
+           if (formData.get('heat_history') === 'evet' && !formData.get('current_heat')) {
+               questions['current_heat'] = '6a. Şuan kızgınlık belirtisi var mı?';
+           }
 
-            let emptyQuestions = [];
-            for (let [key, question] of Object.entries(questions)) {
-                if (!formData.get(key)) {
-                    emptyQuestions.push(question);
-                }
-            }
+           const environment = formData.get('living_environment');
+           if (environment === 'dış' || environment === 'karma') {
+               warnings.push('Kediniz dışarısıyla etkileşim hallinde olduğu için gebe olma durumuna karşı gebelik muayenesi yapılmalıdır');
+           }
 
-            if (emptyQuestions.length > 0) {
-                let message = 'Lütfen aşağıdaki soruları cevaplayınız:';
-                message += '<ul class="issue-list">';
-                emptyQuestions.forEach(question => {
-                    message += `<li>${question}</li>`;
-                });
-                message += '</ul>';
-                resultMessage.innerHTML = message;
-                resultMessage.className = 'result-message warning';
-                resultMessage.style.display = 'block';
-                return;
-            }
+           let emptyQuestions = [];
+           for (let [key, question] of Object.entries(questions)) {
+               if (!formData.get(key)) {
+                   emptyQuestions.push(question);
+               }
+           }
 
-            // Check conditions
-            if (formData.get('gender') === 'hayır') {
-                canProceed = false;
-                issues.push('Kedi dişi değil');
-            }
-            if (formData.get('age') && parseInt(formData.get('age')) < 4) {
-                canProceed = false;
-                issues.push('Kedi 4 aylıktan küçük');
-            }
-            if (formData.get('fertility') === 'evet') {
-                canProceed = false;
-                issues.push('Gelecekte yavru isteniyor');
-            }
+           if (emptyQuestions.length > 0) {
+               let message = 'Lütfen aşağıdaki soruları cevaplayınız:';
+               message += '<ul class="issue-list">';
+               emptyQuestions.forEach(question => {
+                   message += `<li>${question}</li>`;
+               });
+               message += '</ul>';
+               resultMessage.innerHTML = message;
+               resultMessage.className = 'result-message warning';
+               resultMessage.style.display = 'block';
+               return;
+           }
 
-            // Check treatments
-            if (formData.get('vaccines') === 'evet') {
-                const selectedTreatments = form.querySelectorAll('input[name="treatments"]:checked');
-                const treatmentValues = Array.from(selectedTreatments).map(cb => cb.value);
-                
-                if (!treatmentValues.includes('kuduz') || !treatmentValues.includes('karma') || !treatmentValues.includes('parazit')) {
-                    canProceed = false;
-                    issues.push('Tüm aşı ve parazit tedavileri (kuduz, karma, iç-dış parazit) yapılmış olmalıdır');
-                }
-            } else if (formData.get('vaccines') === 'hayır') {
-                canProceed = false;
-                issues.push('Aşıları eksik');
-            }
-            if (formData.get('current_heat') === 'evet') {
-                canProceed = false;
-                issues.push('Kedi şu an kızgınlıkta');
-            }
-            if (formData.get('birth') === 'hayır') {
-                canProceed = false;
-                issues.push('Doğumdan sonra 45 gün geçmemiş');
-            }
-            if (formData.get('mating') === 'evet') {
-                canProceed = false;
-                issues.push('Son 2 ay içinde çiftleşme ihtimali var');
-            }
-            if (formData.get('chronic') === 'evet') {
-                canProceed = false;
-                issues.push('Kronik hastalık mevcut');
-            }
+           if (formData.get('gender') === 'hayır') {
+               canProceed = false;
+               issues.push('Kedi dişi değil');
+           }
+           if (formData.get('age') && parseInt(formData.get('age')) < 4) {
+               canProceed = false;
+               issues.push('Kedi 4 aylıktan küçük');
+           }
+           if (formData.get('fertility') === 'evet') {
+               canProceed = false;
+               issues.push('Gelecekte yavru isteniyor');
+           }
 
-            // Show appropriate message
-            if (canProceed) {
-                let message = 'Kediniz kısırlaştırma için uygun durumdadır. Randevu alabilirsiniz.';
-                if (warnings.length > 0) {
-                    message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
-                }
-                resultMessage.innerHTML = message;
-                resultMessage.className = 'result-message success';
-            } else {
-                let message = 'Kısırlaştırma şu an uygun değildir. Lütfen hastane ile iletişime geçin.';
-                message += '<ul class="issue-list">';
-                issues.forEach(issue => {
-                    message += `<li>${issue}</li>`;
-                });
-                message += '</ul>';
-                if (warnings.length > 0) {
-                    message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
-                }
-                resultMessage.innerHTML = message;
-                resultMessage.className = 'result-message warning';
-            }
-            resultMessage.style.display = 'block';
-        });
-    </script>
+           if (formData.get('vaccines') === 'evet') {
+               const selectedTreatments = form.querySelectorAll('input[name="treatments"]:checked');
+               const treatmentValues = Array.from(selectedTreatments).map(cb => cb.value);
+               
+               if (!treatmentValues.includes('kuduz') || !treatmentValues.includes('karma') || !treatmentValues.includes('parazit')) {
+                   canProceed = false;
+                   issues.push('Tüm aşı ve parazit tedavileri (kuduz, karma, iç-dış parazit) yapılmış olmalıdır');
+               }
+           } else if (formData.get('vaccines') === 'hayır') {
+               canProceed = false;
+               issues.push('Aşıları eksik');
+           }
+           if (formData.get('current_heat') === 'evet') {
+               canProceed = false;
+               issues.push('Kedi şu an kızgınlıkta');
+           }
+           if (formData.get('birth') === 'hayır') {
+               canProceed = false;
+               issues.push('Doğumdan sonra 45 gün geçmemiş');
+           }
+           if (formData.get('mating') === 'evet') {
+               canProceed = false;
+               issues.push('Son 2 ay içinde çiftleşme ihtimali var');
+           }
+           if (formData.get('chronic') === 'evet') {
+               canProceed = false;
+               issues.push('Kronik hastalık mevcut');
+           }
+
+           if (canProceed) {
+               let message = 'Kediniz kısırlaştırma için uygun durumdadır. Randevu alabilirsiniz.';
+               if (warnings.length > 0) {
+                   message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
+               }
+               resultMessage.innerHTML = message;
+               resultMessage.className = 'result-message success';
+           } else {
+               let message = 'Kısırlaştırma şu an uygun değildir. Lütfen hastane ile iletişime geçin.';
+               message += '<ul class="issue-list">';
+               issues.forEach(issue => {
+                   message += `<li>${issue}</li>`;
+               });
+               message += '</ul>';
+               if (warnings.length > 0) {
+                   message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
+               }
+               resultMessage.innerHTML = message;
+               resultMessage.className = 'result-message warning';
+           }
+           resultMessage.style.display = 'block';
+       });
+   </script>
 </body>
 </html>
