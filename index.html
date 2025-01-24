@@ -662,10 +662,9 @@
                canProceed = false;
                issues.push('Aşıları eksik');
            }
-           if (formData.get('current_heat') === 'evet') {
-               canProceed = false;
-               issues.push('Kedi şu an kızgınlıkta');
-           }
+            if (formData.get('current_heat') === 'evet') {
+               warnings.push('Veteriner hekimin tercihine göre operasyon yapılabilir veya ertelenebilir.');
+            }
            if (formData.get('birth') === 'hayır') {
                canProceed = false;
                issues.push('Doğumdan sonra 45 gün geçmemiş');
