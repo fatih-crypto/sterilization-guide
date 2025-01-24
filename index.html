@@ -667,9 +667,10 @@
                     canProceed = false;
                     issues.push('Tüm aşı ve parazit tedavileri (kuduz, karma, iç-dış parazit) yapılmış olmalıdır');
                 }
-            } else if (formData.get('vaccines') === 'hayır') {
+            } else if (formData.get('vaccines') === 'hayır' || formData.get('vaccines') === 'bilmiyorum') {
                 canProceed = false;
                 issues.push('Aşıları eksik');
+                warnings.push('Lütfen aşılarını yaptırınız');
             }
          
             // Kızgınlık kontrolü - sadece dişi ve yavru istenmeyen durumda
@@ -677,14 +678,14 @@
                 warnings.push('UYARI: Veteriner hekimin tercihine göre operasyon yapılabilir veya ertelenebilir.');
             }
          
-             // Doğum kontrolü
+            // Doğum kontrolü
             if (formData.get('birth') === 'hayır') {
                 canProceed = false;
                 issues.push('Doğumdan sonra 45 gün geçmemiş');
-                warnings.push('UYARI: Doğum sonrası 45 gün tamamlanana kadar beklenmelidir');
+                warnings = ['UYARI: Doğum sonrası 45 gün tamamlanana kadar beklenmelidir'];
             }
-            
-            // Çiftleşme kontrolü 
+         
+            // Çiftleşme kontrolü - sadece dişi ve yavru istenmeyen durumda gebelik uyarısı
             if (formData.get('mating') === 'evet') {
                 canProceed = false;
                 issues.push('Son 2 ay içinde çiftleşme ihtimali var');
@@ -692,12 +693,12 @@
                     warnings.push('UYARI: Gebelik kontrolü gerekli, veteriner hekiminize danışın');
                 }
             }
-            
+         
             // Kronik hastalık kontrolü
             if (formData.get('chronic') === 'evet') {
                 canProceed = false;
                 issues.push('Kronik hastalık mevcut');
-                if (!formData.get('birth') === 'hayır') {
+                if(formData.get('birth') !== 'hayır') {
                     warnings.push('UYARI: Kronik hastalığı hakkında veteriner hekiminize detaylı bilgi veriniz.');
                 }
             }
