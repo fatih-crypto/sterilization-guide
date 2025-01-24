@@ -677,26 +677,29 @@
                 warnings.push('UYARI: Veteriner hekimin tercihine göre operasyon yapılabilir veya ertelenebilir.');
             }
          
-            // Doğum kontrolü
+             // Doğum kontrolü
             if (formData.get('birth') === 'hayır') {
                 canProceed = false;
                 issues.push('Doğumdan sonra 45 gün geçmemiş');
+                warnings.push('UYARI: Doğum sonrası 45 gün tamamlanana kadar beklenmelidir');
             }
-         
-            // Çiftleşme kontrolü - sadece dişi ve yavru istenmeyen durumda gebelik uyarısı
+            
+            // Çiftleşme kontrolü 
             if (formData.get('mating') === 'evet') {
                 canProceed = false;
                 issues.push('Son 2 ay içinde çiftleşme ihtimali var');
-                if(isDişi && !wantsOffspring) {
+                if(isDişi && !wantsOffspring && formData.get('birth') !== 'hayır') {
                     warnings.push('UYARI: Gebelik kontrolü gerekli, veteriner hekiminize danışın');
                 }
             }
-         
+            
             // Kronik hastalık kontrolü
             if (formData.get('chronic') === 'evet') {
                 canProceed = false;
                 issues.push('Kronik hastalık mevcut');
-                warnings.push('UYARI: Kronik hastalığı hakkında veteriner hekiminize detaylı bilgi veriniz.');
+                if (!formData.get('birth') === 'hayır') {
+                    warnings.push('UYARI: Kronik hastalığı hakkında veteriner hekiminize detaylı bilgi veriniz.');
+                }
             }
          
             if (canProceed) {
