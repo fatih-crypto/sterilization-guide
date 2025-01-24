@@ -588,126 +588,128 @@
            });
        });
 
-       submitButton.addEventListener('click', function() {
-         const formData = new FormData(form);
-         let canProceed = true;
-         let issues = [];
-         let warnings = [];
+         submitButton.addEventListener('click', function() {
+            const formData = new FormData(form);
+            let canProceed = true;
+            let issues = [];
+            let warnings = [];
+            
+            const questions = {
+                'gender': '1. Kediniz dişi mi?',
+                'age': '2. Kediniz kaç aylık?',
+                'living_environment': '3. Kediniz hangi ortamda yaşamaktadır?',
+                'fertility': '4. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?',
+                'vaccines': '5. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?',
+                'heat_history': '6. Hiç kızgınlık belirtisi gösterdi mi?',
+                'birth': '7. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?',
+                'mating': '8. 2 Ay içinde çiftleşmiş olma ihtimali var mı?',
+                'chronic': '9. Kedinizin bilinen kronik bir hastalığı var mı?'
+            };
          
-         const questions = {
-             'gender': '1. Kediniz dişi mi?',
-             'age': '2. Kediniz kaç aylık?',
-             'living_environment': '3. Kediniz hangi ortamda yaşamaktadır?',
-             'fertility': '4. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?',
-             'vaccines': '5. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?',
-             'heat_history': '6. Hiç kızgınlık belirtisi gösterdi mi?',
-             'birth': '7. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?',
-             'mating': '8. 2 Ay içinde çiftleşmiş olma ihtimali var mı?',
-             'chronic': '9. Kedinizin bilinen kronik bir hastalığı var mı?'
-         };
-      
-         if (formData.get('heat_history') === 'evet' && !formData.get('current_heat')) {
-             questions['current_heat'] = '6a. Şuan kızgınlık belirtisi var mı?';
-         }
-      
-         const environment = formData.get('living_environment');
-         if ((environment === 'dış' || environment === 'karma') && formData.get('fertility') !== 'evet') {
-             warnings.push('Kediniz dışarısıyla etkileşim hallinde olduğu için gebe olma durumuna karşı gebelik muayenesi yapılmalıdır');
-         }
-      
-         let emptyQuestions = [];
-         for (let [key, question] of Object.entries(questions)) {
-             if (!formData.get(key)) {
-                 emptyQuestions.push(question);
-             }
-         }
-      
-         if (emptyQuestions.length > 0) {
-             let message = 'Lütfen aşağıdaki soruları cevaplayınız:';
-             message += '<ul class="issue-list">';
-             emptyQuestions.forEach(question => {
-                 message += `<li>${question}</li>`;
-             });
-             message += '</ul>';
-             resultMessage.innerHTML = message;
-             resultMessage.className = 'result-message warning';
-             resultMessage.style.display = 'block';
-             return;
-         }
-      
-         if (formData.get('gender') === 'erkek') {
-             canProceed = false;
-             issues.push('Kedi dişi değil');
-         }
+            if (formData.get('heat_history') === 'evet' && !formData.get('current_heat')) {
+                questions['current_heat'] = '6a. Şuan kızgınlık belirtisi var mı?';
+            }
          
-         if (formData.get('age') && parseInt(formData.get('age')) < 4) {
-             canProceed = false;
-             issues.push('Kedi 4 aylıktan küçük');
-         }
-      
-         if (formData.get('fertility') === 'evet') {
-             canProceed = false;
-             issues.push('Gelecekte yavru isteniyor');
-         } else if (formData.get('fertility') === 'kararsızım') {
-             warnings.push('Cerrahi kısırlaştırma işlemi geri dönüşümsüz bir işlemdir. Kedinizin gebe kalması mümkün değildir. Bu konuda kararınızı kesinleştirdikten sonra kısırlaştırabilirsiniz');
-         }
-      
-         if (formData.get('vaccines') === 'evet') {
-             const selectedTreatments = form.querySelectorAll('input[name="treatments"]:checked');
-             const treatmentValues = Array.from(selectedTreatments).map(cb => cb.value);
-             
-             if (!treatmentValues.includes('kuduz') || !treatmentValues.includes('karma') || !treatmentValues.includes('parazit')) {
-                 canProceed = false;
-                 issues.push('Tüm aşı ve parazit tedavileri (kuduz, karma, iç-dış parazit) yapılmış olmalıdır');
-             }
-         } else if (formData.get('vaccines') === 'hayır') {
-             canProceed = false;
-             issues.push('Aşıları eksik');
-         }
-      
-         if (formData.get('current_heat') === 'evet' && formData.get('fertility') !== 'evet') {
-             warnings.push('UYARI: Veteriner hekimin tercihine göre operasyon yapılabilir veya ertelenebilir.');
-         }
-      
-         if (formData.get('birth') === 'hayır') {
-             canProceed = false;
-             issues.push('Doğumdan sonra 45 gün geçmemiş');
-         }
-      
-         if (formData.get('mating') === 'evet' && formData.get('fertility') !== 'evet') {
-             canProceed = false;
-             issues.push('Son 2 ay içinde çiftleşme ihtimali var');
-             warnings.push('UYARI: Gebelik kontrolü gerekli, veteriner hekiminize danışın');
-         }
-      
-         if (formData.get('chronic') === 'evet') {
-             canProceed = false;
-             issues.push('Kronik hastalık mevcut');
-             warnings.push('UYARI: Kronik hastalığı hakkında veteriner hekiminize detaylı bilgi veriniz.');
-         }
-      
-         if (canProceed) {
-             let message = 'Kediniz kısırlaştırma için uygun durumdadır. Randevu alabilirsiniz.';
-             if (warnings.length > 0) {
-                 message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
-             }
-             resultMessage.innerHTML = message;
-             resultMessage.className = 'result-message success';
-         } else {
-             let message = 'Kısırlaştırma şu an uygun değildir. Lütfen hastane ile iletişime geçin.';
-             message += '<ul class="issue-list">';
-             issues.forEach(issue => {
-                 message += `<li>${issue}</li>`;
-             });
-             message += '</ul>';
-             if (warnings.length > 0) {
-                 message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
-             }
-             resultMessage.innerHTML = message;
-             resultMessage.className = 'result-message warning';
-         }
-         resultMessage.style.display = 'block';
-      });
+            let emptyQuestions = [];
+            for (let [key, question] of Object.entries(questions)) {
+                if (!formData.get(key)) {
+                    emptyQuestions.push(question);
+                }
+            }
+         
+            if (emptyQuestions.length > 0) {
+                let message = 'Lütfen aşağıdaki soruları cevaplayınız:';
+                message += '<ul class="issue-list">';
+                emptyQuestions.forEach(question => {
+                    message += `<li>${question}</li>`;
+                });
+                message += '</ul>';
+                resultMessage.innerHTML = message;
+                resultMessage.className = 'result-message warning';
+                resultMessage.style.display = 'block';
+                return;
+            }
+         
+            if (formData.get('gender') === 'erkek') {
+                canProceed = false;
+                issues.push('Kedi dişi değil');
+            }
+            
+            if (formData.get('age') && parseInt(formData.get('age')) < 4) {
+                canProceed = false;
+                issues.push('Kedi 4 aylıktan küçük');
+            }
+         
+            const environment = formData.get('living_environment');
+            if ((environment === 'dış' || environment === 'karma') && formData.get('fertility') !== 'evet') {
+                warnings.push('Kediniz dışarısıyla etkileşim hallinde olduğu için gebe olma durumuna karşı gebelik muayenesi yapılmalıdır');
+            }
+         
+            if (formData.get('fertility') === 'evet') {
+                canProceed = false;
+                issues.push('Gelecekte yavru isteniyor');
+            } else if (formData.get('fertility') === 'kararsızım') {
+                warnings.push('Cerrahi kısırlaştırma işlemi geri dönüşümsüz bir işlemdir. Kedinizin gebe kalması mümkün değildir. Bu konuda kararınızı kesinleştirdikten sonra kısırlaştırabilirsiniz');
+            }
+         
+            if (formData.get('vaccines') === 'evet') {
+                const selectedTreatments = form.querySelectorAll('input[name="treatments"]:checked');
+                const treatmentValues = Array.from(selectedTreatments).map(cb => cb.value);
+                
+                if (!treatmentValues.includes('kuduz') || !treatmentValues.includes('karma') || !treatmentValues.includes('parazit')) {
+                    canProceed = false;
+                    issues.push('Tüm aşı ve parazit tedavileri (kuduz, karma, iç-dış parazit) yapılmış olmalıdır');
+                }
+            } else if (formData.get('vaccines') === 'hayır') {
+                canProceed = false;
+                issues.push('Aşıları eksik');
+            }
+         
+            if (formData.get('current_heat') === 'evet' && formData.get('fertility') !== 'evet') {
+                warnings.push('UYARI: Veteriner hekimin tercihine göre operasyon yapılabilir veya ertelenebilir.');
+            }
+         
+            if (formData.get('birth') === 'hayır') {
+                canProceed = false;
+                issues.push('Doğumdan sonra 45 gün geçmemiş');
+            }
+         
+            if (formData.get('mating') === 'evet') {
+                canProceed = false;
+                issues.push('Son 2 ay içinde çiftleşme ihtimali var');
+                if(formData.get('fertility') !== 'evet') {
+                    warnings.push('UYARI: Gebelik kontrolü gerekli, veteriner hekiminize danışın');
+                }
+            }
+         
+            if (formData.get('chronic') === 'evet') {
+                canProceed = false;
+                issues.push('Kronik hastalık mevcut');
+                warnings.push('UYARI: Kronik hastalığı hakkında veteriner hekiminize detaylı bilgi veriniz.');
+            }
+         
+            if (canProceed) {
+                let message = 'Kediniz kısırlaştırma için uygun durumdadır. Randevu alabilirsiniz.';
+                if (warnings.length > 0) {
+                    message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
+                }
+                resultMessage.innerHTML = message;
+                resultMessage.className = 'result-message success';
+            } else {
+                let message = 'Kısırlaştırma şu an uygun değildir. Lütfen hastane ile iletişime geçin.';
+                message += '<ul class="issue-list">';
+                issues.forEach(issue => {
+                    message += `<li>${issue}</li>`;
+                });
+                message += '</ul>';
+                if (warnings.length > 0) {
+                    message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
+                }
+                resultMessage.innerHTML = message;
+                resultMessage.className = 'result-message warning';
+            }
+            resultMessage.style.display = 'block';
+         });
        
    </script>
 </body>
