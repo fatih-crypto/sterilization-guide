@@ -630,28 +630,35 @@
                 return;
             }
          
-            if (formData.get('gender') === 'erkek') {
+            // Cinsiyet kontrolü
+            const isDişi = formData.get('gender') !== 'erkek';
+            if (!isDişi) {
                 canProceed = false;
                 issues.push('Kedi dişi değil');
             }
             
+            // Yaş kontrolü
             if (formData.get('age') && parseInt(formData.get('age')) < 4) {
                 canProceed = false;
                 issues.push('Kedi 4 aylıktan küçük');
             }
          
-            const environment = formData.get('living_environment');
-            if ((environment === 'dış' || environment === 'karma') && formData.get('fertility') !== 'evet') {
-                warnings.push('Kediniz dışarısıyla etkileşim hallinde olduğu için gebe olma durumuna karşı gebelik muayenesi yapılmalıdır');
-            }
-         
-            if (formData.get('fertility') === 'evet') {
+            // Yavru isteme durumu kontrolü
+            const wantsOffspring = formData.get('fertility') === 'evet';
+            if (wantsOffspring) {
                 canProceed = false;
                 issues.push('Gelecekte yavru isteniyor');
             } else if (formData.get('fertility') === 'kararsızım') {
                 warnings.push('Cerrahi kısırlaştırma işlemi geri dönüşümsüz bir işlemdir. Kedinizin gebe kalması mümkün değildir. Bu konuda kararınızı kesinleştirdikten sonra kısırlaştırabilirsiniz');
             }
          
+            // Dış ortam kontrolü - sadece dişi ve yavru istenmeyen durumda
+            const environment = formData.get('living_environment');
+            if ((environment === 'dış' || environment === 'karma') && isDişi && !wantsOffspring) {
+                warnings.push('Kediniz dışarısıyla etkileşim hallinde olduğu için gebe olma durumuna karşı gebelik muayenesi yapılmalıdır');
+            }
+         
+            // Aşı durumu kontrolü
             if (formData.get('vaccines') === 'evet') {
                 const selectedTreatments = form.querySelectorAll('input[name="treatments"]:checked');
                 const treatmentValues = Array.from(selectedTreatments).map(cb => cb.value);
@@ -665,23 +672,27 @@
                 issues.push('Aşıları eksik');
             }
          
-            if (formData.get('current_heat') === 'evet' && formData.get('fertility') !== 'evet') {
+            // Kızgınlık kontrolü - sadece dişi ve yavru istenmeyen durumda
+            if (formData.get('current_heat') === 'evet' && isDişi && !wantsOffspring) {
                 warnings.push('UYARI: Veteriner hekimin tercihine göre operasyon yapılabilir veya ertelenebilir.');
             }
          
+            // Doğum kontrolü
             if (formData.get('birth') === 'hayır') {
                 canProceed = false;
                 issues.push('Doğumdan sonra 45 gün geçmemiş');
             }
          
+            // Çiftleşme kontrolü - sadece dişi ve yavru istenmeyen durumda gebelik uyarısı
             if (formData.get('mating') === 'evet') {
                 canProceed = false;
                 issues.push('Son 2 ay içinde çiftleşme ihtimali var');
-                if(formData.get('fertility') !== 'evet') {
+                if(isDişi && !wantsOffspring) {
                     warnings.push('UYARI: Gebelik kontrolü gerekli, veteriner hekiminize danışın');
                 }
             }
          
+            // Kronik hastalık kontrolü
             if (formData.get('chronic') === 'evet') {
                 canProceed = false;
                 issues.push('Kronik hastalık mevcut');
