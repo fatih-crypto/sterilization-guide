@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedi Kısırlaştırma Rehberi</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            padding: 20px;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        @media (min-width: 769px) {
+            body {
+                max-width: 900px;
+                margin: 40px auto;
+            }
+        }
+
+        .blog-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1a237e, #0d47a1);
+        }
+
+        h1 {
+            color: #1a237e;
+            font-size: 28px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e3e8f0;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 8px;
+            background-color: #f8fafc;
+            border: 1px solid #e3e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: #1a237e;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: #1a237e;
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .info-box {
+            background-color: #e8f4fd;
+            border-left: 4px solid #1a237e;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .analyze-button {
+            background: linear-gradient(90deg, #1a237e, #0d47a1);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 30px auto;
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .analyze-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .blog-container {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-container">
+        <h1>KEDİ KISIRLAŞTIRMA REHBERİ</h1>
+
+        <div class="section">
+            <h2>Kısırlaştırma Neden Önemlidir?</h2>
+            <ul>
+                <li>İstenmeyen gebelikleri önler ve sokak hayvanı popülasyonunu kontrol altında tutar</li>
+                <li>Meme tümörü ve rahim enfeksiyonu riskini azaltır</li>
+                <li>Kedinizin daha sakin ve ev odaklı olmasını sağlar</li>
+                <li>Kızgınlık dönemlerinde görülen davranış değişikliklerini ortadan kaldırır</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>İdeal Kısırlaştırma Zamanı</h2>
+            <div class="info-box">
+                <p><strong>Önerilen yaş:</strong> 4-6 ay arası</p>
+            </div>
+            <p>Kısırlaştırma için en uygun zamanı belirleyen faktörler:</p>
+            <ul>
+                <li>Kedinizin fiziksel gelişimi</li>
+                <li>Genel sağlık durumu</li>
+                <li>Aşıların tamamlanmış olması</li>
+                <li>Kızgınlık döneminde olmaması</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Operasyon Öncesi Hazırlık</h2>
+            <div class="warning-box">
+                <p><strong>Önemli:</strong> Operasyondan önceki gece yarısından itibaren:</p>
+                <ul>
+                    <li>Yemek verilmemelidir (8-12 saat aç kalmalıdır)</li>
+                    <li>Su içmesi kısıtlanmalıdır</li>
+                </ul>
+            </div>
+            <p>Operasyon öncesi dikkat edilmesi gerekenler:</p>
+            <ul>
+                <li>Tüm aşıların tamamlanmış olması</li>
+                <li>Genel sağlık kontrolünden geçmiş olması</li>
+                <li>İç ve dış parazit tedavilerinin yapılmış olması</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Operasyon Sonrası Bakım</h2>
+            <ul>
+                <li>İlk 24 saat yakın gözetim altında tutulması</li>
+                <li>7-10 günlük iyileşme süreci</li>
+                <li>2 hafta sonra dikişlerin alınması</li>
+                <li>Yalanmasını önlemek için korse veya yakalık kullanımı</li>
+                <li>Hareketlerin kısıtlanması ve atlama/zıplamanın engellenmesi</li>
+            </ul>
+            <div class="info-box">
+                <p>Normal iyileşme sürecinde:</p>
+                <ul>
+                    <li>Ameliyat bölgesinde şişlik ve hafif kızarıklık görülebilir</li>
+                    <li>İştah ve aktivite düzeyi kademeli olarak normale döner</li>
+                    <li>2-3 gün içinde normal rutinine dönmeye başlar</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="index.html" class="analyze-button">
+            Kediniz Kısırlaştırma İçin Uygun mu? Analiz Edin →
+        </a>
+    </div>
+</body>
+</html>
