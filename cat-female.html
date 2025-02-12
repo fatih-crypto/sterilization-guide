@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dişi Kedi Kısırlaştırma Rehberi - ERÜ Veteriner Fakültesi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: #2B3A67;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2B3A67 0%, #384B8D 100%);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-button {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .title {
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e1e8f5;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #2B3A67;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .info-box {
+            background: #f8faff;
+            border-left: 4px solid #384B8D;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin: 15px 0;
+        }
+
+        li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        li::before {
+            content: "•";
+            color: #384B8D;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .check-eligibility {
+            position: sticky;
+            top: 100px;
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            height: fit-content;
+        }
+
+        .check-button {
+            background: linear-gradient(135deg, #2B3A67 0%, #384B8D 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .check-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(43, 58, 103, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .check-eligibility {
+                position: relative;
+                top: 0;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px;
+            }
+
+            .title {
+                font-size: 20px;
+            }
+
+            .container {
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 18px;
+            }
+
+            .back-button {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .section {
+                margin-bottom: 30px;
+                padding-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="back-button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Ana Sayfa
+            </a>
+            <h1 class="title">Dişi Kedi Kısırlaştırma Rehberi</h1>
+            <div style="width: 100px;"></div> <!-- Başlığı ortalamak için -->
+        </div>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <section class="section">
+                <h2>Kısırlaştırmanın Önemi ve Faydaları</h2>
+                <ul>
+                    <li>İstenmeyen gebeliklerin önlenmesi ve sokak hayvanı popülasyonunun kontrolü</li>
+                    <li>Meme tümörü riskinin önemli ölçüde azaltılması</li>
+                    <li>Rahim enfeksiyonu gibi hastalıkların önlenmesi</li>
+                    <li>Kızgınlık dönemlerinde görülen davranış değişikliklerinin ortadan kalkması</li>
+                    <li>Daha sakin ve ev odaklı bir yaşam</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>İdeal Kısırlaştırma Zamanı</h2>
+                <div class="info-box">
+                    <p><strong>Önerilen yaş:</strong> 4-6 ay arası</p>
+                </div>
+                <p>Kısırlaştırma için en uygun zamanı belirleyen faktörler:</p>
+                <ul>
+                    <li>Kedinizin fiziksel gelişimi</li>
+                    <li>Genel sağlık durumu</li>
+                    <li>Aşıların tamamlanmış olması</li>
+                    <li>Kızgınlık döneminde olmaması</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>Operasyon Öncesi Hazırlık</h2>
+                <div class="warning-box">
+                    <p><strong>Önemli:</strong> Operasyondan önceki gece yarısından itibaren:</p>
+                    <ul>
+                        <li>Yemek verilmemelidir (8-12 saat aç kalmalıdır)</li>
+                        <li>Su içmesi kısıtlanmalıdır</li>
+                    </ul>
+                </div>
+                <p>Operasyon öncesi dikkat edilmesi gerekenler:</p>
+                <ul>
+                    <li>Tüm aşıların tamamlanmış olması</li>
+                    <li>Genel sağlık kontrolünden geçmiş olması</li>
+                    <li>İç ve dış parazit tedavilerinin yapılmış olması</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>Operasyon Sonrası Bakım</h2>
+                <ul>
+                    <li>İlk 24 saat yakın gözetim altında tutulması</li>
+                    <li>7-10 günlük iyileşme süreci</li>
+                    <li>2 hafta sonra dikişlerin alınması</li>
+                    <li>Yalanmasını önlemek için korse veya yakalık kullanımı</li>
+                    <li>Hareketlerin kısıtlanması ve atlama/zıplamanın engellenmesi</li>
+                </ul>
+                <div class="info-box">
+                    <p>Normal iyileşme sürecinde:</p>
+                    <ul>
+                        <li>Ameliyat bölgesinde şişlik ve hafif kızarıklık görülebilir</li>
+                        <li>İştah ve aktivite düzeyi kademeli olarak normale döner</li>
+                        <li>2-3 gün içinde normal rutinine dönmeye başlar</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <aside class="check-eligibility">
+            <h2>Kısırlaştırma Uygunluk Kontrolü</h2>
+            <p>Kedinizin kısırlaştırma için uygun olup olmadığını kontrol etmek için formu doldurun.</p>
+            <button onclick="window.location.href='form.html'" class="check-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                Uygunluk Kontrolü Yap
+            </button>
+        </aside>
+    </div>
+</body>
+</html>
