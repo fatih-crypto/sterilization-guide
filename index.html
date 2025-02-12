@@ -3,205 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kedi Kısırlaştırma Rehberi</title>
+    <title>Kısırlaştırma Rehberi - ERÜ Veteriner Fakültesi</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #f0f2f5;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
+            min-height: 100vh;
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
-            color: #1a1a1a;
-            line-height: 1.6;
         }
 
-        @media (min-width: 769px) {
-            body {
-                max-width: 900px;
-                margin: 40px auto;
-            }
-        }
-
-        .blog-container {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
             padding: 40px;
+            box-shadow: 
+                0 10px 20px rgba(0, 0, 0, 0.08),
+                0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+        }
+
+        h1 {
+            background: linear-gradient(135deg, #2B3A67 0%, #384B8D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .selection-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .selection-group {
+            display: none;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .selection-group.active {
+            display: grid;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .selection-button {
+            background: rgba(255, 255, 255, 0.7);
             border: none;
+            border-radius: 20px;
+            padding: 40px 30px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
             position: relative;
             overflow: hidden;
+            box-shadow: 
+                0 8px 16px rgba(0, 0, 0, 0.05),
+                0 0 0 1px rgba(255, 255, 255, 0.8) inset;
         }
 
-        .blog-container::before {
+        .selection-button::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #1a237e, #0d47a1);
+            bottom: 0;
+            background: linear-gradient(135deg, #2B3A67 0%, #384B8D 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+            border-radius: 20px;
         }
 
-        h1 {
-            color: #1a237e;
-            font-size: 28px;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #e3e8f0;
-            text-align: center;
+        .selection-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+        }
+
+        .selection-button:hover::before {
+            opacity: 0.05;
+        }
+
+        .selection-button img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            z-index: 2;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+
+        .selection-button span {
+            font-size: 20px;
             font-weight: 600;
-            letter-spacing: -0.5px;
-        }
-
-        .section {
-            margin-bottom: 30px;
-            padding: 25px;
-            border-radius: 8px;
-            background-color: #f8fafc;
-            border: 1px solid #e3e8f0;
+            color: #2B3A67;
+            z-index: 2;
             transition: all 0.3s ease;
         }
 
-        .section:hover {
-            border-color: #1a237e;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        .selection-button:hover span {
+            transform: scale(1.05);
         }
 
-        h2 {
-            color: #1a237e;
-            font-size: 22px;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .info-box {
-            background-color: #e8f4fd;
-            border-left: 4px solid #1a237e;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-
-        .warning-box {
-            background-color: #fff3e0;
-            border-left: 4px solid #ff9800;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-
-        ul {
-            padding-left: 20px;
-            margin: 15px 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        .analyze-button {
-            background: linear-gradient(90deg, #1a237e, #0d47a1);
-            color: white;
-            padding: 14px 28px;
+        .back-button {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            background: none;
             border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 500;
+            color: #2B3A67;
             cursor: pointer;
-            margin: 30px auto;
-            width: 100%;
-            max-width: 300px;
-            display: block;
-            text-decoration: none;
-            text-align: center;
+            font-size: 18px;
+            padding: 15px;
+            margin-bottom: 30px;
+            font-weight: 500;
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-20px);
         }
 
-        .analyze-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        .back-button.active {
+            display: flex;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .back-button:hover {
+            color: #384B8D;
+            transform: translateX(-5px);
+        }
+
+        .back-button svg {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover svg {
+            transform: translateX(-5px);
         }
 
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 15px;
             }
             
-            .blog-container {
-                padding: 20px;
+            .container {
+                padding: 30px 20px;
             }
 
-            .section {
-                padding: 15px;
+            h1 {
+                font-size: 24px;
+                margin-bottom: 30px;
+            }
+
+            .selection-button {
+                padding: 30px 20px;
+            }
+
+            .selection-button img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .selection-button span {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .selection-group {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="blog-container">
-        <h1>KEDİ KISIRLAŞTIRMA REHBERİ</h1>
+    <div class="container">
+        <h1>ERÜ Veteriner Fakültesi<br>Kısırlaştırma Rehberi</h1>
 
-        <div class="section">
-            <h2>Kısırlaştırma Neden Önemlidir?</h2>
-            <ul>
-                <li>İstenmeyen gebelikleri önler ve sokak hayvanı popülasyonunu kontrol altında tutar</li>
-                <li>Meme tümörü ve rahim enfeksiyonu riskini azaltır</li>
-                <li>Kedinizin daha sakin ve ev odaklı olmasını sağlar</li>
-                <li>Kızgınlık dönemlerinde görülen davranış değişikliklerini ortadan kaldırır</li>
-            </ul>
-        </div>
+        <button id="backButton" class="back-button">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            Geri Dön
+        </button>
 
-        <div class="section">
-            <h2>İdeal Kısırlaştırma Zamanı</h2>
-            <div class="info-box">
-                <p><strong>Önerilen yaş:</strong> 4-6 ay arası</p>
+        <div class="selection-container">
+            <div id="animalSelection" class="selection-group active">
+                <button class="selection-button" onclick="showGenderSelection('cat')">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Kedi">
+                    <span>Kedi</span>
+                </button>
+                <button class="selection-button" onclick="showGenderSelection('dog')">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Köpek">
+                    <span>Köpek</span>
+                </button>
             </div>
-            <p>Kısırlaştırma için en uygun zamanı belirleyen faktörler:</p>
-            <ul>
-                <li>Kedinizin fiziksel gelişimi</li>
-                <li>Genel sağlık durumu</li>
-                <li>Aşıların tamamlanmış olması</li>
-                <li>Kızgınlık döneminde olmaması</li>
-            </ul>
-        </div>
 
-        <div class="section">
-            <h2>Operasyon Öncesi Hazırlık</h2>
-            <div class="warning-box">
-                <p><strong>Önemli:</strong> Operasyondan önceki gece yarısından itibaren:</p>
-                <ul>
-                    <li>Yemek verilmemelidir (8-12 saat aç kalmalıdır)</li>
-                    <li>Su içmesi kısıtlanmalıdır</li>
-                </ul>
-            </div>
-            <p>Operasyon öncesi dikkat edilmesi gerekenler:</p>
-            <ul>
-                <li>Tüm aşıların tamamlanmış olması</li>
-                <li>Genel sağlık kontrolünden geçmiş olması</li>
-                <li>İç ve dış parazit tedavilerinin yapılmış olması</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Operasyon Sonrası Bakım</h2>
-            <ul>
-                <li>İlk 24 saat yakın gözetim altında tutulması</li>
-                <li>7-10 günlük iyileşme süreci</li>
-                <li>2 hafta sonra dikişlerin alınması</li>
-                <li>Yalanmasını önlemek için korse veya yakalık kullanımı</li>
-                <li>Hareketlerin kısıtlanması ve atlama/zıplamanın engellenmesi</li>
-            </ul>
-            <div class="info-box">
-                <p>Normal iyileşme sürecinde:</p>
-                <ul>
-                    <li>Ameliyat bölgesinde şişlik ve hafif kızarıklık görülebilir</li>
-                    <li>İştah ve aktivite düzeyi kademeli olarak normale döner</li>
-                    <li>2-3 gün içinde normal rutinine dönmeye başlar</li>
-                </ul>
+            <div id="genderSelection" class="selection-group">
+                <button class="selection-button" onclick="navigateToPage('female')">
+                    <img src="https://cdnjs.cloudflare.com/ajax/fields/twemoji/14.0.2/svg/2640.svg" alt="Dişi">
+                    <span>Dişi</span>
+                </button>
+                <button class="selection-button" onclick="navigateToPage('male')">
+                    <img src="https://cdnjs.cloudflare.com/ajax/fields/twemoji/14.0.2/svg/2642.svg" alt="Erkek">
+                    <span>Erkek</span>
+                </button>
             </div>
         </div>
-
-        <a href="index.html" class="analyze-button">
-            Kediniz Kısırlaştırma İçin Uygun mu? Analiz Edin →
-        </a>
     </div>
+
+    <script>
+        let selectedAnimal = '';
+        const backButton = document.getElementById('backButton');
+        const animalSelection = document.getElementById('animalSelection');
+        const genderSelection = document.getElementById('genderSelection');
+
+        function showGenderSelection(animal) {
+            selectedAnimal = animal;
+            animalSelection.classList.remove('active');
+            void animalSelection.offsetWidth; // Reflow
+            genderSelection.classList.add('active');
+            backButton.classList.add('active');
+        }
+
+        function navigateToPage(gender) {
+            window.location.href = `${selectedAnimal}-${gender}.html`;
+        }
+
+        backButton.addEventListener('click', () => {
+            selectedAnimal = '';
+            genderSelection.classList.remove('active');
+            void genderSelection.offsetWidth; // Reflow
+            animalSelection.classList.add('active');
+            backButton.classList.remove('active');
+        });
+    </script>
 </body>
 </html>
