@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kısırlaştırma Rehberi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Kısırlaştırma Rehberi - ERÜ Veteriner Fakültesi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
+        :root {
+            --primary: #2B3A67;
+            --primary-light: #384B8D;
+            --primary-dark: #1A2C58;
+            --accent: #FF6B6B;
+            --light: #F6F8FD;
+            --gray: #8A94A7;
+            --dark: #1F2937;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            --border-radius: 16px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,39 +26,259 @@
         }
 
         body {
-            background: linear-gradient(135deg, #f6f8fd 0%, #f1f4f9 100%);
+            background: linear-gradient(135deg, var(--light) 0%, #f1f4f9 100%);
             min-height: 100vh;
             font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 20px 0;
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(var(--primary-light), transparent 70%);
+            opacity: 0.2;
+            border-radius: 50%;
+            transform: translate(30%, -50%);
+            z-index: 0;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 
-                0 10px 20px rgba(0, 0, 0, 0.08),
-                0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+        .logo-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--primary);
         }
 
-        h1 {
-            background: linear-gradient(135deg, #2B3A67 0%, #384B8D 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 32px;
-            text-align: center;
-            margin-bottom: 50px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+        .logo-text {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .logo-text span {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
             padding: 0 20px;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+
+        .hero-text {
+            padding-right: 20px;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .hero-image {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .benefit-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .benefit-icon i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+
+        .benefit-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .benefit-text {
+            font-size: 14px;
+            color: var(--gray);
+            flex-grow: 1;
+        }
+
+        .learn-more {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-light);
+            font-weight: 500;
+            margin-top: 15px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .learn-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .learn-more:hover {
+            color: var(--accent);
+        }
+
+        .learn-more:hover i {
+            transform: translateX(3px);
+        }
+
+        .selection-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-align: center;
         }
 
         .selection-container {
@@ -70,9 +303,9 @@
         }
 
         .selection-button {
-            background: rgba(255, 255, 255, 0.7);
+            background: var(--light);
             border: none;
-            border-radius: 20px;
+            border-radius: var(--border-radius);
             padding: 40px 20px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -82,34 +315,30 @@
             gap: 20px;
             position: relative;
             overflow: hidden;
-            box-shadow: 
-                0 8px 16px rgba(0, 0, 0, 0.05),
-                0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-            min-height: 200px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            min-height: 220px;
         }
 
-        .selection-button::before {
+        .selection-button::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, #2B3A67 0%, #384B8D 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 1;
-            border-radius: 20px;
+            border-radius: var(--border-radius);
         }
 
         .selection-button:hover {
             transform: translateY(-5px);
-            box-shadow: 
-                0 15px 30px rgba(0, 0, 0, 0.1),
-                0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
         }
 
-        .selection-button:hover::before {
+        .selection-button:hover::after {
             opacity: 0.05;
         }
 
@@ -124,7 +353,7 @@
         .selection-button span {
             font-size: 20px;
             font-weight: 600;
-            color: #2B3A67;
+            color: var(--primary);
             z-index: 2;
             transition: all 0.3s ease;
         }
@@ -139,15 +368,16 @@
             gap: 10px;
             background: none;
             border: none;
-            color: #2B3A67;
+            color: var(--primary);
             cursor: pointer;
-            font-size: 18px;
-            padding: 15px;
+            font-size: 16px;
+            padding: 12px 20px;
             margin-bottom: 30px;
             font-weight: 500;
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateX(-20px);
+            border-radius: 8px;
         }
 
         .back-button.active {
@@ -157,13 +387,14 @@
         }
 
         .back-button:hover {
-            color: #384B8D;
+            color: var(--primary-light);
+            background: rgba(43, 58, 103, 0.05);
             transform: translateX(-5px);
         }
 
         .back-button svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             transition: transform 0.3s ease;
         }
 
@@ -171,27 +402,331 @@
             transform: translateX(-5px);
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 15px;
-                align-items: flex-start;
-            }
-            
-            .container {
-                padding: 30px 20px;
-                margin: 0;
-                min-height: calc(100vh - 30px);
-                border-radius: 20px;
+        .faq-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 60px;
+        }
+
+        .accordion {
+            margin-top: 20px;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #e1e8f5;
+            margin-bottom: 15px;
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .accordion-header {
+            padding: 15px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-title {
+            font-weight: 500;
+            font-size: 16px;
+            color: var(--primary);
+        }
+
+        .accordion-icon {
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-text {
+            padding: 0 0 20px 0;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(43, 58, 103, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(43, 58, 103, 0.3);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            padding: 60px 0 30px;
+            color: white;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary);
+        }
+
+        .footer-logo-text {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .footer-about {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact-item i {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        .footer-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            transform: translateX(3px);
+        }
+
+        .footer-newsletter input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .footer-newsletter input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-newsletter button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .footer-newsletter button:hover {
+            background: #e55c5c;
+        }
+
+        .footer-divider {
+            max-width: 1200px;
+            margin: 40px auto 20px;
+            padding: 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
 
-            h1 {
-                font-size: 24px;
-                margin-bottom: 30px;
+            .hero-image {
+                height: 350px;
+            }
+
+            .hero-stats {
+                justify-content: space-between;
+            }
+
+            .benefit-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .social-links {
+                margin-top: 10px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .benefit-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .selection-group {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                flex-direction: column;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .stat {
+                flex: 1 0 40%;
             }
 
             .selection-button {
                 padding: 30px 15px;
-                min-height: 160px;
             }
 
             .selection-button img {
@@ -199,88 +734,272 @@
                 height: 60px;
             }
 
-            .selection-button span {
-                font-size: 18px;
-            }
-
-            .selection-group {
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px 15px;
-            }
-
-            h1 {
-                font-size: 20px;
-                padding: 0 10px;
-            }
-
-            .selection-group {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .selection-button {
-                padding: 25px 15px;
-                min-height: 140px;
-            }
-
-            .selection-button img {
-                width: 50px;
-                height: 50px;
-            }
-
-            .selection-button span {
-                font-size: 16px;
-            }
-
-            .back-button {
-                font-size: 16px;
-                padding: 10px;
+            .selection-section,
+            .faq-section {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ERÜ Veteriner Fakültesi<br>Kısırlaştırma Rehberi</h1>
-
-        <button id="backButton" class="back-button">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-            </svg>
-            Geri Dön
-        </button>
-
-        <div class="selection-container">
-            <div id="animalSelection" class="selection-group active">
-                <button class="selection-button" onclick="showGenderSelection('cat')">
-                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Kedi">
-                    <span>Kedi</span>
-                </button>
-                <button class="selection-button" onclick="showGenderSelection('dog')">
-                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Köpek">
-                    <span>Köpek</span>
-                </button>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    ERÜ Veteriner Fakültesi<br>
+                    <span>Kısırlaştırma Rehberi</span>
+                </div>
             </div>
-
-            <div id="genderSelection" class="selection-group">
-                <button class="selection-button" onclick="navigateToPage('female')">
-                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2640.svg" alt="Dişi">
-                    <span>Dişi</span>
-                </button>
-                <button class="selection-button" onclick="navigateToPage('male')">
-                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2642.svg" alt="Erkek">
-                    <span>Erkek</span>
-                </button>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
+    </header>
+
+    <div class="main-container">
+        <section class="hero-section">
+            <div class="hero-text">
+                <h1 class="hero-title">Evcil Hayvanınızın Sağlıklı Geleceği İçin Bilinçli Kısırlaştırma</h1>
+                <p class="hero-description">
+                    Erciyes Üniversitesi Veteriner Fakültesi olarak hazırladığımız bu rehber, kediler ve köpekler için kısırlaştırma hakkında kapsamlı bilgiler sunmaktadır. Hayvanlarınızın sağlığı ve mutluluğu için doğru kararı vermenize yardımcı olacağız.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">70%</span>
+                        <span class="stat-label">Kanser Riski Azalması</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3-5</span>
+                        <span class="stat-label">Yıl Daha Uzun Ömür</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">İstenmeyen Gebelik Önleme</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1581888227599-779811939961?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Veteriner muayenesi">
+            </div>
+        </section>
+
+        <section class="benefit-cards">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3 class="benefit-title">Sağlık Faydaları</h3>
+                <p class="benefit-text">
+                    Kısırlaştırma, çeşitli kanser türleri ve enfeksiyonlar gibi üreme organlarıyla ilgili ciddi hastalıkların riskini önemli ölçüde azaltır ve evcil hayvanınızın genel sağlığını iyileştirir.
+                </p>
+                <a href="#" class="learn-more">Daha Fazla Bilgi <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-paw"></i>
+                </div>
+                <h3 class="benefit-title">Davranış İyileşmesi</h3>
+                <p class="benefit-text">
+                    Kısırlaştırma sonrası evcil hayvanınızda daha az saldırganlık, markör davranışı ve kaçma eğilimi görülür. Ayrıca daha sakin ve ev odaklı bir karaktere sahip olurlar.
+                </p>
+                <a href="#" class="learn-more">Daha Fazla Bilgi <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-globe-europe"></i>
+                </div>
+                <h3 class="benefit-title">Toplumsal Fayda</h3>
+                <p class="benefit-text">
+                    Evcil hayvanınızı kısırlaştırarak sokak hayvanı popülasyonunun kontrolüne katkıda bulunur, istenmeyen yavruların doğmasını önler ve toplumsal bir sorumluluk üstlenirsiniz.
+                </p>
+                <a href="#" class="learn-more">Daha Fazla Bilgi <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <section class="selection-section">
+            <h2 class="section-title">Kısırlaştırma Rehberine Hoş Geldiniz</h2>
+
+            <button id="backButton" class="back-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+                Geri Dön
+            </button>
+
+            <div class="selection-container">
+                <div id="animalSelection" class="selection-group active">
+                    <button class="selection-button" onclick="showGenderSelection('cat')">
+                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Kedi">
+                        <span>Kedi Kısırlaştırma Rehberi</span>
+                    </button>
+                    <button class="selection-button" onclick="showGenderSelection('dog')">
+                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Köpek">
+                        <span>Köpek Kısırlaştırma Rehberi</span>
+                    </button>
+                </div>
+
+                <div id="genderSelection" class="selection-group">
+                    <button class="selection-button" onclick="navigateToPage('female')">
+                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2640.svg" alt="Dişi">
+                        <span>Dişi Kısırlaştırma Bilgisi</span>
+                    </button>
+                    <button class="selection-button" onclick="navigateToPage('male')">
+                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2642.svg" alt="Erkek">
+                        <span>Erkek Kısırlaştırma Bilgisi</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2 class="section-title">Sık Sorulan Sorular</h2>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Kısırlaştırma için en uygun yaş nedir?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-text">
+                            Kediler için genellikle 4-6 ay, köpekler için 6-12 ay arasında kısırlaştırma önerilir. Büyük ırk köpeklerde fiziksel gelişimin tamamlanması beklenebilir. Kesin yaş önerisi için veteriner hekiminize danışmanız en doğrusudur.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Kısırlaştırma sonrası ne kadar sürede iyileşme olur?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-text">
+                            İyileşme süresi hayvanın cinsiyetine ve türüne göre değişir. Erkek kedilerde 2-3 gün, dişi kedilerde 7-10 gün, erkek köpeklerde 7-10 gün, dişi köpeklerde 10-14 gün sürebilir. Tam iyileşme için dikişlerin alınması gerekebilir.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Kısırlaştırma öncesi ne tür hazırlıklar yapılmalıdır?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-text">
+                            Operasyondan önceki gece yarısından itibaren hayvanınıza yemek verilmemeli, su kısıtlanmalıdır (8-12 saat). Aşıların ve parazit tedavilerinin tamamlanmış olması, genel sağlık kontrolünden geçmiş olması önemlidir.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Kısırlaştırma hayvanımın karakterini değiştirir mi?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-text">
+                            Kısırlaştırma genellikle olumlu davranış değişikliklerine yol açar. Saldırganlık, bölge işaretleme davranışı ve kaçma eğilimi azalır. Hayvanınız daha sakin ve ev odaklı olur. Hormonal değişikliklerin tam etkisi 4-6 hafta içinde görülmeye başlar.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Kısırlaştırma operasyonu ne kadar sürer?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-text">
+                            Operasyon süresi, cinsiyet ve türe göre değişir. Erkek kedi ve köpeklerde genellikle 15-30 dakika, dişi kedi ve köpeklerde 30-60 dakika sürebilir. Anesteziden uyanma süresi ise 2-4 saat arasındadır.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <a href="form.html" class="cta-button">
+                Kısırlaştırma Uygunluk Kontrolü Yap
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </section>
     </div>
 
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/>
+                        </svg>
+                    </div>
+                    <div class="footer-logo-text">
+                        ERÜ Veteriner Fakültesi
+                    </div>
+                </div>
+                <p class="footer-about">
+                    Erciyes Üniversitesi Veteriner Fakültesi, hayvan sağlığı ve refahı için çalışan akademik bir kurumdur. Kısırlaştırma rehberimiz, evcil hayvanların sağlıklı bir yaşam sürmesine katkıda bulunmayı amaçlamaktadır.
+                </p>
+                <div class="footer-contact">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kayseri, Türkiye</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+90 352 123 4567</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>veteriner@erciyes.edu.tr</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="footer-title">Hızlı Erişim</h3>
+                <div class="footer-links">
+                    <a href="cat-female.html">Dişi Kedi Kısırlaştırma</a>
+                    <a href="cat-male.html">Erkek Kedi Kısırlaştırma</a>
+                    <a href="dog-female.html">Dişi Köpek Kısırlaştırma</a>
+                    <a href="dog-male.html">Erkek Köpek Kısırlaştırma</a>
+                    <a href="form.html">Uygunluk Kontrolü</a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="footer-title">Bülten</h3>
+                <p style="font-size: 14px; opacity: 0.8; margin-bottom: 15px;">
+                    Evcil hayvan sağlığı hakkında güncel bilgiler almak için bültenimize abone olun.
+                </p>
+                <div class="footer-newsletter">
+                    <input type="email" placeholder="E-posta adresiniz">
+                    <button>Abone Ol</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-bottom">
+            <div>© 2025 Erciyes Üniversitesi Veteriner Fakültesi. Tüm hakları saklıdır.</div>
+            <div>Gizlilik Politikası | Kullanım Şartları</div>
+        </div>
+    </footer>
+
     <script>
+        // Animal selection logic
         let selectedAnimal = '';
         const backButton = document.getElementById('backButton');
         const animalSelection = document.getElementById('animalSelection');
@@ -304,6 +1023,17 @@
             void genderSelection.offsetWidth; // Reflow
             animalSelection.classList.add('active');
             backButton.classList.remove('active');
+        });
+
+        // Accordion functionality
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            
+            header.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
         });
     </script>
 </body>
