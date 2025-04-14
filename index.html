@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kısırlaştırma Rehberi - ERÜ Veteriner Fakültesi</title>
+    <title>Dişi Hayvan Kısırlaştırma Rehberi</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
@@ -107,7 +107,7 @@
         }
 
         .logo-text {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
             line-height: 1.3;
         }
@@ -298,24 +298,9 @@
         }
 
         .selection-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .selection-group {
-            display: none;
+            display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .selection-group.active {
-            display: grid;
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .selection-button {
@@ -377,46 +362,6 @@
 
         .selection-button:hover span {
             transform: scale(1.05);
-        }
-
-        .back-button {
-            display: none;
-            align-items: center;
-            gap: 10px;
-            background: none;
-            border: none;
-            color: var(--primary);
-            cursor: pointer;
-            font-size: 16px;
-            padding: 12px 20px;
-            margin-bottom: 30px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateX(-20px);
-            border-radius: 8px;
-        }
-
-        .back-button.active {
-            display: flex;
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .back-button:hover {
-            color: var(--primary-light);
-            background: rgba(43, 58, 103, 0.05);
-            transform: translateX(-5px);
-        }
-
-        .back-button svg {
-            width: 20px;
-            height: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .back-button:hover svg {
-            transform: translateX(-5px);
         }
 
         .faq-section {
@@ -688,6 +633,10 @@
             .footer-content {
                 grid-template-columns: 1fr 1fr;
             }
+            
+            .selection-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -716,15 +665,6 @@
 
             .benefit-cards {
                 grid-template-columns: 1fr;
-            }
-
-            .selection-group {
-                grid-template-columns: 1fr;
-            }
-
-            .selection-button {
-                padding: 30px 15px;
-                min-height: 200px;
             }
 
             .selection-section,
@@ -861,8 +801,7 @@
                     </svg>
                 </div>
                 <div class="logo-text">
-                    ERÜ Veteriner Fakültesi<br>
-                    <span>Kısırlaştırma Rehberi</span>
+                    Kısırlaştırma Rehberi
                 </div>
             </div>
             <div class="social-links">
@@ -877,9 +816,9 @@
     <div class="main-container">
         <section class="hero-section">
             <div class="hero-text">
-                <h1 class="hero-title">Evcil Hayvanınızın Sağlıklı Geleceği İçin Bilinçli Kısırlaştırma</h1>
+                <h1 class="hero-title">Dişi Evcil Hayvanınızın Sağlıklı Geleceği İçin Bilinçli Kısırlaştırma</h1>
                 <p class="hero-description">
-                    Erciyes Üniversitesi Veteriner Fakültesi olarak hazırladığımız bu rehber, kediler ve köpekler için kısırlaştırma hakkında kapsamlı bilgiler sunmaktadır. Hayvanlarınızın sağlığı ve mutluluğu için doğru kararı vermenize yardımcı olacağız.
+                    Hazırladığımız bu rehber, dişi kediler ve köpekler için kısırlaştırma hakkında kapsamlı bilgiler sunmaktadır. Hayvanlarınızın sağlığı ve mutluluğu için doğru kararı vermenize yardımcı olacağız.
                 </p>
                 <div class="hero-stats">
                     <div class="stat">
@@ -919,7 +858,7 @@
                 </div>
                 <h3 class="benefit-title">Davranış İyileşmesi</h3>
                 <p class="benefit-text">
-                    Kısırlaştırma sonrası evcil hayvanınızda daha az saldırganlık, markör davranışı ve kaçma eğilimi görülür. Ayrıca daha sakin ve ev odaklı bir karaktere sahip olurlar.
+                    Kısırlaştırma sonrası evcil hayvanınızda daha sakin davranışlar görülür. Kızgınlık dönemleri ortadan kalkar ve hayvanınız daha ev odaklı bir karaktere sahip olur.
                 </p>
                 <a href="#" class="learn-more">Daha Fazla Bilgi <i class="fas fa-arrow-right"></i></a>
             </div>
@@ -939,35 +878,15 @@
         <section class="selection-section">
             <h2 class="section-title">Kısırlaştırma Rehberine Hoş Geldiniz</h2>
 
-            <button id="backButton" class="back-button">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                </svg>
-                Geri Dön
-            </button>
-
             <div class="selection-container">
-                <div id="animalSelection" class="selection-group active">
-                    <button class="selection-button" onclick="showGenderSelection('cat')">
-                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Kedi">
-                        <span>Kedi Kısırlaştırma Rehberi</span>
-                    </button>
-                    <button class="selection-button" onclick="showGenderSelection('dog')">
-                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Köpek">
-                        <span>Köpek Kısırlaştırma Rehberi</span>
-                    </button>
-                </div>
-
-                <div id="genderSelection" class="selection-group">
-                    <button class="selection-button" onclick="navigateToPage('female')">
-                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2640.svg" alt="Dişi">
-                        <span>Dişi Kısırlaştırma Bilgisi</span>
-                    </button>
-                    <button class="selection-button" onclick="navigateToPage('male')">
-                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2642.svg" alt="Erkek">
-                        <span>Erkek Kısırlaştırma Bilgisi</span>
-                    </button>
-                </div>
+                <button class="selection-button" onclick="navigateToPage('cat-female.html')">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Kedi">
+                    <span>Dişi Kedi Kısırlaştırma Rehberi</span>
+                </button>
+                <button class="selection-button" onclick="navigateToPage('dog-female.html')">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Köpek">
+                    <span>Dişi Köpek Kısırlaştırma Rehberi</span>
+                </button>
             </div>
         </section>
 
@@ -982,7 +901,7 @@
                     </div>
                     <div class="accordion-content">
                         <p class="accordion-text">
-                            Kediler için genellikle 4-6 ay, köpekler için 6-12 ay arasında kısırlaştırma önerilir. Büyük ırk köpeklerde fiziksel gelişimin tamamlanması beklenebilir. Kesin yaş önerisi için veteriner hekiminize danışmanız en doğrusudur.
+                            Dişi kediler için genellikle 4-6 ay, dişi köpekler için 6-12 ay arasında kısırlaştırma önerilir. Büyük ırk köpeklerde fiziksel gelişimin tamamlanması beklenebilir. Kesin yaş önerisi için veteriner hekiminize danışmanız en doğrusudur.
                         </p>
                     </div>
                 </div>
@@ -994,7 +913,7 @@
                     </div>
                     <div class="accordion-content">
                         <p class="accordion-text">
-                            İyileşme süresi hayvanın cinsiyetine ve türüne göre değişir. Erkek kedilerde 2-3 gün, dişi kedilerde 7-10 gün, erkek köpeklerde 7-10 gün, dişi köpeklerde 10-14 gün sürebilir. Tam iyileşme için dikişlerin alınması gerekebilir.
+                            İyileşme süresi dişi kedilerde 7-10 gün, dişi köpeklerde 10-14 gün sürebilir. Tam iyileşme için dikişlerin alınması gerekir.
                         </p>
                     </div>
                 </div>
@@ -1018,7 +937,7 @@
                     </div>
                     <div class="accordion-content">
                         <p class="accordion-text">
-                            Kısırlaştırma genellikle olumlu davranış değişikliklerine yol açar. Saldırganlık, bölge işaretleme davranışı ve kaçma eğilimi azalır. Hayvanınız daha sakin ve ev odaklı olur. Hormonal değişikliklerin tam etkisi 4-6 hafta içinde görülmeye başlar.
+                            Kısırlaştırma genellikle olumlu davranış değişikliklerine yol açar. Kızgınlık dönemleri görülmez ve hayvanınız daha sakin ve ev odaklı olur. Hormonal değişikliklerin tam etkisi 4-6 hafta içinde görülmeye başlar.
                         </p>
                     </div>
                 </div>
@@ -1030,7 +949,7 @@
                     </div>
                     <div class="accordion-content">
                         <p class="accordion-text">
-                            Operasyon süresi, cinsiyet ve türe göre değişir. Erkek kedi ve köpeklerde genellikle 15-30 dakika, dişi kedi ve köpeklerde 30-60 dakika sürebilir. Anesteziden uyanma süresi ise 2-4 saat arasındadır.
+                            Dişi kedi ve köpeklerde operasyon süresi genellikle 30-60 dakika arasındadır. Anesteziden uyanma süresi ise 2-4 saat arasındadır.
                         </p>
                     </div>
                 </div>
@@ -1060,11 +979,11 @@
                         </svg>
                     </div>
                     <div class="footer-logo-text">
-                        ERÜ Veteriner Fakültesi
+                        Kısırlaştırma Rehberi
                     </div>
                 </div>
                 <p class="footer-about">
-                    Erciyes Üniversitesi Veteriner Fakültesi, hayvan sağlığı ve refahı için çalışan akademik bir kurumdur. Kısırlaştırma rehberimiz, evcil hayvanların sağlıklı bir yaşam sürmesine katkıda bulunmayı amaçlamaktadır.
+                    Kısırlaştırma rehberimiz, dişi evcil hayvanların sağlıklı bir yaşam sürmesine katkıda bulunmayı amaçlamaktadır. Doğru bilgilerle bilinçli kararlar vermenize yardımcı oluyoruz.
                 </p>
                 <div class="footer-contact">
                     <div class="footer-contact-item">
@@ -1077,7 +996,7 @@
                     </div>
                     <div class="footer-contact-item">
                         <i class="fas fa-envelope"></i>
-                        <span>veteriner@erciyes.edu.tr</span>
+                        <span>info@kisirlasmtarehberi.com</span>
                     </div>
                 </div>
             </div>
@@ -1086,10 +1005,10 @@
                 <h3 class="footer-title">Hızlı Erişim</h3>
                 <div class="footer-links">
                     <a href="cat-female.html">Dişi Kedi Kısırlaştırma</a>
-                    <a href="cat-male.html">Erkek Kedi Kısırlaştırma</a>
                     <a href="dog-female.html">Dişi Köpek Kısırlaştırma</a>
-                    <a href="dog-male.html">Erkek Köpek Kısırlaştırma</a>
                     <a href="form.html">Uygunluk Kontrolü</a>
+                    <a href="#">Hakkımızda</a>
+                    <a href="#">İletişim</a>
                 </div>
             </div>
 
@@ -1108,37 +1027,15 @@
         <div class="footer-divider"></div>
 
         <div class="footer-bottom">
-            <div>© 2025 Erciyes Üniversitesi Veteriner Fakültesi. Tüm hakları saklıdır.</div>
+            <div>© 2025 Kısırlaştırma Rehberi. Tüm hakları saklıdır.</div>
             <div>Gizlilik Politikası | Kullanım Şartları</div>
         </div>
     </footer>
 
     <script>
-        // Animal selection logic
-        let selectedAnimal = '';
-        const backButton = document.getElementById('backButton');
-        const animalSelection = document.getElementById('animalSelection');
-        const genderSelection = document.getElementById('genderSelection');
-
-        function showGenderSelection(animal) {
-            selectedAnimal = animal;
-            animalSelection.classList.remove('active');
-            void animalSelection.offsetWidth; // Reflow
-            genderSelection.classList.add('active');
-            backButton.classList.add('active');
+        function navigateToPage(page) {
+            window.location.href = page;
         }
-
-        function navigateToPage(gender) {
-            window.location.href = `${selectedAnimal}-${gender}.html`;
-        }
-
-        backButton.addEventListener('click', () => {
-            selectedAnimal = '';
-            genderSelection.classList.remove('active');
-            void genderSelection.offsetWidth; // Reflow
-            animalSelection.classList.add('active');
-            backButton.classList.remove('active');
-        });
 
         // Accordion functionality
         const accordionItems = document.querySelectorAll('.accordion-item');
