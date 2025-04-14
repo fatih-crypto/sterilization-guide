@@ -42,6 +42,22 @@
             overflow: hidden;
         }
 
+        /* Arka plan köpek görseli */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px) brightness(0.4);
+            opacity: 0.2;
+            z-index: 0;
+        }
+
         header::after {
             content: '';
             position: absolute;
@@ -356,6 +372,7 @@
             color: var(--primary);
             z-index: 2;
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .selection-button:hover span {
@@ -648,7 +665,8 @@
             font-size: 14px;
             opacity: 0.7;
         }
-
+        
+        /* Geliştirilmiş mobil duyarlılık için medya sorguları */
         @media (max-width: 1024px) {
             .hero-section {
                 grid-template-columns: 1fr;
@@ -677,6 +695,7 @@
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
+                padding: 15px;
             }
 
             .social-links {
@@ -685,6 +704,10 @@
 
             .hero-title {
                 font-size: 28px;
+            }
+
+            .hero-text {
+                padding-right: 0;
             }
 
             .hero-image {
@@ -699,6 +722,16 @@
                 grid-template-columns: 1fr;
             }
 
+            .selection-button {
+                padding: 30px 15px;
+                min-height: 200px;
+            }
+
+            .selection-section,
+            .faq-section {
+                padding: 30px 20px;
+            }
+
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -709,11 +742,26 @@
                 gap: 10px;
                 text-align: center;
             }
+            
+            .main-container {
+                margin: 20px auto;
+            }
+            
+            .hero-section, 
+            .benefit-cards, 
+            .selection-section, 
+            .faq-section {
+                margin-bottom: 40px;
+            }
         }
 
         @media (max-width: 480px) {
             .logo {
                 flex-direction: column;
+            }
+            
+            header {
+                padding: 15px 0;
             }
 
             .hero-stats {
@@ -724,19 +772,81 @@
             .stat {
                 flex: 1 0 40%;
             }
+            
+            .stat-number {
+                font-size: 24px;
+            }
+            
+            .stat-label {
+                font-size: 12px;
+            }
+
+            .hero-title {
+                font-size: 24px;
+            }
+            
+            .hero-description {
+                font-size: 14px;
+            }
 
             .selection-button {
-                padding: 30px 15px;
+                padding: 25px 15px;
+                min-height: 180px;
             }
 
             .selection-button img {
                 width: 60px;
                 height: 60px;
             }
+            
+            .selection-button span {
+                font-size: 16px;
+            }
 
-            .selection-section,
-            .faq-section {
-                padding: 30px 20px;
+            .section-title {
+                font-size: 20px;
+            }
+            
+            .accordion-title {
+                font-size: 14px;
+            }
+            
+            .cta-button {
+                padding: 14px 28px;
+                font-size: 14px;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .benefit-card {
+                padding: 20px;
+            }
+            
+            .benefit-title {
+                font-size: 18px;
+            }
+            
+            .footer-content {
+                padding: 0 15px;
+            }
+            
+            /* Mobil menü butonu */
+            .mobile-menu-toggle {
+                display: block;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                background: var(--primary);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                z-index: 100;
+                color: white;
+                cursor: pointer;
             }
         }
     </style>
@@ -935,6 +1045,11 @@
         </section>
     </div>
 
+    <!-- Mobil ekranlarda sağ altta gösterilen menü butonu -->
+    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
     <footer>
         <div class="footer-content">
             <div>
@@ -1034,6 +1149,31 @@
             header.addEventListener('click', () => {
                 item.classList.toggle('active');
             });
+        });
+        
+        // Mobil menü toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                const ctaSection = document.querySelector('.cta-section');
+                ctaSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+        
+        // Sayfa yüklendiğinde header blurlu resmi kontrol et
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobil cihazlarda header yüksekliğini ayarla
+            const adjustHeaderSize = () => {
+                if (window.innerWidth <= 480) {
+                    const header = document.querySelector('header');
+                    header.style.paddingTop = '25px';
+                    header.style.paddingBottom = '25px';
+                }
+            };
+            
+            adjustHeaderSize();
+            window.addEventListener('resize', adjustHeaderSize);
         });
     </script>
 </body>
