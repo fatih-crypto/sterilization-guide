@@ -257,6 +257,24 @@
             flex-grow: 1;
         }
 
+        /* Gizli içerik için stil */
+        .hidden-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease;
+            margin-top: 0;
+            opacity: 0;
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .benefit-card.expanded .hidden-content {
+            max-height: 2000px;
+            margin-top: 15px;
+            opacity: 1;
+            transition: max-height 0.6s ease, opacity 0.6s ease, margin-top 0.3s ease;
+        }
+
         .learn-more {
             display: inline-flex;
             align-items: center;
@@ -266,6 +284,7 @@
             font-size: 14px;
             transition: all 0.3s ease;
             text-decoration: none;
+            cursor: pointer;
         }
 
         .learn-more i {
@@ -279,6 +298,14 @@
 
         .learn-more:hover i {
             transform: translateX(3px);
+        }
+
+        .benefit-card.expanded .learn-more .text-more {
+            display: none;
+        }
+
+        .benefit-card:not(.expanded) .learn-more .text-less {
+            display: none;
         }
 
         .selection-section {
@@ -819,8 +846,6 @@
                 <h1 class="hero-title">Kedi Ve Köpeklerin Kısırlaştırılması Hakkında Bilimsel Bir Rehber </h1>
                 <p class="hero-description">
                     Evcil dostlarımızın sağlığı, mutluluğu ve uzun ömürlü bir yaşam sürmeleri hepimizin önceliği. Kedi ve köpeklerin kısırlaştırılması da onların refahı için atılabilecek en önemli adımlardan biridir. Ancak bu konuda kafanızda bazı soru işaretleri olması çok doğal: "Ne zaman yapılmalı?", "Avantajları ve dezavantajları neler?", "Sağlığı nasıl etkiler?" gibi pek çok konu, doğru karar verebilmeniz için bilinçli şekilde ele alınmalıdır.
-
-İşte bu site tam da bu amaçla hazırlandı: Kedi ve köpeklerin kısırlaştırılması hakkında ihtiyacınız olan tüm doğru ve güncel bilgileri, anlaşılır bir dille size sunuyoruz..
                 </p>
                 <div class="hero-stats">
                     <div class="stat">
@@ -847,20 +872,21 @@
                 <div class="benefit-icon">
                     <i class="fas fa-heartbeat"></i>
                 </div>
-                <h3 class="benefit-title">Kısırlaştırma Nedir? </h3>
+                <h3 class="benefit-title">Kısırlaştırma Nedir?</h3>
                 <p class="benefit-text">
-                    Kısırlaştırma, kedi ve köpeklerde üreme yeteneğini kalıcı olarak ortadan kaldıran, tıbbi bir cerrahi işlemdir.
-Bu uygulama sayesinde hayvanların yavrulaması önlenir ve üreme hormonlarının etkilediği bazı sağlık sorunları ve davranış problemleri büyük ölçüde azaltılır.
-
-Veteriner hekimler tarafından güvenli koşullarda yapılan kısırlaştırma, hem erkek hem de dişi hayvanlar için uygulanabilir:
-
-Dişi hayvanlarda (kedi ve köpeklerde): Yumurtalıkların ve genellikle rahmin alınması işlemidir. (Tıbbi adı: ovariohisterektomi veya bazen sadece yumurtalık alınırsa ovariektomi).
-
-Erkek hayvanlarda: Testislerin alınması işlemidir. (Tıbbi adı: kastrasyon).
-
-Bu operasyon, genel anestezi altında yapılır ve hayvanın yaşam kalitesi üzerinde uzun vadede olumlu etkiler bırakır.
+                    Kısırlaştırma, kedi ve köpeklerde üreme yeteneğini kalıcı olarak ortadan kaldıran, tıbbi bir cerrahi işlemdir. Bu uygulama sayesinde hayvanların yavrulaması önlenir ve üreme hormonlarının etkilediği bazı sağlık sorunları ve davranış problemleri büyük ölçüde azaltılır.
                 </p>
-                <a href="#" class="learn-more">Daha Fazla Bilgi <i class="fas fa-arrow-right"></i></a>
+                <div class="hidden-content">
+                    <p>Veteriner hekimler tarafından güvenli koşullarda yapılan kısırlaştırma, hem erkek hem de dişi hayvanlar için uygulanabilir:</p>
+                    <p><strong>Dişi hayvanlarda (kedi ve köpeklerde):</strong> Yumurtalıkların ve genellikle rahmin alınması işlemidir. (Tıbbi adı: ovariohisterektomi veya bazen sadece yumurtalık alınırsa ovariektomi).</p>
+                    <p><strong>Erkek hayvanlarda:</strong> Testislerin alınması işlemidir. (Tıbbi adı: kastrasyon).</p>
+                    <p>Bu operasyon, genel anestezi altında yapılır ve hayvanın yaşam kalitesi üzerinde uzun vadede olumlu etkiler bırakır.</p>
+                </div>
+                <a class="learn-more">
+                    <span class="text-more">Daha Fazla Bilgi</span>
+                    <span class="text-less">Daha Az Göster</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
 
             <div class="benefit-card">
@@ -869,54 +895,48 @@ Bu operasyon, genel anestezi altında yapılır ve hayvanın yaşam kalitesi üz
                 </div>
                 <h3 class="benefit-title">Kedi Ve Köpekler Neden Kısırlaştırılmalıdır</h3>
                 <p class="benefit-text">
-                    Kedi ve köpeklerin kısırlaştırılması, sadece bireysel hayvan sağlığını korumak için değil, aynı zamanda toplum refahını ve hayvan haklarını desteklemek için de yapılan önemli bir uygulamadır.
-Bu süreç, çeşitli sağlık, davranışsal, toplumsal ve nedenlere dayanır.
-
-🩺 1. Hayvan Sağlığını Korumak
-Kısırlaştırma, evcil hayvanların yaşam kalitesini ve yaşam süresini doğrudan etkileyen pek çok ciddi sağlık riskini azaltır:
-
-Dişi hayvanlarda: Rahim enfeksiyonları (pyometra) ve meme tümörü gibi hayati risk taşıyan hastalıkların oluşma ihtimali büyük ölçüde düşer.
-
-Erkek hayvanlarda: Testis tümörleri ve prostat problemleri gibi ciddi hastalıkların önüne geçilir.
-
-Kısırlaştırılan hayvanlar, genel olarak daha uzun, daha sağlıklı ve daha huzurlu bir yaşam sürerler.
-
-🧠 2. Davranışsal Sorunları Azaltmak
-Üreme hormonlarının etkisiyle ortaya çıkan birçok istenmeyen davranış, kısırlaştırmayla önlenebilir veya hafifletilebilir:
-
-Kızgınlık dönemlerinde aşırı ses çıkarma ve huzursuzluk
-
-Eş aramak için evden kaçma girişimleri
-
-Diğer hayvanlarla kavga etme
-
-Bölge işaretlemek için idrar püskürtme (özellikle erkeklerde)
-
-Kısırlaştırılan hayvanlar, hormonel baskıdan kurtularak daha sakin ve ev yaşamına daha uyumlu bireyler haline gelir.
-
-🌎 3. Kontrolsüz Üremenin Önüne Geçmek
-Bir çift kedi, uygun koşullarda sadece birkaç yıl içinde binlerce yavru dünyaya getirebilir. Kontrolsüz üreme:
-
-Sokaklarda sahipsiz, aç ve hasta hayvan sayısının artmasına,
-
-Barınakların dolmasına,
-
-Hayvanların kötü yaşam koşullarına maruz kalmasına neden olur.
-
-Kısırlaştırma, sokak hayvanı sorununu uzun vadede çözmenin en etkili ve insani yoludur.
-
-🏘 4. Toplum Sağlığına Katkıda Bulunmak
-Başıboş hayvanlar, sadece kendi yaşamları için değil, insanlar için de bazı riskler taşır:
-
-Kuduz gibi zoonotik hastalıkların yayılma riski
-
-Trafik kazalarına neden olma
-
-Toplumda korku ve güvensizlik oluşturma
-
-Kısırlaştırma ile sokaktaki hayvan nüfusu dengelenir, hem insanlar hem de hayvanlar için daha güvenli bir yaşam ortamı sağlanır.
+                    Kedi ve köpeklerin kısırlaştırılması, sadece bireysel hayvan sağlığını korumak için değil, aynı zamanda toplum refahını ve hayvan haklarını desteklemek için de yapılan önemli bir uygulamadır. Bu süreç, çeşitli sağlık, davranışsal, toplumsal ve etik nedenlere dayanır.
                 </p>
-                <a href="#" class="learn-more">Daha Fazla Bilgi <i class="fas fa-arrow-right"></i></a>
+                <div class="hidden-content">
+                    <p><strong>🩺 1. Hayvan Sağlığını Korumak</strong></p>
+                    <p>Kısırlaştırma, evcil hayvanların yaşam kalitesini ve yaşam süresini doğrudan etkileyen pek çok ciddi sağlık riskini azaltır:</p>
+                    <p><strong>Dişi hayvanlarda:</strong> Rahim enfeksiyonları (pyometra) ve meme tümörü gibi hayati risk taşıyan hastalıkların oluşma ihtimali büyük ölçüde düşer.</p>
+                    <p><strong>Erkek hayvanlarda:</strong> Testis tümörleri ve prostat problemleri gibi ciddi hastalıkların önüne geçilir.</p>
+                    <p>Kısırlaştırılan hayvanlar, genel olarak daha uzun, daha sağlıklı ve daha huzurlu bir yaşam sürerler.</p>
+                    
+                    <p><strong>🧠 2. Davranışsal Sorunları Azaltmak</strong></p>
+                    <p>Üreme hormonlarının etkisiyle ortaya çıkan birçok istenmeyen davranış, kısırlaştırmayla önlenebilir veya hafifletilebilir:</p>
+                    <ul>
+                        <li>Kızgınlık dönemlerinde aşırı ses çıkarma ve huzursuzluk</li>
+                        <li>Eş aramak için evden kaçma girişimleri</li>
+                        <li>Diğer hayvanlarla kavga etme</li>
+                        <li>Bölge işaretlemek için idrar püskürtme (özellikle erkeklerde)</li>
+                    </ul>
+                    <p>Kısırlaştırılan hayvanlar, hormonel baskıdan kurtularak daha sakin ve ev yaşamına daha uyumlu bireyler haline gelir.</p>
+                    
+                    <p><strong>🌎 3. Kontrolsüz Üremenin Önüne Geçmek</strong></p>
+                    <p>Bir çift kedi, uygun koşullarda sadece birkaç yıl içinde binlerce yavru dünyaya getirebilir. Kontrolsüz üreme:</p>
+                    <ul>
+                        <li>Sokaklarda sahipsiz, aç ve hasta hayvan sayısının artmasına,</li>
+                        <li>Barınakların dolmasına,</li>
+                        <li>Hayvanların kötü yaşam koşullarına maruz kalmasına neden olur.</li>
+                    </ul>
+                    <p>Kısırlaştırma, sokak hayvanı sorununu uzun vadede çözmenin en etkili ve insani yoludur.</p>
+                    
+                    <p><strong>🏘 4. Toplum Sağlığına Katkıda Bulunmak</strong></p>
+                    <p>Başıboş hayvanlar, sadece kendi yaşamları için değil, insanlar için de bazı riskler taşır:</p>
+                    <ul>
+                        <li>Kuduz gibi zoonotik hastalıkların yayılma riski</li>
+                        <li>Trafik kazalarına neden olma</li>
+                        <li>Toplumda korku ve güvensizlik oluşturma</li>
+                    </ul>
+                    <p>Kısırlaştırma ile sokaktaki hayvan nüfusu dengelenir, hem insanlar hem de hayvanlar için daha güvenli bir yaşam ortamı sağlanır.</p>
+                </div>
+                <a class="learn-more">
+                    <span class="text-more">Daha Fazla Bilgi</span>
+                    <span class="text-less">Daha Az Göster</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
 
             <div class="benefit-card">
@@ -925,39 +945,42 @@ Kısırlaştırma ile sokaktaki hayvan nüfusu dengelenir, hem insanlar hem de h
                 </div>
                 <h3 class="benefit-title">Kedi Ve Köpekler Ne Zaman Kısırlaştırılmalıdır</h3>
                 <p class="benefit-text">
-                    Kısırlaştırmanın zamanı, hem hayvanın türüne, cinsiyetine, yaşam tarzına hem de bireysel sağlık durumuna göre değişebilir. Bu konuda Veteriner hekiminizden doğrudan öneri almalısınız. Ancak genel bilimsel tavsiyeler, hayvanların hem sağlık hem de davranışsal açıdan en fazla yararı göreceği bir dönemi işaret eder. Bu konudaki genel yaklaşımlar şu şekildedir: 
-
-🐱 Kediler İçin:
-Dişi Kediler:
-İlk kızgınlık dönemi başlamadan, yani 5–6 aylıkken kısırlaştırılması önerilir.
-İlk kızgınlıktan önce yapılan kısırlaştırma, özellikle meme tümörü riskini %90 oranında azaltır.
-
-Erkek Kediler:
-Genellikle 5–6 aylıkken, cinsel olgunluğa ulaşmadan önce kısırlaştırılmaları önerilir.
-Böylece ileri yaşlarda ortaya çıkabilecek idrar püskürtme ve agresif davranışlar önlenebilir.
-
-🐶 Köpekler İçin:
-Dişi Köpekler:
-
-Küçük ve orta ırklar için: 6–7 aylıkken, yani ilk kızgınlık başlamadan hemen önce veya ilk kızgınlık sonrası.
-
-Büyük ve dev ırklar için: Kemik gelişimi tamamlandıktan sonra, yani 12–18 ay civarında yapılması bazı durumlarda önerilebilir (özellikle eklem sağlığı açısından).
-(Veteriner hekiminizin ırk ve bireysel gelişim özelliklerine göre önerisi çok önemlidir.)
-
-Erkek Köpekler:
-
-Küçük ve orta ırklar: 6–7 aylıkken kısırlaştırılabilir.
-
-Büyük ve dev ırklar: Bazen 12–18 ay beklemek (özellikle kas-iskelet sistemi sağlığı için) daha uygun olabilir.
-
-📚 Bilimsel Not:
-Erken yaşta yapılan kısırlaştırma, dişi hayvanlarda meme kanseri ve rahim enfeksiyonları gibi ciddi hastalık risklerini dramatik şekilde azaltır.
-
-Erkek hayvanlarda testis hastalıkları ve bazı davranışsal sorunların önlenmesinde erken kısırlaştırma etkilidir.
-
-Ancak aşırı erken yaşta (örneğin 8 haftalık gibi çok küçük yaşta) yapılan kısırlaştırmanın büyüme ve gelişim üzerindeki etkileri konusunda hala dikkat edilmesi gereken tartışmalar vardır. Bu yüzden veteriner hekiminizin bireysel değerlendirmesi önemlidir.
+                    Kısırlaştırmanın zamanı, hem hayvanın türüne, cinsiyetine, yaşam tarzına hem de bireysel sağlık durumuna göre değişebilir. Bu konuda veteriner hekiminizden doğrudan öneri almalısınız. Ancak genel bilimsel tavsiyeler, hayvanların sağlık ve davranışsal açıdan en fazla yararı görecekleri bir dönemi işaret eder.
                 </p>
-                <a href="#" class="learn-more">Daha Fazla Bilgi <i class="fas fa-arrow-right"></i></a>
+                <div class="hidden-content">
+                    <p><strong>🐱 Kediler İçin:</strong></p>
+                    <p><strong>Dişi Kediler:</strong><br>
+                    İlk kızgınlık dönemi başlamadan, yani 5–6 aylıkken kısırlaştırılması önerilir.<br>
+                    İlk kızgınlıktan önce yapılan kısırlaştırma, özellikle meme tümörü riskini %90 oranında azaltır.</p>
+                    
+                    <p><strong>Erkek Kediler:</strong><br>
+                    Genellikle 5–6 aylıkken, cinsel olgunluğa ulaşmadan önce kısırlaştırılmaları önerilir.<br>
+                    Böylece ileri yaşlarda ortaya çıkabilecek idrar püskürtme ve agresif davranışlar önlenebilir.</p>
+                    
+                    <p><strong>🐶 Köpekler İçin:</strong></p>
+                    <p><strong>Dişi Köpekler:</strong></p>
+                    <ul>
+                        <li>Küçük ve orta ırklar için: 6–7 aylıkken, yani ilk kızgınlık başlamadan hemen önce veya ilk kızgınlık sonrası.</li>
+                        <li>Büyük ve dev ırklar için: Kemik gelişimi tamamlandıktan sonra, yani 12–18 ay civarında yapılması bazı durumlarda önerilebilir (özellikle eklem sağlığı açısından).</li>
+                    </ul>
+                    <p>(Veteriner hekiminizin ırk ve bireysel gelişim özelliklerine göre önerisi çok önemlidir.)</p>
+                    
+                    <p><strong>Erkek Köpekler:</strong></p>
+                    <ul>
+                        <li>Küçük ve orta ırklar: 6–7 aylıkken kısırlaştırılabilir.</li>
+                        <li>Büyük ve dev ırklar: Bazen 12–18 ay beklemek (özellikle kas-iskelet sistemi sağlığı için) daha uygun olabilir.</li>
+                    </ul>
+                    
+                    <p><strong>📚 Bilimsel Not:</strong></p>
+                    <p>Erken yaşta yapılan kısırlaştırma, dişi hayvanlarda meme kanseri ve rahim enfeksiyonları gibi ciddi hastalık risklerini dramatik şekilde azaltır.</p>
+                    <p>Erkek hayvanlarda testis hastalıkları ve bazı davranışsal sorunların önlenmesinde erken kısırlaştırma etkilidir.</p>
+                    <p>Ancak aşırı erken yaşta (örneğin 8 haftalık gibi çok küçük yaşta) yapılan kısırlaştırmanın büyüme ve gelişim üzerindeki etkileri konusunda hala dikkat edilmesi gereken tartışmalar vardır. Bu yüzden veteriner hekiminizin bireysel değerlendirmesi önemlidir.</p>
+                </div>
+                <a class="learn-more">
+                    <span class="text-more">Daha Fazla Bilgi</span>
+                    <span class="text-less">Daha Az Göster</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </section>
 
@@ -1131,6 +1154,24 @@ Ancak aşırı erken yaşta (örneğin 8 haftalık gibi çok küçük yaşta) ya
             
             header.addEventListener('click', () => {
                 item.classList.toggle('active');
+            });
+        });
+        
+        // Yeni eklenen Daha Fazla Bilgi butonları için işlevsellik
+        document.querySelectorAll('.learn-more').forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.benefit-card');
+                card.classList.toggle('expanded');
+                
+                // İkon yönünü değiştir
+                const icon = this.querySelector('i');
+                if (card.classList.contains('expanded')) {
+                    icon.classList.remove('fa-arrow-right');
+                    icon.classList.add('fa-arrow-down');
+                } else {
+                    icon.classList.remove('fa-arrow-down');
+                    icon.classList.add('fa-arrow-right');
+                }
             });
         });
         
