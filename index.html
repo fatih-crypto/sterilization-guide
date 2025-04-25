@@ -243,34 +243,17 @@
             transform: scale(1.03);
         }
 
-        /* Yeni bilgi kartları stili */
-        .info-cards {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            margin-bottom: 70px;
-        }
-
-        .info-card {
+        /* Genel bölüm stili */
+        .section {
             background: var(--card-bg);
             border-radius: var(--border-radius);
             padding: 40px;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            margin-bottom: 70px;
             border: 1px solid rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
-            text-align: center;
         }
 
-        .info-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .info-card-title {
+        .section-title {
             font-size: 32px;
             font-weight: 600;
             color: var(--primary);
@@ -280,7 +263,7 @@
             text-align: center;
         }
 
-        .info-card-title::after {
+        .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -290,6 +273,92 @@
             height: 3px;
             background: linear-gradient(90deg, var(--primary-light), var(--accent));
             border-radius: 3px;
+        }
+
+        /* Görsel kartlar bölümü */
+        .benefit-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-icon {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.1);
+        }
+
+        .benefit-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .benefit-text {
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .benefit-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
+        }
+
+        .benefit-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover .benefit-image img {
+            transform: scale(1.05);
+        }
+
+        /* Kısırlaştırma nedir bölümü */
+        .info-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 70px;
+        }
+
+        .info-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .info-card-content {
@@ -305,8 +374,24 @@
             line-height: 1.8;
             max-width: 800px;
             margin: 0 auto 20px;
+            text-align: center;
         }
 
+        .definition-highlight {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--primary-dark);
+            padding: 15px 25px;
+            background-color: var(--light);
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-light);
+            margin: 10px auto 30px;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        /* Rehber linkleri */
         .guide-links {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -359,70 +444,7 @@
             color: var(--primary-light);
         }
 
-        /* Visual cards for benefits */
-        .visual-benefits {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 70px;
-        }
-
-        .visual-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .visual-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .visual-icon {
-            width: 90px;
-            height: 90px;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .visual-card:hover .visual-icon {
-            transform: scale(1.1);
-        }
-
-        .visual-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .visual-text {
-            font-size: 16px;
-            color: var(--gray);
-        }
-
-        .visual-image {
-            margin-top: 20px;
-            width: 100%;
-            max-width: 300px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .visual-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
+        /* SSS Bölümü */
         .faq-section {
             background: white;
             border-radius: var(--border-radius);
@@ -430,28 +452,6 @@
             box-shadow: var(--shadow);
             margin-bottom: 70px;
             border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .section-title {
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 35px;
-            text-align: center;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-light), var(--accent));
-            border-radius: 3px;
         }
 
         .accordion {
@@ -733,7 +733,7 @@
                 min-width: 100px;
             }
 
-            .visual-benefits {
+            .benefit-cards {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 25px;
             }
@@ -786,20 +786,20 @@
                 font-size: 28px;
             }
 
-            .visual-benefits {
+            .benefit-cards {
                 grid-template-columns: 1fr;
             }
             
-            .info-card {
-                padding: 25px;
-            }
-
-            .faq-section {
+            .section, .info-card {
                 padding: 30px 20px;
             }
             
             .section-title {
                 font-size: 24px;
+            }
+
+            .faq-section {
+                padding: 30px 20px;
             }
 
             .footer-content {
@@ -818,8 +818,8 @@
             }
             
             .hero-section, 
-            .info-cards, 
-            .visual-benefits,
+            .section,
+            .info-card,
             .faq-section {
                 margin-bottom: 40px;
             }
@@ -863,12 +863,18 @@
                 font-size: 15px;
             }
             
+            .section-title,
             .info-card-title {
                 font-size: 24px;
             }
             
             .info-card-text {
                 font-size: 16px;
+            }
+
+            .definition-highlight {
+                font-size: 16px;
+                padding: 12px 15px;
             }
 
             .guide-link {
@@ -884,11 +890,6 @@
                 font-size: 16px;
             }
 
-            .section-title {
-                font-size: 22px;
-                margin-bottom: 25px;
-            }
-            
             .accordion-title {
                 font-size: 16px;
             }
@@ -976,60 +977,64 @@
             </div>
         </section>
 
-        <!-- Kısırlaştırma Nedir? bölümü -->
-        <section class="info-cards">
-            <div class="info-card">
-                <h2 class="info-card-title">Kısırlaştırma Nedir?</h2>
-                <div class="info-card-content">
-                    <p class="info-card-text">
-                        Kısırlaştırma, kedi ve köpeklerde üreme yeteneğini kalıcı olarak ortadan kaldıran, tıbbi bir cerrahi işlemdir. Bu uygulama sayesinde hayvanların yavrulaması önlenir ve üreme hormonlarının etkilediği sağlık sorunları ve davranış problemleri büyük ölçüde azaltılır.
-                    </p>
-                    
-                    <!-- Rehberler -->
-                    <div class="guide-links">
-                        <a href="cat-female.html" class="guide-link">
-                            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Dişi Kedi">
-                            <span>Dişi Kedi Kısırlaştırma Rehberi</span>
-                        </a>
-                        <a href="dog-female.html" class="guide-link">
-                            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Dişi Köpek">
-                            <span>Dişi Köpek Kısırlaştırma Rehberi</span>
-                        </a>
-                        <a href="cat-male.html" class="guide-link">
-                            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Erkek Kedi">
-                            <span>Erkek Kedi Kısırlaştırma Rehberi</span>
-                        </a>
-                        <a href="dog-male.html" class="guide-link">
-                            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f436.svg" alt="Erkek Köpek">
-                            <span>Erkek Köpek Kısırlaştırma Rehberi</span>
-                        </a>
+        <!-- Neden Kısırlaştırılmalıdır bölümü -->
+        <section class="section">
+            <h2 class="section-title">Kedi ve Köpekler Neden Kısırlaştırılmalıdır?</h2>
+            <div class="benefit-cards">
+                <div class="benefit-card">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1fa7a.svg" alt="Sağlık" class="benefit-icon">
+                    <h3 class="benefit-title">Sağlık Açısından</h3>
+                    <p class="benefit-text">Kanser ve enfeksiyon riskini azaltır, daha uzun ve sağlıklı bir yaşam sağlar.</p>
+                    <div class="benefit-image">
+                        <img src="uzunyasam.jpg" alt="Uzun ve Sağlıklı Yaşam">
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f4a4.svg" alt="Davranış" class="benefit-icon">
+                    <h3 class="benefit-title">Davranışsal Açıdan</h3>
+                    <p class="benefit-text">Saldırganlık ve stres davranışlarını azaltır, daha sakin bir hayvan sağlar.</p>
+                    <div class="benefit-image">
+                        <img src="rahim_fotosu.png" alt="Rahim Görüntüsü">
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f30e.svg" alt="Çevre" class="benefit-icon">
+                    <h3 class="benefit-title">Popülasyon Kontrolü</h3>
+                    <p class="benefit-text">Sokak hayvanlarının kontrolsüz üremesini önleyerek toplumsal fayda sağlar.</p>
+                    <div class="benefit-image">
+                        <img src="sokak hay sayısı azaltır.jpg" alt="Sokak Hayvanı Sayısı Kontrol">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Görsel kartlar bölümü (Neden Kısırlaştırılmalı) -->
-        <section class="visual-benefits">
-            <div class="visual-card">
-                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1fa7a.svg" alt="Sağlık" class="visual-icon">
-                <h3 class="visual-title">Sağlık Açısından</h3>
-                <p class="visual-text">Kanser ve enfeksiyon riskini azaltır, daha uzun ve sağlıklı bir yaşam sağlar.</p>
-            </div>
-            <div class="visual-card">
-                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f4a4.svg" alt="Davranış" class="visual-icon">
-                <h3 class="visual-title">Davranışsal Açıdan</h3>
-                <p class="visual-text">Saldırganlık ve stres davranışlarını azaltır, daha sakin bir hayvan sağlar.</p>
-            </div>
-            <div class="visual-card">
-                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f30e.svg" alt="Çevre" class="visual-icon">
-                <h3 class="visual-title">Popülasyon Kontrolü</h3>
-                <p class="visual-text">Sokak hayvanlarının kontrolsüz üremesini önleyerek toplumsal fayda sağlar.</p>
-                <div class="visual-image">
-                    <img src="rahim_fotosu.png" alt="Rahim Görüntüsü">
+        <!-- Kısırlaştırma nedir bölümü -->
+        <div class="info-card">
+            <h2 class="section-title">Kısırlaştırma Nedir?</h2>
+            <div class="info-card-content">
+                <p class="info-card-text">
+                    Kısırlaştırma, kedi ve köpeklerde üreme yeteneğini kalıcı olarak ortadan kaldıran, tıbbi bir cerrahi işlemdir. Bu uygulama sayesinde hayvanların yavrulaması önlenir ve üreme hormonlarının etkilediği sağlık sorunları ve davranış problemleri büyük ölçüde azaltılır.
+                </p>
+                
+                <div class="definition-highlight">
+                    Kısırlaştırma, dişi hayvanlarda yumurtalık ve rahmin, erkek hayvanlarda ise testislerin alınması işlemidir. Bu cerrahi müdahale, hayvanın genel anestezi altında, uzman veteriner hekimler tarafından gerçekleştirilir.
+                </div>
+                
+                <!-- Rehberler -->
+                <div class="guide-links">
+                    <a href="cat-female.html" class="guide-link">
+                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Dişi Kedi">
+                        <span>Dişi Kedi Kısırlaştırma Rehberi</span>
+                    </a>
+                    <a href="dog-female.html" class="guide-link">
+                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Dişi Köpek">
+                        <span>Dişi Köpek Kısırlaştırma Rehberi</span>
+                    </a>
                 </div>
             </div>
-        </section>
+        </div>
 
+        <!-- SSS Bölümü -->
         <section class="faq-section">
             <h2 class="section-title">Sık Sorulan Sorular</h2>
 
@@ -1168,10 +1173,6 @@
     </footer>
 
     <script>
-        function navigateToPage(page) {
-            window.location.href = page;
-        }
-
         // Accordion functionality
         document.addEventListener('DOMContentLoaded', function() {
             const accordionItems = document.querySelectorAll('.accordion-item');
