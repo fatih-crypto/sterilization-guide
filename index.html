@@ -307,50 +307,56 @@
             margin: 0 auto 20px;
         }
 
-        .info-illustration {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin: 20px 0;
+        .guide-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .illustration-item {
+        .guide-link {
+            background: var(--light);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 180px;
+            gap: 20px;
+            text-decoration: none;
             text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .guide-link:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .guide-link img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .guide-link:hover img {
+            transform: scale(1.1);
+        }
+
+        .guide-link span {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
             transition: all 0.3s ease;
         }
 
-        .illustration-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .illustration-icon {
-            width: 100px;
-            height: 100px;
-            background: var(--light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            padding: 20px;
-        }
-
-        .illustration-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .illustration-text {
-            font-size: 16px;
-            color: var(--primary-dark);
-            font-weight: 500;
+        .guide-link:hover span {
+            color: var(--primary-light);
         }
 
         /* Visual cards for benefits */
@@ -402,7 +408,22 @@
             color: var(--gray);
         }
 
-        .selection-section {
+        .visual-image {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .visual-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .faq-section {
             background: white;
             border-radius: var(--border-radius);
             padding: 50px;
@@ -431,88 +452,6 @@
             height: 3px;
             background: linear-gradient(90deg, var(--primary-light), var(--accent));
             border-radius: 3px;
-        }
-
-        .selection-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-
-        .selection-button {
-            background: var(--light);
-            border: 1px solid rgba(0,0,0,0.05);
-            border-radius: var(--border-radius);
-            padding: 40px 20px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            min-height: 240px;
-        }
-
-        .selection-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-            border-radius: var(--border-radius);
-        }
-
-        .selection-button:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .selection-button:hover::after {
-            opacity: 0.05;
-        }
-
-        .selection-button img {
-            width: 90px;
-            height: 90px;
-            object-fit: contain;
-            z-index: 2;
-            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
-            transition: transform 0.3s ease;
-        }
-
-        .selection-button:hover img {
-            transform: scale(1.1);
-        }
-
-        .selection-button span {
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--primary);
-            z-index: 2;
-            transition: all 0.3s ease;
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .selection-button:hover span {
-            transform: scale(1.05);
-        }
-
-        .faq-section {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 50px;
-            box-shadow: var(--shadow);
-            margin-bottom: 70px;
-            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .accordion {
@@ -584,50 +523,6 @@
 
         .accordion-item.active .accordion-content {
             max-height: 500px;
-        }
-
-        .cta-section {
-            text-align: center;
-            margin-bottom: 70px;
-            padding: 40px;
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .cta-section h2 {
-            margin-bottom: 25px;
-            font-size: 28px;
-            color: var(--primary);
-        }
-
-        .cta-section p {
-            margin-bottom: 30px;
-            color: var(--gray);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            text-decoration: none;
-            padding: 16px 36px;
-            border-radius: 50px;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 5px 15px rgba(43, 58, 103, 0.2);
-            transition: all 0.3s ease;
-            font-size: 17px;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(43, 58, 103, 0.3);
         }
 
         footer {
@@ -848,9 +743,9 @@
                 gap: 40px;
             }
             
-            .selection-container {
+            .guide-links {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 20px;
             }
         }
 
@@ -899,27 +794,12 @@
                 padding: 25px;
             }
 
-            .selection-section,
-            .faq-section,
-            .cta-section {
+            .faq-section {
                 padding: 30px 20px;
             }
             
             .section-title {
                 font-size: 24px;
-            }
-
-            .info-illustration {
-                gap: 20px;
-            }
-
-            .illustration-item {
-                width: 140px;
-            }
-
-            .illustration-icon {
-                width: 80px;
-                height: 80px;
             }
 
             .footer-content {
@@ -940,9 +820,7 @@
             .hero-section, 
             .info-cards, 
             .visual-benefits,
-            .selection-section, 
-            .faq-section,
-            .cta-section {
+            .faq-section {
                 margin-bottom: 40px;
             }
         }
@@ -993,37 +871,17 @@
                 font-size: 16px;
             }
 
-            .info-illustration {
-                gap: 15px;
+            .guide-link {
+                padding: 20px 15px;
             }
 
-            .illustration-item {
-                width: 120px;
-            }
-
-            .illustration-icon {
-                width: 70px;
-                height: 70px;
-                margin-bottom: 10px;
-            }
-
-            .illustration-text {
-                font-size: 14px;
-            }
-
-            .selection-button {
-                padding: 25px 15px;
-                min-height: 200px;
-                gap: 20px;
-            }
-
-            .selection-button img {
-                width: 70px;
-                height: 70px;
+            .guide-link img {
+                width: 60px;
+                height: 60px;
             }
             
-            .selection-button span {
-                font-size: 18px;
+            .guide-link span {
+                font-size: 16px;
             }
 
             .section-title {
@@ -1037,13 +895,6 @@
             
             .accordion-text {
                 font-size: 15px;
-            }
-            
-            .cta-button {
-                padding: 14px 28px;
-                font-size: 15px;
-                width: 100%;
-                justify-content: center;
             }
             
             .footer-content {
@@ -1125,7 +976,7 @@
             </div>
         </section>
 
-        <!-- Tek bir bilgi kartı -->
+        <!-- Kısırlaştırma Nedir? bölümü -->
         <section class="info-cards">
             <div class="info-card">
                 <h2 class="info-card-title">Kısırlaştırma Nedir?</h2>
@@ -1134,31 +985,24 @@
                         Kısırlaştırma, kedi ve köpeklerde üreme yeteneğini kalıcı olarak ortadan kaldıran, tıbbi bir cerrahi işlemdir. Bu uygulama sayesinde hayvanların yavrulaması önlenir ve üreme hormonlarının etkilediği sağlık sorunları ve davranış problemleri büyük ölçüde azaltılır.
                     </p>
                     
-                    <div class="info-illustration">
-                        <div class="illustration-item">
-                            <div class="illustration-icon">
-                                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f431.svg" alt="Kedi">
-                            </div>
-                            <p class="illustration-text">Dişi Kedilerde</p>
-                        </div>
-                        <div class="illustration-item">
-                            <div class="illustration-icon">
-                                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Köpek">
-                            </div>
-                            <p class="illustration-text">Dişi Köpeklerde</p>
-                        </div>
-                        <div class="illustration-item">
-                            <div class="illustration-icon">
-                                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Erkek Kedi">
-                            </div>
-                            <p class="illustration-text">Erkek Kedilerde</p>
-                        </div>
-                        <div class="illustration-item">
-                            <div class="illustration-icon">
-                                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f436.svg" alt="Erkek Köpek">
-                            </div>
-                            <p class="illustration-text">Erkek Köpeklerde</p>
-                        </div>
+                    <!-- Rehberler -->
+                    <div class="guide-links">
+                        <a href="cat-female.html" class="guide-link">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Dişi Kedi">
+                            <span>Dişi Kedi Kısırlaştırma Rehberi</span>
+                        </a>
+                        <a href="dog-female.html" class="guide-link">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Dişi Köpek">
+                            <span>Dişi Köpek Kısırlaştırma Rehberi</span>
+                        </a>
+                        <a href="cat-male.html" class="guide-link">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Erkek Kedi">
+                            <span>Erkek Kedi Kısırlaştırma Rehberi</span>
+                        </a>
+                        <a href="dog-male.html" class="guide-link">
+                            <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f436.svg" alt="Erkek Köpek">
+                            <span>Erkek Köpek Kısırlaştırma Rehberi</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1180,21 +1024,9 @@
                 <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f30e.svg" alt="Çevre" class="visual-icon">
                 <h3 class="visual-title">Popülasyon Kontrolü</h3>
                 <p class="visual-text">Sokak hayvanlarının kontrolsüz üremesini önleyerek toplumsal fayda sağlar.</p>
-            </div>
-        </section>
-
-        <section class="selection-section">
-            <h2 class="section-title">Detaylı Rehberimize Göz Atın</h2>
-
-            <div class="selection-container">
-                <button class="selection-button" onclick="navigateToPage('cat-female.html')">
-                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Kedi">
-                    <span>Dişi Kedi Kısırlaştırma Rehberi</span>
-                </button>
-                <button class="selection-button" onclick="navigateToPage('dog-female.html')">
-                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Köpek">
-                    <span>Dişi Köpek Kısırlaştırma Rehberi</span>
-                </button>
+                <div class="visual-image">
+                    <img src="rahim_fotosu.png" alt="Rahim Görüntüsü">
+                </div>
             </div>
         </section>
 
@@ -1262,15 +1094,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="cta-section">
-            <h2>Hayvanınız Kısırlaştırmaya Uygun mu?</h2>
-            <p>Evcil hayvanınızın kısırlaştırma için uygun olup olmadığını öğrenmek için hızlı kontrol aracımızı kullanın. Birkaç soruya vereceğiniz cevaplarla, pet dostunuz için en doğru zamanı belirleyin.</p>
-            <a href="form.html" class="cta-button">
-                Kısırlaştırma Uygunluk Kontrolü Yap
-                <i class="fas fa-arrow-right"></i>
-            </a>
         </section>
     </div>
 
@@ -1381,8 +1204,8 @@
         
         if (mobileMenuToggle) {
             mobileMenuToggle.addEventListener('click', function() {
-                const ctaSection = document.querySelector('.cta-section');
-                ctaSection.scrollIntoView({ behavior: 'smooth' });
+                const faqSection = document.querySelector('.faq-section');
+                faqSection.scrollIntoView({ behavior: 'smooth' });
             });
         }
         
