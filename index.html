@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dişi Hayvan Kısırlaştırma Rehberi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Hayvan Kısırlaştırma Rehberi | Erciyes Üniversitesi Veteriner Fakültesi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <style>
         :root {
@@ -12,11 +12,15 @@
             --primary-light: #384B8D;
             --primary-dark: #1A2C58;
             --accent: #FF6B6B;
+            --accent-hover: #ff5252;
             --light: #F6F8FD;
-            --gray: #8A94A7;
+            --gray: #616A82;
+            --gray-light: #8A94A7;
             --dark: #1F2937;
-            --shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            --text-color: #333747;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             --border-radius: 16px;
+            --card-bg: #ffffff;
         }
 
         * {
@@ -29,20 +33,31 @@
             background: linear-gradient(135deg, var(--light) 0%, #f1f4f9 100%);
             min-height: 100vh;
             font-family: 'Poppins', sans-serif;
-            color: var(--dark);
-            line-height: 1.6;
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-dark);
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            margin-bottom: 1rem;
         }
 
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            padding: 20px 0;
+            padding: 25px 0;
             color: white;
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
         }
 
-        /* Yeni arka plan kedi-köpek görseli */
+        /* Arka plan kedi-köpek görseli */
         header::before {
             content: '';
             position: absolute;
@@ -54,7 +69,7 @@
             background-size: cover;
             background-position: center;
             filter: blur(4px) brightness(0.5) sepia(0.3) saturate(1.5);
-            opacity: 0.8;
+            opacity: 0.6;
             z-index: 0;
         }
 
@@ -73,9 +88,9 @@
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 25px;
             position: relative;
             z-index: 2;
             display: flex;
@@ -107,9 +122,10 @@
         }
 
         .logo-text {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
             line-height: 1.3;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .logo-text span {
@@ -120,13 +136,14 @@
 
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 18px;
         }
 
         .social-links a {
             color: white;
             opacity: 0.8;
             transition: all 0.3s ease;
+            font-size: 18px;
         }
 
         .social-links a:hover {
@@ -135,16 +152,16 @@
         }
 
         .main-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 1300px;
+            margin: 50px auto;
+            padding: 0 25px;
         }
 
         .hero-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
+            gap: 50px;
+            margin-bottom: 70px;
             align-items: center;
         }
 
@@ -153,39 +170,54 @@
         }
 
         .hero-title {
-            font-size: 36px;
+            font-size: 42px;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             line-height: 1.2;
         }
 
         .hero-description {
-            font-size: 16px;
+            font-size: 18px;
             color: var(--gray);
             margin-bottom: 30px;
+            line-height: 1.8;
         }
 
         .hero-stats {
             display: flex;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 40px;
+            margin-top: 40px;
         }
 
         .stat {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            min-width: 120px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
         }
 
         .stat-number {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 700;
             color: var(--primary);
+            margin-bottom: 5px;
         }
 
         .stat-label {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--gray);
+            font-weight: 500;
         }
 
         .hero-image {
@@ -194,7 +226,7 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             position: relative;
-            height: 400px;
+            height: 450px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -204,75 +236,145 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.03);
         }
 
         .benefit-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
         }
 
         .benefit-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 30px;
+            padding: 35px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
         }
 
         .benefit-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-7px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
+        .benefit-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .benefit-card:hover::after {
+            opacity: 1;
+        }
+
         .benefit-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: var(--light);
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         .benefit-icon i {
-            font-size: 28px;
+            font-size: 32px;
             color: var(--primary);
         }
 
         .benefit-title {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .benefit-text {
-            font-size: 14px;
+            font-size: 16px;
             color: var(--gray);
             flex-grow: 1;
+            line-height: 1.7;
         }
 
-        /* Gizli içerik için stil */
+        /* Özel içerik alanı */
+        .content-preview {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .content-preview p:last-child {
+            margin-bottom: 0;
+        }
+
         .hidden-content {
-            max-height: 0;
+            height: 0;
             overflow: hidden;
-            transition: max-height 0.6s ease;
-            margin-top: 0;
             opacity: 0;
-            font-size: 14px;
-            color: var(--gray);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: var(--text-color);
+            line-height: 1.7;
+            position: relative;
+        }
+
+        .hidden-content p, .hidden-content ul, .hidden-content h4 {
+            margin-bottom: 1rem;
+        }
+
+        .hidden-content ul {
+            padding-left: 1.5rem;
+        }
+
+        .hidden-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .hidden-content strong {
+            color: var(--primary-dark);
+            font-weight: 600;
         }
 
         .benefit-card.expanded .hidden-content {
-            max-height: 2000px;
-            margin-top: 15px;
+            height: auto;
             opacity: 1;
-            transition: max-height 0.6s ease, opacity 0.6s ease, margin-top 0.3s ease;
+        }
+
+        /* Gradient overlay to hint that there's more content */
+        .content-preview::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .benefit-card.expanded .content-preview::after {
+            opacity: 0;
         }
 
         .learn-more {
@@ -280,24 +382,34 @@
             align-items: center;
             color: var(--primary-light);
             font-weight: 500;
-            margin-top: 15px;
-            font-size: 14px;
+            margin-top: 10px;
+            font-size: 16px;
             transition: all 0.3s ease;
             text-decoration: none;
             cursor: pointer;
+            background: rgba(56, 75, 141, 0.08);
+            padding: 10px 16px;
+            border-radius: 8px;
+            align-self: flex-start;
         }
 
         .learn-more i {
-            margin-left: 5px;
+            margin-left: 8px;
             transition: transform 0.3s ease;
         }
 
         .learn-more:hover {
             color: var(--accent);
+            background: rgba(255, 107, 107, 0.08);
         }
 
         .learn-more:hover i {
             transform: translateX(3px);
+        }
+
+        .benefit-card.expanded .learn-more {
+            background: rgba(255, 107, 107, 0.08);
+            color: var(--accent);
         }
 
         .benefit-card.expanded .learn-more .text-more {
@@ -311,28 +423,43 @@
         .selection-section {
             background: white;
             border-radius: var(--border-radius);
-            padding: 40px;
+            padding: 50px;
             box-shadow: var(--shadow);
-            margin-bottom: 60px;
+            margin-bottom: 70px;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .section-title {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 600;
             color: var(--primary);
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
+            border-radius: 3px;
         }
 
         .selection-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 40px;
         }
 
         .selection-button {
             background: var(--light);
-            border: none;
+            border: 1px solid rgba(0,0,0,0.05);
             border-radius: var(--border-radius);
             padding: 40px 20px;
             cursor: pointer;
@@ -340,11 +467,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            min-height: 220px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            min-height: 240px;
         }
 
         .selection-button::after {
@@ -362,8 +489,8 @@
         }
 
         .selection-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .selection-button:hover::after {
@@ -371,20 +498,26 @@
         }
 
         .selection-button img {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             object-fit: contain;
             z-index: 2;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+            transition: transform 0.3s ease;
+        }
+
+        .selection-button:hover img {
+            transform: scale(1.1);
         }
 
         .selection-button span {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 600;
             color: var(--primary);
             z-index: 2;
             transition: all 0.3s ease;
             text-align: center;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .selection-button:hover span {
@@ -394,18 +527,20 @@
         .faq-section {
             background: white;
             border-radius: var(--border-radius);
-            padding: 40px;
+            padding: 50px;
             box-shadow: var(--shadow);
-            margin-bottom: 60px;
+            margin-bottom: 70px;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .accordion {
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .accordion-item {
             border-bottom: 1px solid #e1e8f5;
             margin-bottom: 15px;
+            transition: all 0.3s ease;
         }
 
         .accordion-item:last-child {
@@ -414,7 +549,7 @@
         }
 
         .accordion-header {
-            padding: 15px 0;
+            padding: 20px 0;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -423,29 +558,46 @@
 
         .accordion-title {
             font-weight: 500;
-            font-size: 16px;
+            font-size: 18px;
             color: var(--primary);
+            transition: color 0.3s ease;
+        }
+
+        .accordion-item:hover .accordion-title {
+            color: var(--accent);
         }
 
         .accordion-icon {
             color: var(--primary);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s ease;
+            font-size: 18px;
+        }
+
+        .accordion-item:hover .accordion-icon {
+            color: var(--accent);
         }
 
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .accordion-text {
-            padding: 0 0 20px 0;
+            padding: 0 0 25px 0;
             color: var(--gray);
-            font-size: 14px;
+            font-size: 16px;
+            line-height: 1.7;
         }
 
         .accordion-item.active .accordion-icon {
             transform: rotate(180deg);
+            color: var(--accent);
+        }
+
+        .accordion-item.active .accordion-title {
+            color: var(--accent);
+            font-weight: 600;
         }
 
         .accordion-item.active .accordion-content {
@@ -454,31 +606,51 @@
 
         .cta-section {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
+            padding: 40px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .cta-section h2 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: var(--primary);
+        }
+
+        .cta-section p {
+            margin-bottom: 30px;
+            color: var(--gray);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
             text-decoration: none;
-            padding: 16px 32px;
+            padding: 16px 36px;
             border-radius: 50px;
             font-weight: 500;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 4px 10px rgba(43, 58, 103, 0.2);
+            box-shadow: 0 5px 15px rgba(43, 58, 103, 0.2);
             transition: all 0.3s ease;
+            font-size: 17px;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(43, 58, 103, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(43, 58, 103, 0.3);
         }
 
         footer {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-            padding: 60px 0 30px;
+            padding: 70px 0 30px;
             color: white;
             position: relative;
         }
@@ -489,24 +661,24 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 5px;
             background: linear-gradient(90deg, var(--primary-light), var(--accent));
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 25px;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
+            gap: 50px;
         }
 
         .footer-logo {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .footer-logo-icon {
@@ -526,40 +698,44 @@
         }
 
         .footer-logo-text {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .footer-about {
-            font-size: 14px;
-            opacity: 0.8;
-            margin-bottom: 20px;
+            font-size: 15px;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            line-height: 1.7;
         }
 
         .footer-contact {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            font-size: 14px;
+            gap: 15px;
+            font-size: 15px;
         }
 
         .footer-contact-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .footer-contact-item i {
-            font-size: 16px;
-            opacity: 0.8;
+            font-size: 18px;
+            opacity: 0.9;
+            color: var(--accent);
         }
 
         .footer-title {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .footer-title::after {
@@ -567,102 +743,132 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
-            height: 2px;
+            width: 50px;
+            height: 3px;
             background: var(--accent);
+            border-radius: 3px;
         }
 
         .footer-links {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
         .footer-links a {
             color: white;
             text-decoration: none;
-            opacity: 0.8;
+            opacity: 0.9;
             transition: all 0.3s ease;
-            font-size: 14px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:before {
+            content: '\f054';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            font-size: 12px;
+            color: var(--accent);
         }
 
         .footer-links a:hover {
             opacity: 1;
-            transform: translateX(3px);
+            transform: translateX(5px);
         }
 
         .footer-newsletter input {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 18px;
             border: none;
             border-radius: 8px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             background: rgba(255, 255, 255, 0.1);
             color: white;
+            font-size: 15px;
         }
 
         .footer-newsletter input::placeholder {
             color: rgba(255, 255, 255, 0.6);
         }
 
+        .footer-newsletter input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
         .footer-newsletter button {
             background: var(--accent);
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 14px 22px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 500;
             transition: all 0.3s ease;
+            font-size: 15px;
+            width: 100%;
         }
 
         .footer-newsletter button:hover {
-            background: #e55c5c;
+            background: var(--accent-hover);
+            transform: translateY(-3px);
         }
 
         .footer-divider {
-            max-width: 1200px;
-            margin: 40px auto 20px;
-            padding: 0 20px;
+            max-width: 1300px;
+            margin: 50px auto 20px;
+            padding: 0 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-bottom {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 25px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 14px;
-            opacity: 0.7;
+            font-size: 15px;
+            opacity: 0.8;
         }
         
         /* Geliştirilmiş mobil duyarlılık için medya sorguları */
         @media (max-width: 1024px) {
             .hero-section {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 40px;
             }
 
             .hero-image {
-                height: 350px;
+                height: 400px;
             }
 
             .hero-stats {
-                justify-content: space-between;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .stat {
+                flex: 1 0 calc(33% - 40px);
+                min-width: 100px;
             }
 
             .benefit-cards {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
             }
 
             .footer-content {
                 grid-template-columns: 1fr 1fr;
+                gap: 40px;
             }
             
             .selection-container {
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
         }
 
@@ -671,37 +877,59 @@
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
-                padding: 15px;
+                padding: 20px 15px;
             }
 
             .social-links {
-                margin-top: 10px;
+                margin-top: 15px;
             }
 
             .hero-title {
-                font-size: 28px;
+                font-size: 32px;
+                margin-bottom: 20px;
             }
 
             .hero-text {
                 padding-right: 0;
             }
 
+            .hero-description {
+                font-size: 16px;
+            }
+
             .hero-image {
-                height: 300px;
+                height: 320px;
+            }
+            
+            .stat {
+                padding: 15px;
+            }
+            
+            .stat-number {
+                font-size: 28px;
             }
 
             .benefit-cards {
                 grid-template-columns: 1fr;
             }
+            
+            .benefit-card {
+                padding: 25px;
+            }
 
             .selection-section,
-            .faq-section {
+            .faq-section,
+            .cta-section {
                 padding: 30px 20px;
+            }
+            
+            .section-title {
+                font-size: 24px;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 35px;
             }
 
             .footer-bottom {
@@ -711,90 +939,102 @@
             }
             
             .main-container {
-                margin: 20px auto;
+                margin: 30px auto;
             }
             
             .hero-section, 
             .benefit-cards, 
             .selection-section, 
-            .faq-section {
+            .faq-section,
+            .cta-section {
                 margin-bottom: 40px;
             }
         }
 
         @media (max-width: 480px) {
+            body {
+                font-size: 15px;
+            }
+            
             .logo {
                 flex-direction: column;
             }
             
             header {
-                padding: 15px 0;
+                padding: 20px 0;
             }
 
             .hero-stats {
-                flex-wrap: wrap;
-                gap: 20px;
+                gap: 15px;
             }
 
             .stat {
-                flex: 1 0 40%;
+                flex: 0 0 calc(50% - 10px);
+                min-width: 130px;
             }
             
             .stat-number {
-                font-size: 24px;
+                font-size: 26px;
             }
             
             .stat-label {
-                font-size: 12px;
+                font-size: 13px;
             }
 
             .hero-title {
-                font-size: 24px;
+                font-size: 28px;
             }
             
             .hero-description {
-                font-size: 14px;
+                font-size: 15px;
+            }
+            
+            .benefit-title {
+                font-size: 20px;
+            }
+            
+            .benefit-text,
+            .hidden-content {
+                font-size: 15px;
             }
 
             .selection-button {
                 padding: 25px 15px;
-                min-height: 180px;
+                min-height: 200px;
+                gap: 20px;
             }
 
             .selection-button img {
-                width: 60px;
-                height: 60px;
+                width: 70px;
+                height: 70px;
             }
             
             .selection-button span {
-                font-size: 16px;
+                font-size: 18px;
             }
 
             .section-title {
-                font-size: 20px;
+                font-size: 22px;
+                margin-bottom: 25px;
             }
             
             .accordion-title {
-                font-size: 14px;
+                font-size: 16px;
+            }
+            
+            .accordion-text {
+                font-size: 15px;
             }
             
             .cta-button {
                 padding: 14px 28px;
-                font-size: 14px;
+                font-size: 15px;
                 width: 100%;
                 justify-content: center;
             }
             
-            .benefit-card {
-                padding: 20px;
-            }
-            
-            .benefit-title {
-                font-size: 18px;
-            }
-            
             .footer-content {
-                padding: 0 15px;
+                padding: 0 20px;
             }
             
             /* Mobil menü butonu */
@@ -803,17 +1043,29 @@
                 position: fixed;
                 bottom: 20px;
                 right: 20px;
-                width: 50px;
-                height: 50px;
+                width: 56px;
+                height: 56px;
                 background: var(--primary);
                 border-radius: 50%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
                 z-index: 100;
                 color: white;
                 cursor: pointer;
+                font-size: 22px;
+            }
+            
+            .mobile-menu-toggle:hover {
+                background: var(--primary-light);
+            }
+            
+            .learn-more {
+                font-size: 15px;
+                padding: 8px 14px;
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -843,9 +1095,9 @@
     <div class="main-container">
         <section class="hero-section">
             <div class="hero-text">
-                <h1 class="hero-title">Kedi Ve Köpeklerin Kısırlaştırılması Hakkında Bilimsel Bir Rehber </h1>
+                <h1 class="hero-title">Kedi ve Köpeklerin Kısırlaştırılması Hakkında Bilimsel Rehber</h1>
                 <p class="hero-description">
-                    Evcil dostlarımızın sağlığı, mutluluğu ve uzun ömürlü bir yaşam sürmeleri hepimizin önceliği. Kedi ve köpeklerin kısırlaştırılması da onların refahı için atılabilecek en önemli adımlardan biridir. Ancak bu konuda kafanızda bazı soru işaretleri olması çok doğal: "Ne zaman yapılmalı?", "Avantajları ve dezavantajları neler?", "Sağlığı nasıl etkiler?" gibi pek çok konu, doğru karar verebilmeniz için bilinçli şekilde ele alınmalıdır.
+                    Evcil dostlarımızın sağlığı, mutluluğu ve uzun ömürlü bir yaşam sürmeleri hepimizin önceliği. Kedi ve köpeklerin kısırlaştırılması onların refahı için atılabilecek en önemli adımlardan biridir. "Ne zaman yapılmalı?", "Avantajları neler?", "Sağlığı nasıl etkiler?" gibi sorularınıza bilimsel cevaplar sunuyoruz.
                 </p>
                 <div class="hero-stats">
                     <div class="stat">
@@ -873,9 +1125,11 @@
                     <i class="fas fa-heartbeat"></i>
                 </div>
                 <h3 class="benefit-title">Kısırlaştırma Nedir?</h3>
-                <p class="benefit-text">
-                    Kısırlaştırma, kedi ve köpeklerde üreme yeteneğini kalıcı olarak ortadan kaldıran, tıbbi bir cerrahi işlemdir. Bu uygulama sayesinde hayvanların yavrulaması önlenir ve üreme hormonlarının etkilediği bazı sağlık sorunları ve davranış problemleri büyük ölçüde azaltılır.
-                </p>
+                <div class="content-preview">
+                    <p>
+                        Kısırlaştırma, kedi ve köpeklerde üreme yeteneğini kalıcı olarak ortadan kaldıran, tıbbi bir cerrahi işlemdir. Bu uygulama sayesinde hayvanların yavrulaması önlenir ve üreme hormonlarının etkilediği sağlık sorunları ve davranış problemleri büyük ölçüde azaltılır.
+                    </p>
+                </div>
                 <div class="hidden-content">
                     <p>Veteriner hekimler tarafından güvenli koşullarda yapılan kısırlaştırma, hem erkek hem de dişi hayvanlar için uygulanabilir:</p>
                     <p><strong>Dişi hayvanlarda (kedi ve köpeklerde):</strong> Yumurtalıkların ve genellikle rahmin alınması işlemidir. (Tıbbi adı: ovariohisterektomi veya bazen sadece yumurtalık alınırsa ovariektomi).</p>
@@ -893,10 +1147,12 @@
                 <div class="benefit-icon">
                     <i class="fas fa-paw"></i>
                 </div>
-                <h3 class="benefit-title">Kedi Ve Köpekler Neden Kısırlaştırılmalıdır</h3>
-                <p class="benefit-text">
-                    Kedi ve köpeklerin kısırlaştırılması, sadece bireysel hayvan sağlığını korumak için değil, aynı zamanda toplum refahını ve hayvan haklarını desteklemek için de yapılan önemli bir uygulamadır. Bu süreç, çeşitli sağlık, davranışsal, toplumsal ve etik nedenlere dayanır.
-                </p>
+                <h3 class="benefit-title">Kedi Ve Köpekler Neden Kısırlaştırılmalıdır?</h3>
+                <div class="content-preview">
+                    <p>
+                        Kedi ve köpeklerin kısırlaştırılması, sadece bireysel hayvan sağlığını korumak için değil, aynı zamanda toplum refahını ve hayvan haklarını desteklemek için de yapılan önemli bir uygulamadır. Bu süreç, çeşitli sağlık, davranışsal, toplumsal ve etik nedenlere dayanır.
+                    </p>
+                </div>
                 <div class="hidden-content">
                     <p><strong>🩺 1. Hayvan Sağlığını Korumak</strong></p>
                     <p>Kısırlaştırma, evcil hayvanların yaşam kalitesini ve yaşam süresini doğrudan etkileyen pek çok ciddi sağlık riskini azaltır:</p>
@@ -941,12 +1197,14 @@
 
             <div class="benefit-card">
                 <div class="benefit-icon">
-                    <i class="fas fa-globe-europe"></i>
+                    <i class="fas fa-calendar-alt"></i>
                 </div>
-                <h3 class="benefit-title">Kedi Ve Köpekler Ne Zaman Kısırlaştırılmalıdır</h3>
-                <p class="benefit-text">
-                    Kısırlaştırmanın zamanı, hem hayvanın türüne, cinsiyetine, yaşam tarzına hem de bireysel sağlık durumuna göre değişebilir. Bu konuda veteriner hekiminizden doğrudan öneri almalısınız. Ancak genel bilimsel tavsiyeler, hayvanların sağlık ve davranışsal açıdan en fazla yararı görecekleri bir dönemi işaret eder.
-                </p>
+                <h3 class="benefit-title">Kedi Ve Köpekler Ne Zaman Kısırlaştırılmalıdır?</h3>
+                <div class="content-preview">
+                    <p>
+                        Kısırlaştırmanın zamanı, hem hayvanın türüne, cinsiyetine, yaşam tarzına hem de bireysel sağlık durumuna göre değişebilir. Bu konuda veteriner hekiminizden doğrudan öneri almalısınız. Ancak genel bilimsel tavsiyeler, hayvanların sağlık ve davranışsal açıdan en fazla yararı görecekleri bir dönemi işaret eder.
+                    </p>
+                </div>
                 <div class="hidden-content">
                     <p><strong>🐱 Kediler İçin:</strong></p>
                     <p><strong>Dişi Kediler:</strong><br>
@@ -985,7 +1243,7 @@
         </section>
 
         <section class="selection-section">
-            <h2 class="section-title">Kısırlaştırma Rehberine Hoş Geldiniz</h2>
+            <h2 class="section-title">Detaylı Rehberimize Göz Atın</h2>
 
             <div class="selection-container">
                 <button class="selection-button" onclick="navigateToPage('cat-female.html')">
@@ -1022,7 +1280,7 @@
                     </div>
                     <div class="accordion-content">
                         <p class="accordion-text">
-                            İyileşme süresi dişi kedilerde 7-10 gün, dişi köpeklerde 10-14 gün sürebilir. Tam iyileşme için dikişlerin alınması gerekir.
+                            İyileşme süresi dişi kedilerde 7-10 gün, dişi köpeklerde 10-14 gün sürebilir. Tam iyileşme için dikişlerin alınması gerekir. Erkek hayvanlarda bu süre genellikle daha kısadır. Operasyon sonrası düzenli veteriner kontrolü iyileşme sürecinin doğru ilerlemesi için önemlidir.
                         </p>
                     </div>
                 </div>
@@ -1034,7 +1292,7 @@
                     </div>
                     <div class="accordion-content">
                         <p class="accordion-text">
-                            Operasyondan önceki gece yarısından itibaren hayvanınıza yemek verilmemeli, su kısıtlanmalıdır (8-12 saat). Aşıların ve parazit tedavilerinin tamamlanmış olması, genel sağlık kontrolünden geçmiş olması önemlidir.
+                            Operasyondan önceki gece yarısından itibaren hayvanınıza yemek verilmemeli, su kısıtlanmalıdır (8-12 saat). Aşıların ve parazit tedavilerinin tamamlanmış olması, genel sağlık kontrolünden geçmiş olması önemlidir. Veteriner hekiminizin önerdiği tüm hazırlıkları eksiksiz uygulamanız, operasyonun güvenli geçmesini sağlar.
                         </p>
                     </div>
                 </div>
@@ -1046,7 +1304,7 @@
                     </div>
                     <div class="accordion-content">
                         <p class="accordion-text">
-                            Kısırlaştırma genellikle olumlu davranış değişikliklerine yol açar. Kızgınlık dönemleri görülmez ve hayvanınız daha sakin ve ev odaklı olur. Hormonal değişikliklerin tam etkisi 4-6 hafta içinde görülmeye başlar.
+                            Kısırlaştırma genellikle olumlu davranış değişikliklerine yol açar. Kızgınlık dönemleri görülmez ve hayvanınız daha sakin ve ev odaklı olur. Hormonal değişikliklerin tam etkisi 4-6 hafta içinde görülmeye başlar. Agresif davranışlar, bölge işaretleme ve kaçma eğilimi gibi sorunlar önemli ölçüde azalır. Hayvanınızın temel kişiliği değişmez, sadece hormonlara bağlı olumsuz davranışlar hafifler.
                         </p>
                     </div>
                 </div>
@@ -1058,7 +1316,7 @@
                     </div>
                     <div class="accordion-content">
                         <p class="accordion-text">
-                            Dişi kedi ve köpeklerde operasyon süresi genellikle 30-60 dakika arasındadır. Anesteziden uyanma süresi ise 2-4 saat arasındadır.
+                            Dişi kedi ve köpeklerde operasyon süresi genellikle 30-60 dakika arasındadır. Erkek hayvanlarda bu süre daha kısadır, yaklaşık 15-30 dakikadır. Anesteziden uyanma süresi ise 2-4 saat arasında değişebilir. Tüm süreç veteriner kliniğinde yaklaşık yarım gününüzü alacaktır, ancak bazı durumlarda hayvanınızın bir gece gözetim altında kalması gerekebilir.
                         </p>
                     </div>
                 </div>
@@ -1066,6 +1324,8 @@
         </section>
 
         <section class="cta-section">
+            <h2>Hayvanınız Kısırlaştırmaya Uygun mu?</h2>
+            <p>Evcil hayvanınızın kısırlaştırma için uygun olup olmadığını öğrenmek için hızlı kontrol aracımızı kullanın. Birkaç soruya vereceğiniz cevaplarla, pet dostunuz için en doğru zamanı belirleyin.</p>
             <a href="form.html" class="cta-button">
                 Kısırlaştırma Uygunluk Kontrolü Yap
                 <i class="fas fa-arrow-right"></i>
@@ -1092,7 +1352,7 @@
                     </div>
                 </div>
                 <p class="footer-about">
-                    Kısırlaştırma rehberimiz, dişi evcil hayvanların sağlıklı bir yaşam sürmesine katkıda bulunmayı amaçlamaktadır. Doğru bilgilerle bilinçli kararlar vermenize yardımcı oluyoruz.
+                    Kısırlaştırma rehberimiz, evcil hayvanların sağlıklı bir yaşam sürmesine katkıda bulunmayı amaçlamaktadır. Erciyes Üniversitesi Veteriner Fakültesi tarafından hazırlanan bu rehber, doğru bilgilerle bilinçli kararlar vermenize yardımcı olur.
                 </p>
                 <div class="footer-contact">
                     <div class="footer-contact-item">
@@ -1115,6 +1375,8 @@
                 <div class="footer-links">
                     <a href="cat-female.html">Dişi Kedi Kısırlaştırma</a>
                     <a href="dog-female.html">Dişi Köpek Kısırlaştırma</a>
+                    <a href="cat-male.html">Erkek Kedi Kısırlaştırma</a>
+                    <a href="dog-male.html">Erkek Köpek Kısırlaştırma</a>
                     <a href="form.html">Uygunluk Kontrolü</a>
                     <a href="#">Hakkımızda</a>
                     <a href="#">İletişim</a>
@@ -1123,7 +1385,7 @@
 
             <div>
                 <h3 class="footer-title">Bülten</h3>
-                <p style="font-size: 14px; opacity: 0.8; margin-bottom: 15px;">
+                <p style="font-size: 15px; opacity: 0.9; margin-bottom: 15px; line-height: 1.7;">
                     Evcil hayvan sağlığı hakkında güncel bilgiler almak için bültenimize abone olun.
                 </p>
                 <div class="footer-newsletter">
@@ -1147,17 +1409,27 @@
         }
 
         // Accordion functionality
-        const accordionItems = document.querySelectorAll('.accordion-item');
-        
-        accordionItems.forEach(item => {
-            const header = item.querySelector('.accordion-header');
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionItems = document.querySelectorAll('.accordion-item');
             
-            header.addEventListener('click', () => {
-                item.classList.toggle('active');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                
+                header.addEventListener('click', () => {
+                    // Diğer tüm accordion öğelerini kapat
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Tıklanan öğeyi aç/kapat
+                    item.classList.toggle('active');
+                });
             });
         });
         
-        // Yeni eklenen Daha Fazla Bilgi butonları için işlevsellik
+        // Daha Fazla Bilgi butonları için işlevsellik
         document.querySelectorAll('.learn-more').forEach(button => {
             button.addEventListener('click', function() {
                 const card = this.closest('.benefit-card');
@@ -1172,6 +1444,21 @@
                     icon.classList.remove('fa-arrow-down');
                     icon.classList.add('fa-arrow-right');
                 }
+                
+                // Scroll işlemi
+                if (card.classList.contains('expanded')) {
+                    // Kart genişlediğinde, biraz bekleyip aşağı kaydır
+                    setTimeout(() => {
+                        const cardRect = card.getBoundingClientRect();
+                        // Kart ekranın alt yarısında ise, kartın üstüne doğru kaydır
+                        if (cardRect.bottom > window.innerHeight) {
+                            window.scrollBy({
+                                top: 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }, 300);
+                }
             });
         });
         
@@ -1185,7 +1472,7 @@
             });
         }
         
-        // Sayfa yüklendiğinde header blurlu resmi kontrol et
+        // Sayfa yüklendiğinde header düzenlemesi
         document.addEventListener('DOMContentLoaded', function() {
             // Mobil cihazlarda header yüksekliğini ayarla
             const adjustHeaderSize = () => {
@@ -1198,6 +1485,12 @@
             
             adjustHeaderSize();
             window.addEventListener('resize', adjustHeaderSize);
+            
+            // İlk accordion öğesini otomatik olarak aç
+            const firstAccordionItem = document.querySelector('.accordion-item');
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add('active');
+            }
         });
     </script>
 </body>
