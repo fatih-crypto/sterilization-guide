@@ -243,17 +243,18 @@
             transform: scale(1.03);
         }
 
-        .benefit-cards {
+        /* Yeni bilgi kartları stili */
+        .info-cards {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 40px;
             margin-bottom: 70px;
         }
 
-        .benefit-card {
+        .info-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 35px;
+            padding: 40px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
             display: flex;
@@ -261,163 +262,144 @@
             border: 1px solid rgba(0,0,0,0.05);
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
-        .benefit-card:hover {
+        .info-card:hover {
             transform: translateY(-7px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .benefit-card::after {
+        .info-card-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        .info-card-title::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
             background: linear-gradient(90deg, var(--primary-light), var(--accent));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            border-radius: 3px;
         }
 
-        .benefit-card:hover::after {
-            opacity: 1;
+        .info-card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
         }
 
-        .benefit-icon {
-            width: 70px;
-            height: 70px;
+        .info-card-text {
+            font-size: 18px;
+            color: var(--gray);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        .info-illustration {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin: 20px 0;
+        }
+
+        .illustration-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 180px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .illustration-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .illustration-icon {
+            width: 100px;
+            height: 100px;
             background: var(--light);
-            border-radius: 14px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .benefit-icon i {
-            font-size: 32px;
-            color: var(--primary);
-        }
-
-        .benefit-title {
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--primary);
             margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 20px;
         }
 
-        .benefit-text {
-            font-size: 16px;
-            color: var(--gray);
-            flex-grow: 1;
-            line-height: 1.7;
-        }
-
-        /* Özel içerik alanı */
-        .content-preview {
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .content-preview p:last-child {
-            margin-bottom: 0;
-        }
-
-        .hidden-content {
-            height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-bottom: 15px;
-            font-size: 16px;
-            color: var(--text-color);
-            line-height: 1.7;
-            position: relative;
-        }
-
-        .hidden-content p, .hidden-content ul, .hidden-content h4 {
-            margin-bottom: 1rem;
-        }
-
-        .hidden-content ul {
-            padding-left: 1.5rem;
-        }
-
-        .hidden-content li {
-            margin-bottom: 0.5rem;
-        }
-
-        .hidden-content strong {
-            color: var(--primary-dark);
-            font-weight: 600;
-        }
-
-        .benefit-card.expanded .hidden-content {
-            height: auto;
-            opacity: 1;
-        }
-
-        /* Gradient overlay to hint that there's more content */
-        .content-preview::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
+        .illustration-icon img {
             width: 100%;
-            height: 30px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
-            pointer-events: none;
-            opacity: 1;
-            transition: opacity 0.3s ease;
+            height: 100%;
+            object-fit: contain;
         }
 
-        .benefit-card.expanded .content-preview::after {
-            opacity: 0;
-        }
-
-        .learn-more {
-            display: inline-flex;
-            align-items: center;
-            color: var(--primary-light);
-            font-weight: 500;
-            margin-top: 10px;
+        .illustration-text {
             font-size: 16px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            cursor: pointer;
-            background: rgba(56, 75, 141, 0.08);
-            padding: 10px 16px;
-            border-radius: 8px;
-            align-self: flex-start;
+            color: var(--primary-dark);
+            font-weight: 500;
         }
 
-        .learn-more i {
-            margin-left: 8px;
+        /* Visual cards for benefits */
+        .visual-benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 70px;
+        }
+
+        .visual-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .visual-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .visual-icon {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 20px;
             transition: transform 0.3s ease;
         }
 
-        .learn-more:hover {
-            color: var(--accent);
-            background: rgba(255, 107, 107, 0.08);
+        .visual-card:hover .visual-icon {
+            transform: scale(1.1);
         }
 
-        .learn-more:hover i {
-            transform: translateX(3px);
+        .visual-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
         }
 
-        .benefit-card.expanded .learn-more {
-            background: rgba(255, 107, 107, 0.08);
-            color: var(--accent);
-        }
-
-        .benefit-card.expanded .learn-more .text-more {
-            display: none;
-        }
-
-        .benefit-card:not(.expanded) .learn-more .text-less {
-            display: none;
+        .visual-text {
+            font-size: 16px;
+            color: var(--gray);
         }
 
         .selection-section {
@@ -835,7 +817,7 @@
             opacity: 0.8;
         }
         
-        /* Geliştirilmiş mobil duyarlılık için medya sorguları */
+        /* Mobil uyumluluk için medya sorguları */
         @media (max-width: 1024px) {
             .hero-section {
                 grid-template-columns: 1fr;
@@ -856,7 +838,7 @@
                 min-width: 100px;
             }
 
-            .benefit-cards {
+            .visual-benefits {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 25px;
             }
@@ -909,11 +891,11 @@
                 font-size: 28px;
             }
 
-            .benefit-cards {
+            .visual-benefits {
                 grid-template-columns: 1fr;
             }
             
-            .benefit-card {
+            .info-card {
                 padding: 25px;
             }
 
@@ -925,6 +907,19 @@
             
             .section-title {
                 font-size: 24px;
+            }
+
+            .info-illustration {
+                gap: 20px;
+            }
+
+            .illustration-item {
+                width: 140px;
+            }
+
+            .illustration-icon {
+                width: 80px;
+                height: 80px;
             }
 
             .footer-content {
@@ -943,7 +938,8 @@
             }
             
             .hero-section, 
-            .benefit-cards, 
+            .info-cards, 
+            .visual-benefits,
             .selection-section, 
             .faq-section,
             .cta-section {
@@ -989,13 +985,30 @@
                 font-size: 15px;
             }
             
-            .benefit-title {
-                font-size: 20px;
+            .info-card-title {
+                font-size: 24px;
             }
             
-            .benefit-text,
-            .hidden-content {
-                font-size: 15px;
+            .info-card-text {
+                font-size: 16px;
+            }
+
+            .info-illustration {
+                gap: 15px;
+            }
+
+            .illustration-item {
+                width: 120px;
+            }
+
+            .illustration-icon {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 10px;
+            }
+
+            .illustration-text {
+                font-size: 14px;
             }
 
             .selection-button {
@@ -1060,13 +1073,6 @@
             .mobile-menu-toggle:hover {
                 background: var(--primary-light);
             }
-            
-            .learn-more {
-                font-size: 15px;
-                padding: 8px 14px;
-                width: 100%;
-                justify-content: center;
-            }
         }
     </style>
 </head>
@@ -1119,126 +1125,61 @@
             </div>
         </section>
 
-        <section class="benefit-cards">
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-heartbeat"></i>
-                </div>
-                <h3 class="benefit-title">Kısırlaştırma Nedir?</h3>
-                <div class="content-preview">
-                    <p>
+        <!-- Tek bir bilgi kartı -->
+        <section class="info-cards">
+            <div class="info-card">
+                <h2 class="info-card-title">Kısırlaştırma Nedir?</h2>
+                <div class="info-card-content">
+                    <p class="info-card-text">
                         Kısırlaştırma, kedi ve köpeklerde üreme yeteneğini kalıcı olarak ortadan kaldıran, tıbbi bir cerrahi işlemdir. Bu uygulama sayesinde hayvanların yavrulaması önlenir ve üreme hormonlarının etkilediği sağlık sorunları ve davranış problemleri büyük ölçüde azaltılır.
                     </p>
+                    
+                    <div class="info-illustration">
+                        <div class="illustration-item">
+                            <div class="illustration-icon">
+                                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f431.svg" alt="Kedi">
+                            </div>
+                            <p class="illustration-text">Dişi Kedilerde</p>
+                        </div>
+                        <div class="illustration-item">
+                            <div class="illustration-icon">
+                                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Köpek">
+                            </div>
+                            <p class="illustration-text">Dişi Köpeklerde</p>
+                        </div>
+                        <div class="illustration-item">
+                            <div class="illustration-icon">
+                                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Erkek Kedi">
+                            </div>
+                            <p class="illustration-text">Erkek Kedilerde</p>
+                        </div>
+                        <div class="illustration-item">
+                            <div class="illustration-icon">
+                                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f436.svg" alt="Erkek Köpek">
+                            </div>
+                            <p class="illustration-text">Erkek Köpeklerde</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="hidden-content">
-                    <p>Veteriner hekimler tarafından güvenli koşullarda yapılan kısırlaştırma, hem erkek hem de dişi hayvanlar için uygulanabilir:</p>
-                    <p><strong>Dişi hayvanlarda (kedi ve köpeklerde):</strong> Yumurtalıkların ve genellikle rahmin alınması işlemidir. (Tıbbi adı: ovariohisterektomi veya bazen sadece yumurtalık alınırsa ovariektomi).</p>
-                    <p><strong>Erkek hayvanlarda:</strong> Testislerin alınması işlemidir. (Tıbbi adı: kastrasyon).</p>
-                    <p>Bu operasyon, genel anestezi altında yapılır ve hayvanın yaşam kalitesi üzerinde uzun vadede olumlu etkiler bırakır.</p>
-                </div>
-                <a class="learn-more">
-                    <span class="text-more">Daha Fazla Bilgi</span>
-                    <span class="text-less">Daha Az Göster</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
             </div>
+        </section>
 
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-paw"></i>
-                </div>
-                <h3 class="benefit-title">Kedi Ve Köpekler Neden Kısırlaştırılmalıdır?</h3>
-                <div class="content-preview">
-                    <p>
-                        Kedi ve köpeklerin kısırlaştırılması, sadece bireysel hayvan sağlığını korumak için değil, aynı zamanda toplum refahını ve hayvan haklarını desteklemek için de yapılan önemli bir uygulamadır. Bu süreç, çeşitli sağlık, davranışsal, toplumsal ve etik nedenlere dayanır.
-                    </p>
-                </div>
-                <div class="hidden-content">
-                    <p><strong>🩺 1. Hayvan Sağlığını Korumak</strong></p>
-                    <p>Kısırlaştırma, evcil hayvanların yaşam kalitesini ve yaşam süresini doğrudan etkileyen pek çok ciddi sağlık riskini azaltır:</p>
-                    <p><strong>Dişi hayvanlarda:</strong> Rahim enfeksiyonları (pyometra) ve meme tümörü gibi hayati risk taşıyan hastalıkların oluşma ihtimali büyük ölçüde düşer.</p>
-                    <p><strong>Erkek hayvanlarda:</strong> Testis tümörleri ve prostat problemleri gibi ciddi hastalıkların önüne geçilir.</p>
-                    <p>Kısırlaştırılan hayvanlar, genel olarak daha uzun, daha sağlıklı ve daha huzurlu bir yaşam sürerler.</p>
-                    
-                    <p><strong>🧠 2. Davranışsal Sorunları Azaltmak</strong></p>
-                    <p>Üreme hormonlarının etkisiyle ortaya çıkan birçok istenmeyen davranış, kısırlaştırmayla önlenebilir veya hafifletilebilir:</p>
-                    <ul>
-                        <li>Kızgınlık dönemlerinde aşırı ses çıkarma ve huzursuzluk</li>
-                        <li>Eş aramak için evden kaçma girişimleri</li>
-                        <li>Diğer hayvanlarla kavga etme</li>
-                        <li>Bölge işaretlemek için idrar püskürtme (özellikle erkeklerde)</li>
-                    </ul>
-                    <p>Kısırlaştırılan hayvanlar, hormonel baskıdan kurtularak daha sakin ve ev yaşamına daha uyumlu bireyler haline gelir.</p>
-                    
-                    <p><strong>🌎 3. Kontrolsüz Üremenin Önüne Geçmek</strong></p>
-                    <p>Bir çift kedi, uygun koşullarda sadece birkaç yıl içinde binlerce yavru dünyaya getirebilir. Kontrolsüz üreme:</p>
-                    <ul>
-                        <li>Sokaklarda sahipsiz, aç ve hasta hayvan sayısının artmasına,</li>
-                        <li>Barınakların dolmasına,</li>
-                        <li>Hayvanların kötü yaşam koşullarına maruz kalmasına neden olur.</li>
-                    </ul>
-                    <p>Kısırlaştırma, sokak hayvanı sorununu uzun vadede çözmenin en etkili ve insani yoludur.</p>
-                    
-                    <p><strong>🏘 4. Toplum Sağlığına Katkıda Bulunmak</strong></p>
-                    <p>Başıboş hayvanlar, sadece kendi yaşamları için değil, insanlar için de bazı riskler taşır:</p>
-                    <ul>
-                        <li>Kuduz gibi zoonotik hastalıkların yayılma riski</li>
-                        <li>Trafik kazalarına neden olma</li>
-                        <li>Toplumda korku ve güvensizlik oluşturma</li>
-                    </ul>
-                    <p>Kısırlaştırma ile sokaktaki hayvan nüfusu dengelenir, hem insanlar hem de hayvanlar için daha güvenli bir yaşam ortamı sağlanır.</p>
-                </div>
-                <a class="learn-more">
-                    <span class="text-more">Daha Fazla Bilgi</span>
-                    <span class="text-less">Daha Az Göster</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+        <!-- Görsel kartlar bölümü (Neden Kısırlaştırılmalı) -->
+        <section class="visual-benefits">
+            <div class="visual-card">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1fa7a.svg" alt="Sağlık" class="visual-icon">
+                <h3 class="visual-title">Sağlık Açısından</h3>
+                <p class="visual-text">Kanser ve enfeksiyon riskini azaltır, daha uzun ve sağlıklı bir yaşam sağlar.</p>
             </div>
-
-            <div class="benefit-card">
-                <div class="benefit-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <h3 class="benefit-title">Kedi Ve Köpekler Ne Zaman Kısırlaştırılmalıdır?</h3>
-                <div class="content-preview">
-                    <p>
-                        Kısırlaştırmanın zamanı, hem hayvanın türüne, cinsiyetine, yaşam tarzına hem de bireysel sağlık durumuna göre değişebilir. Bu konuda veteriner hekiminizden doğrudan öneri almalısınız. Ancak genel bilimsel tavsiyeler, hayvanların sağlık ve davranışsal açıdan en fazla yararı görecekleri bir dönemi işaret eder.
-                    </p>
-                </div>
-                <div class="hidden-content">
-                    <p><strong>🐱 Kediler İçin:</strong></p>
-                    <p><strong>Dişi Kediler:</strong><br>
-                    İlk kızgınlık dönemi başlamadan, yani 5–6 aylıkken kısırlaştırılması önerilir.<br>
-                    İlk kızgınlıktan önce yapılan kısırlaştırma, özellikle meme tümörü riskini %90 oranında azaltır.</p>
-                    
-                    <p><strong>Erkek Kediler:</strong><br>
-                    Genellikle 5–6 aylıkken, cinsel olgunluğa ulaşmadan önce kısırlaştırılmaları önerilir.<br>
-                    Böylece ileri yaşlarda ortaya çıkabilecek idrar püskürtme ve agresif davranışlar önlenebilir.</p>
-                    
-                    <p><strong>🐶 Köpekler İçin:</strong></p>
-                    <p><strong>Dişi Köpekler:</strong></p>
-                    <ul>
-                        <li>Küçük ve orta ırklar için: 6–7 aylıkken, yani ilk kızgınlık başlamadan hemen önce veya ilk kızgınlık sonrası.</li>
-                        <li>Büyük ve dev ırklar için: Kemik gelişimi tamamlandıktan sonra, yani 12–18 ay civarında yapılması bazı durumlarda önerilebilir (özellikle eklem sağlığı açısından).</li>
-                    </ul>
-                    <p>(Veteriner hekiminizin ırk ve bireysel gelişim özelliklerine göre önerisi çok önemlidir.)</p>
-                    
-                    <p><strong>Erkek Köpekler:</strong></p>
-                    <ul>
-                        <li>Küçük ve orta ırklar: 6–7 aylıkken kısırlaştırılabilir.</li>
-                        <li>Büyük ve dev ırklar: Bazen 12–18 ay beklemek (özellikle kas-iskelet sistemi sağlığı için) daha uygun olabilir.</li>
-                    </ul>
-                    
-                    <p><strong>📚 Bilimsel Not:</strong></p>
-                    <p>Erken yaşta yapılan kısırlaştırma, dişi hayvanlarda meme kanseri ve rahim enfeksiyonları gibi ciddi hastalık risklerini dramatik şekilde azaltır.</p>
-                    <p>Erkek hayvanlarda testis hastalıkları ve bazı davranışsal sorunların önlenmesinde erken kısırlaştırma etkilidir.</p>
-                    <p>Ancak aşırı erken yaşta (örneğin 8 haftalık gibi çok küçük yaşta) yapılan kısırlaştırmanın büyüme ve gelişim üzerindeki etkileri konusunda hala dikkat edilmesi gereken tartışmalar vardır. Bu yüzden veteriner hekiminizin bireysel değerlendirmesi önemlidir.</p>
-                </div>
-                <a class="learn-more">
-                    <span class="text-more">Daha Fazla Bilgi</span>
-                    <span class="text-less">Daha Az Göster</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+            <div class="visual-card">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f4a4.svg" alt="Davranış" class="visual-icon">
+                <h3 class="visual-title">Davranışsal Açıdan</h3>
+                <p class="visual-text">Saldırganlık ve stres davranışlarını azaltır, daha sakin bir hayvan sağlar.</p>
+            </div>
+            <div class="visual-card">
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f30e.svg" alt="Çevre" class="visual-icon">
+                <h3 class="visual-title">Popülasyon Kontrolü</h3>
+                <p class="visual-text">Sokak hayvanlarının kontrolsüz üremesini önleyerek toplumsal fayda sağlar.</p>
             </div>
         </section>
 
@@ -1427,39 +1368,12 @@
                     item.classList.toggle('active');
                 });
             });
-        });
-        
-        // Daha Fazla Bilgi butonları için işlevsellik
-        document.querySelectorAll('.learn-more').forEach(button => {
-            button.addEventListener('click', function() {
-                const card = this.closest('.benefit-card');
-                card.classList.toggle('expanded');
-                
-                // İkon yönünü değiştir
-                const icon = this.querySelector('i');
-                if (card.classList.contains('expanded')) {
-                    icon.classList.remove('fa-arrow-right');
-                    icon.classList.add('fa-arrow-down');
-                } else {
-                    icon.classList.remove('fa-arrow-down');
-                    icon.classList.add('fa-arrow-right');
-                }
-                
-                // Scroll işlemi
-                if (card.classList.contains('expanded')) {
-                    // Kart genişlediğinde, biraz bekleyip aşağı kaydır
-                    setTimeout(() => {
-                        const cardRect = card.getBoundingClientRect();
-                        // Kart ekranın alt yarısında ise, kartın üstüne doğru kaydır
-                        if (cardRect.bottom > window.innerHeight) {
-                            window.scrollBy({
-                                top: 100,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }, 300);
-                }
-            });
+            
+            // İlk accordion öğesini otomatik olarak aç
+            const firstAccordionItem = document.querySelector('.accordion-item');
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add('active');
+            }
         });
         
         // Mobil menü toggle
@@ -1485,12 +1399,6 @@
             
             adjustHeaderSize();
             window.addEventListener('resize', adjustHeaderSize);
-            
-            // İlk accordion öğesini otomatik olarak aç
-            const firstAccordionItem = document.querySelector('.accordion-item');
-            if (firstAccordionItem) {
-                firstAccordionItem.classList.add('active');
-            }
         });
     </script>
 </body>
