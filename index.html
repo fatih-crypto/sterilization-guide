@@ -13,6 +13,7 @@
             --primary-dark: #1A2C58;
             --accent: #FF6B6B;
             --accent-hover: #ff5252;
+            --accent-light: #FFE0E0;
             --light: #F6F8FD;
             --gray: #616A82;
             --gray-light: #8A94A7;
@@ -182,6 +183,100 @@
             color: var(--gray);
             margin-bottom: 30px;
             line-height: 1.8;
+        }
+
+        /* Vurgulanan metin için yeni stil */
+        .highlight-text {
+            font-size: 120%;
+            font-weight: 500;
+            color: var(--primary);
+            display: block;
+            margin: 15px 0;
+            line-height: 1.4;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        /* Metin içi simge */
+        .text-icon {
+            color: var(--accent);
+            margin-right: 5px;
+            font-size: 120%;
+            vertical-align: middle;
+        }
+
+        /* Bilgi kutuları */
+        .info-box {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-box-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .info-box-icon {
+            background: var(--accent-light);
+            color: var(--accent);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .info-box-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .info-box-content {
+            color: var(--gray);
+            font-size: 16px;
+        }
+
+        /* Madde işaretleri */
+        .benefit-list {
+            margin: 25px 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 15px;
+            background: var(--light);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .benefit-item i {
+            color: var(--accent);
+            font-size: 18px;
+            padding-top: 3px;
+        }
+
+        .benefit-item span {
+            color: var(--text-color);
+            font-weight: 500;
         }
 
         .hero-stats {
@@ -741,6 +836,10 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
+            
+            .benefit-list {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -953,9 +1052,15 @@
         <section class="hero-section">
             <div class="hero-text">
                 <h1 class="hero-title">Kedi ve Köpeklerin Kısırlaştırılması Hakkında Bilimsel Rehber</h1>
+                
                 <p class="hero-description">
-                    Evcil dostlarımızın sağlığı, mutluluğu ve uzun ömürlü bir yaşam sürmeleri hepimizin önceliği. Kedi ve köpeklerin kısırlaştırılması onların refahı için atılabilecek en önemli adımlardan biridir. "Ne zaman yapılmalı?", "Avantajları neler?", "Sağlığı nasıl etkiler?" gibi sorularınıza bilimsel cevaplar sunuyoruz.
+                    Evcil dostlarımızın sağlığı ve mutluluğu için atılabilecek en önemli adımlardan biri olan kısırlaştırma, onların daha uzun ve kaliteli bir yaşam sürmesini sağlar.
                 </p>
+                
+                <span class="highlight-text">
+                    <i class="fas fa-quote-left text-icon"></i> Kısırlaştırılmış hayvanlar ortalama 3-5 yıl daha uzun yaşar ve birçok ciddi hastalık riskinden korunur.
+                </span>
+                
                 <div class="hero-stats">
                     <div class="stat">
                         <span class="stat-number">70%</span>
@@ -979,9 +1084,47 @@
         <!-- Kedi ve Köpekler Neden Kısırlaştırılmalıdır? bölümü -->
         <section class="section">
             <h2 class="section-title">Kedi ve Köpekler Neden Kısırlaştırılmalıdır?</h2>
-            <p class="info-card-text">
-                Kısırlaştırma, evcil dostlarımızın yaşam kalitesini artıran ve sağlıklarını koruyan önemli bir koruyucu sağlık uygulamasıdır. Bu tıbbi müdahale, üreme organlarının cerrahi olarak alınmasıyla gerçekleştirilir ve hayvanların üreme yeteneğini kalıcı olarak sonlandırır. Sadece istenmeyen gebelikleri önlemekle kalmaz, aynı zamanda birçok hormonal kaynaklı hastalık riskini azaltır ve davranışsal sorunları önemli ölçüde iyileştirir.
-            </p>
+            
+            <!-- Bilgi Kutusu eklendi -->
+            <div class="info-box">
+                <div class="info-box-header">
+                    <div class="info-box-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="info-box-title">Sağlık ve Yaşam Kalitesini Artırır</div>
+                </div>
+                <div class="info-box-content">
+                    Kısırlaştırma, evcil dostlarımızın yaşam kalitesini artıran ve sağlıklarını koruyan önemli bir koruyucu sağlık uygulamasıdır. Bu uygulama, pek çok kanser türü ve hormonal hastalıkların riskini önemli ölçüde azaltırken davranışsal sorunları da iyileştirir.
+                </div>
+            </div>
+            
+            <!-- Madde işaretleri ile faydaları eklendi -->
+            <div class="benefit-list">
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Meme ve testis tümörlerini önler</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Rahim enfeksiyonlarını engeller</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Agresif davranışları azaltır</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>İstenmeyen gebelikleri önler</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Sokak hayvanı popülasyonunu kontrol eder</span>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Daha uzun ve sağlıklı ömür sağlar</span>
+                </div>
+            </div>
             
             <!-- Görsel galerisi - Profesyonel düzenleme -->
             <div class="benefits-gallery">
@@ -1031,9 +1174,17 @@
         <section class="info-card">
             <h2 class="section-title">Dişi Hayvan Kısırlaştırma Rehberleri</h2>
             <div class="info-card-content">
-                <p class="info-card-text">
-                    Aşağıdaki rehberlerden evcil hayvanınıza uygun olanı seçerek kısırlaştırma hakkında detaylı bilgiye ulaşabilirsiniz.
-                </p>
+                <div class="info-box">
+                    <div class="info-box-header">
+                        <div class="info-box-icon">
+                            <i class="fas fa-book-medical"></i>
+                        </div>
+                        <div class="info-box-title">Detaylı Bilgiye Ulaşın</div>
+                    </div>
+                    <div class="info-box-content">
+                        Aşağıdaki rehberlerden evcil hayvanınıza uygun olanı seçerek kısırlaştırma öncesi hazırlık, operasyon süreci ve sonrası bakım hakkında detaylı bilgiye ulaşabilirsiniz.
+                    </div>
+                </div>
                 
                 <!-- Rehber butonları -->
                 <div class="guide-links">
