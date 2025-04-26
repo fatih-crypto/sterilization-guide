@@ -1,134 +1,1242 @@
-<!-- Kedi ve Köpekler Neden Kısırlaştırılmalıdır? bölümü -->
-<section class="section">
-    <h2 class="section-title">Kedi ve Köpekler Neden Kısırlaştırılmalıdır?</h2>
-    <p class="info-card-text">
-        Kısırlaştırma, evcil dostlarımızın yaşam kalitesini artıran ve sağlıklarını koruyan önemli bir koruyucu sağlık uygulamasıdır. Bu tıbbi müdahale, üreme organlarının cerrahi olarak alınmasıyla gerçekleştirilir ve hayvanların üreme yeteneğini kalıcı olarak sonlandırır. Sadece istenmeyen gebelikleri önlemekle kalmaz, aynı zamanda birçok hormonal kaynaklı hastalık riskini azaltır ve davranışsal sorunları önemli ölçüde iyileştirir.
-    </p>
-    
-    <!-- Görsel galerisi - Profesyonel düzenleme -->
-    <div class="benefits-gallery">
-        <div class="benefit-row">
-            <div class="benefit-card">
-                <div class="benefit-image">
-                    <img src="kedi_ve kopek fotosu arkada sağlıklı bir yaşam yazıyuor.jpg" alt="Sağlıklı Yaşam">
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hayvan Kısırlaştırma Rehberi | Erciyes Üniversitesi Veteriner Fakültesi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2B3A67;
+            --primary-light: #384B8D;
+            --primary-dark: #1A2C58;
+            --accent: #FF6B6B;
+            --accent-hover: #ff5252;
+            --light: #F6F8FD;
+            --gray: #616A82;
+            --gray-light: #8A94A7;
+            --dark: #1F2937;
+            --text-color: #333747;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --border-radius: 16px;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--light) 0%, #f1f4f9 100%);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-dark);
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 25px 0;
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Arka plan kedi-köpek görseli */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: blur(4px) brightness(0.5) sepia(0.3) saturate(1.5);
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(#ff8e50, transparent 70%);
+            opacity: 0.2;
+            border-radius: 50%;
+            transform: translate(30%, -50%);
+            z-index: 0;
+        }
+
+        .header-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 25px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--primary);
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 1.3;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .logo-text span {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 18px;
+        }
+
+        .social-links a {
+            color: white;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .main-container {
+            max-width: 1300px;
+            margin: 50px auto;
+            padding: 0 25px;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 70px;
+            align-items: center;
+        }
+
+        .hero-text {
+            padding-right: 20px;
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            min-width: 120px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 15px;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .hero-image {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Genel bölüm stili */
+        .section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 70px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
+            border-radius: 3px;
+        }
+
+        /* Yeni eklenen görsel kartlar ve düzeni */
+        .benefits-gallery {
+            margin-top: 40px;
+        }
+
+        .benefit-row {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 360px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .benefit-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .benefit-card:hover .benefit-image img {
+            transform: scale(1.08);
+        }
+
+        .benefit-title {
+            padding: 18px 20px 8px;
+            font-weight: 600;
+            color: #2B3A67;
+            font-size: 18px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .benefit-desc {
+            padding: 0 20px 20px;
+            color: #616A82;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        /* Kısırlaştırma nedir bölümü */
+        .info-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 70px;
+        }
+
+        .info-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .info-card-text {
+            font-size: 18px;
+            color: var(--gray);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            text-align: center;
+        }
+
+        .definition-highlight {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--primary-dark);
+            padding: 15px 25px;
+            background-color: var(--light);
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-light);
+            margin: 10px auto 30px;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        /* Rehber linkleri */
+        .guide-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .guide-link {
+            background: var(--light);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: var(--border-radius);
+            padding: 30px 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .guide-link:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .guide-link img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .guide-link:hover img {
+            transform: scale(1.1);
+        }
+
+        .guide-link span {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .guide-link:hover span {
+            color: var(--primary-light);
+        }
+
+        /* SSS Bölümü */
+        .faq-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 50px;
+            box-shadow: var(--shadow);
+            margin-bottom: 70px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .accordion {
+            margin-top: 30px;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #e1e8f5;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .accordion-header {
+            padding: 20px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-title {
+            font-weight: 500;
+            font-size: 18px;
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+
+        .accordion-item:hover .accordion-title {
+            color: var(--accent);
+        }
+
+        .accordion-icon {
+            color: var(--primary);
+            transition: transform 0.3s ease, color 0.3s ease;
+            font-size: 18px;
+        }
+
+        .accordion-item:hover .accordion-icon {
+            color: var(--accent);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-text {
+            padding: 0 0 25px 0;
+            color: var(--gray);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+            color: var(--accent);
+        }
+
+        .accordion-item.active .accordion-title {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            padding: 70px 0 30px;
+            color: white;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary);
+        }
+
+        .footer-logo-text {
+            font-size: 20px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-about {
+            font-size: 15px;
+            opacity: 0.9;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            font-size: 15px;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-contact-item i {
+            font-size: 18px;
+            opacity: 0.9;
+            color: var(--accent);
+        }
+
+        .footer-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:before {
+            content: '\f054';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            font-size: 12px;
+            color: var(--accent);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .footer-newsletter input {
+            width: 100%;
+            padding: 14px 18px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 15px;
+        }
+
+        .footer-newsletter input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-newsletter input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-newsletter button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 14px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            width: 100%;
+        }
+
+        .footer-newsletter button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+        }
+
+        .footer-divider {
+            max-width: 1300px;
+            margin: 50px auto 20px;
+            padding: 0 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            opacity: 0.8;
+        }
+        
+        /* Mobil uyumluluk için medya sorguları */
+        @media (max-width: 1024px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-image {
+                height: 400px;
+            }
+
+            .hero-stats {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .stat {
+                flex: 1 0 calc(33% - 40px);
+                min-width: 100px;
+            }
+
+            .benefit-row {
+                flex-wrap: wrap;
+            }
+            
+            .benefit-card {
+                max-width: 45%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+            
+            .guide-links {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 20px 15px;
+            }
+
+            .social-links {
+                margin-top: 15px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+
+            .hero-text {
+                padding-right: 0;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .hero-image {
+                height: 320px;
+            }
+            
+            .stat {
+                padding: 15px;
+            }
+            
+            .stat-number {
+                font-size: 28px;
+            }
+
+            .benefit-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .benefit-card {
+                max-width: 100%;
+            }
+            
+            .section, .info-card {
+                padding: 30px 20px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+
+            .faq-section {
+                padding: 30px 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .main-container {
+                margin: 30px auto;
+            }
+            
+            .hero-section, 
+            .section,
+            .info-card,
+            .faq-section {
+                margin-bottom: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 15px;
+            }
+            
+            .logo {
+                flex-direction: column;
+            }
+            
+            header {
+                padding: 20px 0;
+            }
+
+            .hero-stats {
+                gap: 15px;
+            }
+
+            .stat {
+                flex: 0 0 calc(50% - 10px);
+                min-width: 130px;
+            }
+            
+            .stat-number {
+                font-size: 26px;
+            }
+            
+            .stat-label {
+                font-size: 13px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+            
+            .hero-description {
+                font-size: 15px;
+            }
+            
+            .section-title,
+            .info-card-title {
+                font-size: 24px;
+            }
+            
+            .info-card-text {
+                font-size: 16px;
+            }
+
+            .definition-highlight {
+                font-size: 16px;
+                padding: 12px 15px;
+            }
+
+            .guide-link {
+                padding: 20px 15px;
+            }
+
+            .guide-link img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .guide-link span {
+                font-size: 16px;
+            }
+
+            .accordion-title {
+                font-size: 16px;
+            }
+            
+            .accordion-text {
+                font-size: 15px;
+            }
+            
+            .footer-content {
+                padding: 0 20px;
+            }
+            
+            /* Mobil menü butonu */
+            .mobile-menu-toggle {
+                display: block;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 56px;
+                height: 56px;
+                background: var(--primary);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 100;
+                color: white;
+                cursor: pointer;
+                font-size: 22px;
+            }
+            
+            .mobile-menu-toggle:hover {
+                background: var(--primary-light);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/>
+                    </svg>
                 </div>
-                <div class="benefit-title">Daha Uzun ve Sağlıklı Yaşam</div>
-                <div class="benefit-desc">Kısırlaştırılan hayvanlar ortalama 3-5 yıl daha uzun yaşar</div>
+                <div class="logo-text">
+                    Kısırlaştırma Rehberi
+                </div>
             </div>
-            <div class="benefit-card">
-                <div class="benefit-image">
-                    <img src="yorgan_altinda_kopek.jpg" alt="Yorgan Altında Köpek">
-                </div>
-                <div class="benefit-title">Daha Sakin ve Uyumlu Davranış</div>
-                <div class="benefit-desc">Hormonal dalgalanmalar azalır, daha dengeli mizaç gelişir</div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-image">
-                    <img src="iki tane selfi çekinen kedi.jpg" alt="Selfi Çekinen Kediler">
-                </div>
-                <div class="benefit-title">Sosyal İlişkilerde İyileşme</div>
-                <div class="benefit-desc">Daha az agresif davranış, daha iyi ev uyumu ve sosyalleşme</div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
-        <div class="benefit-row">
-            <div class="benefit-card">
-                <div class="benefit-image">
-                    <img src="birsürü kedi sokakta.jpg" alt="Sokakta Kediler">
+    </header>
+
+    <div class="main-container">
+        <section class="hero-section">
+            <div class="hero-text">
+                <h1 class="hero-title">Kedi ve Köpeklerin Kısırlaştırılması Hakkında Bilimsel Rehber</h1>
+                <p class="hero-description">
+                    Evcil dostlarımızın sağlığı, mutluluğu ve uzun ömürlü bir yaşam sürmeleri hepimizin önceliği. Kedi ve köpeklerin kısırlaştırılması onların refahı için atılabilecek en önemli adımlardan biridir. "Ne zaman yapılmalı?", "Avantajları neler?", "Sağlığı nasıl etkiler?" gibi sorularınıza bilimsel cevaplar sunuyoruz.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">70%</span>
+                        <span class="stat-label">Kanser Riski Azalması</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3-5</span>
+                        <span class="stat-label">Yıl Daha Uzun Ömür</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">İstenmeyen Gebelik Önleme</span>
+                    </div>
                 </div>
-                <div class="benefit-title">Sokak Hayvanı Popülasyonu Kontrolü</div>
-                <div class="benefit-desc">İstenmeyen yavruların önlenmesi ve toplumsal refah</div>
             </div>
-            <div class="benefit-card">
-                <div class="benefit-image">
-                    <img src="hasta kedi fotosu.jpg" alt="Hasta Kedi">
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1581888227599-779811939961?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Veteriner muayenesi">
+            </div>
+        </section>
+
+        <!-- Kedi ve Köpekler Neden Kısırlaştırılmalıdır? bölümü -->
+        <section class="section">
+            <h2 class="section-title">Kedi ve Köpekler Neden Kısırlaştırılmalıdır?</h2>
+            <p class="info-card-text">
+                Kısırlaştırma, evcil dostlarımızın yaşam kalitesini artıran ve sağlıklarını koruyan önemli bir koruyucu sağlık uygulamasıdır. Bu tıbbi müdahale, üreme organlarının cerrahi olarak alınmasıyla gerçekleştirilir ve hayvanların üreme yeteneğini kalıcı olarak sonlandırır. Sadece istenmeyen gebelikleri önlemekle kalmaz, aynı zamanda birçok hormonal kaynaklı hastalık riskini azaltır ve davranışsal sorunları önemli ölçüde iyileştirir.
+            </p>
+            
+            <!-- Görsel galerisi - Profesyonel düzenleme -->
+            <div class="benefits-gallery">
+                <div class="benefit-row">
+                    <div class="benefit-card">
+                        <div class="benefit-image">
+                            <img src="kedi_ve kopek fotosu arkada sağlıklı bir yaşam yazıyuor.jpg" alt="Sağlıklı Yaşam">
+                        </div>
+                        <div class="benefit-title">Daha Uzun ve Sağlıklı Yaşam</div>
+                        <div class="benefit-desc">Kısırlaştırılan hayvanlar ortalama 3-5 yıl daha uzun yaşar</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-image">
+                            <img src="yorgan_altinda_kopek.jpg" alt="Yorgan Altında Köpek">
+                        </div>
+                        <div class="benefit-title">Daha Sakin ve Uyumlu Davranış</div>
+                        <div class="benefit-desc">Hormonal dalgalanmalar azalır, daha dengeli mizaç gelişir</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-image">
+                            <img src="iki tane selfi çekinen kedi.jpg" alt="Selfi Çekinen Kediler">
+                        </div>
+                        <div class="benefit-title">Sosyal İlişkilerde İyileşme</div>
+                        <div class="benefit-desc">Daha az agresif davranış, daha iyi ev uyumu ve sosyalleşme</div>
+                    </div>
                 </div>
-                <div class="benefit-title">Hastalık Risklerinde Azalma</div>
-                <div class="benefit-desc">Rahim, yumurtalık ve testis kanseri risklerinin ortadan kalkması</div>
+                <div class="benefit-row">
+                    <div class="benefit-card">
+                        <div class="benefit-image">
+                            <img src="birsürü kedi sokakta.jpg" alt="Sokakta Kediler">
+                        </div>
+                        <div class="benefit-title">Sokak Hayvanı Popülasyonu Kontrolü</div>
+                        <div class="benefit-desc">İstenmeyen yavruların önlenmesi ve toplumsal refah</div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-image">
+                            <img src="hasta kedi fotosu.jpg" alt="Hasta Kedi">
+                        </div>
+                        <div class="benefit-title">Hastalık Risklerinde Azalma</div>
+                        <div class="benefit-desc">Rahim, yumurtalık ve testis kanseri risklerinin ortadan kalkması</div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Rehberler için ayrı bir bölüm -->
+        <section class="info-card">
+            <h2 class="section-title">Dişi Hayvan Kısırlaştırma Rehberleri</h2>
+            <div class="info-card-content">
+                <p class="info-card-text">
+                    Aşağıdaki rehberlerden evcil hayvanınıza uygun olanı seçerek kısırlaştırma hakkında detaylı bilgiye ulaşabilirsiniz.
+                </p>
+                
+                <!-- Rehber butonları -->
+                <div class="guide-links">
+                    <a href="cat-female.html" class="guide-link">
+                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Dişi Kedi">
+                        <span>Dişi Kedi Kısırlaştırma Rehberi</span>
+                    </a>
+                    <a href="dog-female.html" class="guide-link">
+                        <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Dişi Köpek">
+                        <span>Dişi Köpek Kısırlaştırma Rehberi</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SSS Bölümü -->
+        <section class="faq-section">
+            <h2 class="section-title">Sık Sorulan Sorular</h2>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Kısırlaştırma için en uygun yaş nedir?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-text">
+                            Dişi kediler için genellikle 4-6 ay, dişi köpekler için 6-12 ay arasında kısırlaştırma önerilir. Büyük ırk köpeklerde fiziksel gelişimin tamamlanması beklenebilir. Kesin yaş önerisi için veteriner hekiminize danışmanız en doğrusudur.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Kısırlaştırma sonrası ne kadar sürede iyileşme olur?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-text">
+                            İyileşme süresi dişi kedilerde 7-10 gün, dişi köpeklerde 10-14 gün sürebilir. Tam iyileşme için dikişlerin alınması gerekir. Erkek hayvanlarda bu süre genellikle daha kısadır. Operasyon sonrası düzenli veteriner kontrolü iyileşme sürecinin doğru ilerlemesi için önemlidir.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Kısırlaştırma öncesi ne tür hazırlıklar yapılmalıdır?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-text">
+                            Operasyondan önceki gece yarısından itibaren hayvanınıza yemek verilmemeli, su kısıtlanmalıdır (8-12 saat). Aşıların ve parazit tedavilerinin tamamlanmış olması, genel sağlık kontrolünden geçmiş olması önemlidir. Veteriner hekiminizin önerdiği tüm hazırlıkları eksiksiz uygulamanız, operasyonun güvenli geçmesini sağlar.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Kısırlaştırma hayvanımın karakterini değiştirir mi?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-text">
+                            Kısırlaştırma genellikle olumlu davranış değişikliklerine yol açar. Kızgınlık dönemleri görülmez ve hayvanınız daha sakin ve ev odaklı olur. Hormonal değişikliklerin tam etkisi 4-6 hafta içinde görülmeye başlar. Agresif davranışlar, bölge işaretleme ve kaçma eğilimi gibi sorunlar önemli ölçüde azalır. Hayvanınızın temel kişiliği değişmez, sadece hormonlara bağlı olumsuz davranışlar hafifler.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Kısırlaştırma operasyonu ne kadar sürer?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-text">
+                            Dişi kedi ve köpeklerde operasyon süresi genellikle 30-60 dakika arasındadır. Erkek hayvanlarda bu süre daha kısadır, yaklaşık 15-30 dakikadır. Anesteziden uyanma süresi ise 2-4 saat arasında değişebilir. Tüm süreç veteriner kliniğinde yaklaşık yarım gününüzü alacaktır, ancak bazı durumlarda hayvanınızın bir gece gözetim altında kalması gerekebilir.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-</section>
 
-<style>
-/* Yeni görsel düzeni için style */
-.benefits-gallery {
-    margin-top: 40px;
-}
+    <!-- Mobil ekranlarda sağ altta gösterilen menü butonu -->
+    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
 
-.benefit-row {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-bottom: 25px;
-}
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/>
+                        </svg>
+                    </div>
+                    <div class="footer-logo-text">
+                        Kısırlaştırma Rehberi
+                    </div>
+                </div>
+                <p class="footer-about">
+                    Kısırlaştırma rehberimiz, evcil hayvanların sağlıklı bir yaşam sürmesine katkıda bulunmayı amaçlamaktadır. Erciyes Üniversitesi Veteriner Fakültesi tarafından hazırlanan bu rehber, doğru bilgilerle bilinçli kararlar vermenize yardımcı olur.
+                </p>
+                <div class="footer-contact">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kayseri, Türkiye</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+90 352 123 4567</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@kisirlasmtarehberi.com</span>
+                    </div>
+                </div>
+            </div>
 
-.benefit-card {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: 360px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(0,0,0,0.04);
-}
+            <div>
+                <h3 class="footer-title">Hızlı Erişim</h3>
+                <div class="footer-links">
+                    <a href="cat-female.html">Dişi Kedi Kısırlaştırma</a>
+                    <a href="dog-female.html">Dişi Köpek Kısırlaştırma</a>
+                    <a href="form.html">Uygunluk Kontrolü</a>
+                    <a href="#">Hakkımızda</a>
+                    <a href="#">İletişim</a>
+                </div>
+            </div>
 
-.benefit-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
+            <div>
+                <h3 class="footer-title">Bülten</h3>
+                <p style="font-size: 15px; opacity: 0.9; margin-bottom: 15px; line-height: 1.7;">
+                    Evcil hayvan sağlığı hakkında güncel bilgiler almak için bültenimize abone olun.
+                </p>
+                <div class="footer-newsletter">
+                    <input type="email" placeholder="E-posta adresiniz">
+                    <button>Abone Ol</button>
+                </div>
+            </div>
+        </div>
 
-.benefit-image {
-    height: 220px;
-    overflow: hidden;
-}
+        <div class="footer-divider"></div>
 
-.benefit-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
+        <div class="footer-bottom">
+            <div>© 2025 Kısırlaştırma Rehberi. Tüm hakları saklıdır.</div>
+            <div>Gizlilik Politikası | Kullanım Şartları</div>
+        </div>
+    </footer>
 
-.benefit-card:hover .benefit-image img {
-    transform: scale(1.08);
-}
-
-.benefit-title {
-    padding: 18px 20px 8px;
-    font-weight: 600;
-    color: #2B3A67;
-    font-size: 18px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.benefit-desc {
-    padding: 0 20px 20px;
-    color: #616A82;
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-@media (max-width: 1024px) {
-    .benefit-row {
-        flex-wrap: wrap;
-    }
-    
-    .benefit-card {
-        max-width: 45%;
-    }
-}
-
-@media (max-width: 768px) {
-    .benefit-row {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .benefit-card {
-        max-width: 100%;
-    }
-}
-</style>
+    <script>
+        // Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                
+                header.addEventListener('click', () => {
+                    // Diğer tüm accordion öğelerini kapat
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Tıklanan öğeyi aç/kapat
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // İlk accordion öğesini otomatik olarak aç
+            const firstAccordionItem = document.querySelector('.accordion-item');
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add('active');
+            }
+        });
+        
+        // Mobil menü toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                const faqSection = document.querySelector('.faq-section');
+                faqSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+        
+        // Sayfa yüklendiğinde header düzenlemesi
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobil cihazlarda header yüksekliğini ayarla
+            const adjustHeaderSize = () => {
+                if (window.innerWidth <= 480) {
+                    const header = document.querySelector('header');
+                    header.style.paddingTop = '25px';
+                    header.style.paddingBottom = '25px';
+                }
+            };
+            
+            adjustHeaderSize();
+            window.addEventListener('resize', adjustHeaderSize);
+        });
+    </script>
+</body>
+</html>
