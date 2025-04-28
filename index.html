@@ -728,29 +728,104 @@
             .footer-content {
                 padding: 0 20px;
             }
+        }
+
+        /* Mobil Menü Butonu */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background: var(--primary);
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            color: white;
+            cursor: pointer;
+            font-size: 22px;
+        }
             
-            /* Mobil menü butonu */
+        .mobile-menu-toggle:hover {
+            background: var(--primary-light);
+        }
+
+        /* Mobil Navigasyon Menüsü */
+        .mobile-nav-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary);
+            z-index: 1000;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+            display: none;
+        }
+
+        .mobile-nav-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .mobile-nav-header span {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .mobile-nav-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .mobile-nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .mobile-nav-links a i {
+            margin-right: 10px;
+            font-size: 18px;
+            color: var(--accent);
+        }
+
+        .mobile-nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
             .mobile-menu-toggle {
-                display: block;
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                width: 56px;
-                height: 56px;
-                background: var(--primary);
-                border-radius: 50%;
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                z-index: 100;
-                color: white;
-                cursor: pointer;
-                font-size: 22px;
             }
             
-            .mobile-menu-toggle:hover {
-                background: var(--primary-light);
+            .mobile-nav-menu {
+                display: block;
             }
         }
     </style>
@@ -777,12 +852,26 @@
         </div>
     </header>
 
+    <!-- Mobil Navigasyon Menüsü -->
+    <div class="mobile-nav-menu" id="mobileNavMenu">
+        <div class="mobile-nav-header">
+            <span>Menü</span>
+            <button id="closeNavMenu"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="#videoSection"><i class="fas fa-play-circle"></i> Video ve Tanım</a>
+            <a href="#guidesSection"><i class="fas fa-book-open"></i> Rehberler</a>
+            <a href="#faqSection"><i class="fas fa-question-circle"></i> Sık Sorulan Sorular</a>
+            <a href="#contactSection"><i class="fas fa-envelope"></i> İletişim</a>
+        </div>
+    </div>
+
     <div class="main-container">
         <!-- Ortaya hizalanmış ana başlık -->
         <h1 class="main-title">Kedi ve Köpeklerin Kısırlaştırılması Hakkında Bilimsel Rehber</h1>
         
         <!-- Video ve Tanım Bölümü -->
-        <section class="video-definition-section">
+        <section class="video-definition-section" id="videoSection">
             <!-- Video Bölümü -->
             <div class="video-container">
                 <div class="video-placeholder">
@@ -807,7 +896,7 @@
         </section>
         
         <!-- Rehberler Bölümü -->
-        <section class="guides-section">
+        <section class="guides-section" id="guidesSection">
             <h2 class="section-title">Rehberlerimiz</h2>
             
             <div class="guides-container">
@@ -823,7 +912,7 @@
         </section>
 
         <!-- SSS Bölümü -->
-        <section class="faq-section">
+        <section class="faq-section" id="faqSection">
             <h2 class="section-title">Sık Sorulan Sorular</h2>
 
             <div class="accordion">
@@ -896,6 +985,7 @@
     </div>
 
     <footer>
+        <div id="contactSection"></div>
         <div class="footer-content">
             <div>
                 <div class="footer-logo">
@@ -986,15 +1076,44 @@
             }
         });
         
-        // Mobil menü toggle
+        // Mobil navigasyon menüsü
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        
+        const mobileNavMenu = document.getElementById('mobileNavMenu');
+        const closeNavMenu = document.getElementById('closeNavMenu');
+
+        // Menü butonuna tıklayınca navigasyon menüsünü aç
         if (mobileMenuToggle) {
             mobileMenuToggle.addEventListener('click', function() {
-                const faqSection = document.querySelector('.faq-section');
-                faqSection.scrollIntoView({ behavior: 'smooth' });
+                mobileNavMenu.classList.add('active');
             });
         }
+
+        // Kapat butonuna tıklayınca navigasyon menüsünü kapat
+        if (closeNavMenu) {
+            closeNavMenu.addEventListener('click', function() {
+                mobileNavMenu.classList.remove('active');
+            });
+        }
+
+        // Menü linklerine tıklayınca menüyü kapat ve ilgili bölüme kaydır
+        const menuLinks = document.querySelectorAll('.mobile-nav-links a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                // Menüyü kapat
+                mobileNavMenu.classList.remove('active');
+                
+                // İlgili bölüme kaydır
+                if (targetSection) {
+                    setTimeout(() => {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 300); // Menü kapandıktan sonra scroll
+                }
+            });
+        });
         
         // Sayfa yüklendiğinde header düzenlemesi
         document.addEventListener('DOMContentLoaded', function() {
