@@ -308,6 +308,22 @@
             transform: scale(1.1);
         }
 
+        /* Dişi kedi görseli için özel stil */
+        .female-cat-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 3px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .guide-link:hover .female-cat-img {
+            transform: scale(1.08);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
         .guide-link span {
             font-size: 16px;
             font-weight: 600;
@@ -776,7 +792,7 @@
             
             <div class="guides-container">
                 <a href="cat-female.html" class="guide-link">
-                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f431.svg" alt="Dişi Kedi">
+                    <img src="3b434b47-8da6-417c-9f19-6716ba76dde1.png" alt="Dişi Kedi" class="female-cat-img">
                     <span>Dişi Kedi<br>Kısırlaştırma Rehberi</span>
                 </a>
                 <a href="cat-male.html" class="guide-link">
