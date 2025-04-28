@@ -271,35 +271,38 @@
 
         .guides-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
             margin-top: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .guide-link {
             background: var(--light);
             border: 1px solid rgba(0,0,0,0.05);
             border-radius: var(--border-radius);
-            padding: 30px 20px;
+            padding: 40px 30px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             text-decoration: none;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         .guide-link:hover {
-            transform: translateY(-7px);
+            transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .guide-link img {
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             object-fit: contain;
             transition: transform 0.3s ease;
         }
@@ -310,8 +313,8 @@
 
         /* Dişi kedi görseli için özel stil */
         .female-cat-img {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             object-fit: cover;
             border-radius: 50%;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -326,8 +329,8 @@
 
         /* Dişi köpek görseli için özel stil */
         .female-dog-img {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             object-fit: cover;
             border-radius: 50%;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -341,7 +344,7 @@
         }
 
         .guide-link span {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 600;
             color: var(--primary);
             transition: all 0.3s ease;
@@ -627,7 +630,8 @@
             }
             
             .guides-container {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
 
             .footer-content {
@@ -811,17 +815,9 @@
                     <img src="3b434b47-8da6-417c-9f19-6716ba76dde1.png" alt="Dişi Kedi" class="female-cat-img">
                     <span>Dişi Kedi<br>Kısırlaştırma Rehberi</span>
                 </a>
-                <a href="cat-male.html" class="guide-link">
-                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f408.svg" alt="Erkek Kedi">
-                    <span>Erkek Kedi<br>Kısırlaştırma Rehberi</span>
-                </a>
                 <a href="dog-female.html" class="guide-link">
                     <img src="aff2309d-f24a-4fc4-bf66-09c8ec8795f7.png" alt="Dişi Köpek" class="female-dog-img">
                     <span>Dişi Köpek<br>Kısırlaştırma Rehberi</span>
-                </a>
-                <a href="dog-male.html" class="guide-link">
-                    <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f415.svg" alt="Erkek Köpek">
-                    <span>Erkek Köpek<br>Kısırlaştırma Rehberi</span>
                 </a>
             </div>
         </section>
