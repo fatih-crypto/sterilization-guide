@@ -229,6 +229,19 @@
             line-height: 1.8;
         }
 
+        /* Alıntı yazarı için stil */
+        .quote-author {
+            font-style: italic;
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        /* Öne çıkarılmış metin için stil */
+        .accent-text {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
         /* Rehberler Bölümü */
         .guides-section {
             margin-bottom: 70px;
@@ -751,9 +764,8 @@
             <div class="definition-container">
                 <h2 class="definition-title">Kısırlaştırma Nedir?</h2>
                 <div class="definition-content">
-                    <p>Kısırlaştırma, evcil hayvanların üreme yeteneklerinin cerrahi olarak ortadan kaldırılması işlemidir. Bu işlem, dişi hayvanlarda yumurtalıkların ve rahmin (ovariohisterektomi) veya sadece yumurtalıkların (ovariektomi) alınması; erkek hayvanlarda ise testislerin (orşiektomi) alınması şeklinde gerçekleştirilir.</p>
-                    <p>Bilimsel olarak kısırlaştırma, hormonal sistemin dengelenmesini sağlayan, üreme organlarıyla ilişkili hastalık risklerini önemli ölçüde azaltan, davranışsal sorunları iyileştiren ve hayvanın genel yaşam kalitesini artıran koruyucu bir cerrahi müdahaledir.</p>
-                    <p>Kısırlaştırma, sokak hayvanı popülasyonunun kontrolünde de önemli bir rol oynar ve sorumlu hayvan sahipliğinin temel unsurlarından biri olarak kabul edilir.</p>
+                    <p>"Kısırlaştırma, evcil hayvanların sağlık ve yaşam kalitesini artıran, istenmeyen doğumları önleyen cerrahi bir işlemdir. Sadece bir operasyon değil, dostumuzun geleceğine yapılan bir yatırımdır."</p>
+                    <p class="quote-author">- <span class="accent-text">Prof. Dr. Elizabeth Collins</span>, Veteriner Cerrahisi ve Hayvan Refahı Uzmanı</p>
                 </div>
             </div>
         </section>
@@ -825,3 +837,151 @@
 
                 <div class="accordion-item">
                     <div class="accordion-header">
+                        <h3 class="accordion-title">Kısırlaştırma hayvanımın karakterini değiştirir mi?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-text">
+                            Kısırlaştırma genellikle olumlu davranış değişikliklerine yol açar. Kızgınlık dönemleri görülmez ve hayvanınız daha sakin ve ev odaklı olur. Hormonal değişikliklerin tam etkisi 4-6 hafta içinde görülmeye başlar. Agresif davranışlar, bölge işaretleme ve kaçma eğilimi gibi sorunlar önemli ölçüde azalır. Hayvanınızın temel kişiliği değişmez, sadece hormonlara bağlı olumsuz davranışlar hafifler.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Kısırlaştırma operasyonu ne kadar sürer?</h3>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="accordion-text">
+                            Dişi kedi ve köpeklerde operasyon süresi genellikle 30-60 dakika arasındadır. Erkek hayvanlarda bu süre daha kısadır, yaklaşık 15-30 dakikadır. Anesteziden uyanma süresi ise 2-4 saat arasında değişebilir. Tüm süreç veteriner kliniğinde yaklaşık yarım gününüzü alacaktır, ancak bazı durumlarda hayvanınızın bir gece gözetim altında kalması gerekebilir.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Mobil ekranlarda sağ altta gösterilen menü butonu -->
+    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/>
+                        </svg>
+                    </div>
+                    <div class="footer-logo-text">
+                        Kısırlaştırma Rehberi
+                    </div>
+                </div>
+                <p class="footer-about">
+                    Kısırlaştırma rehberimiz, evcil hayvanların sağlıklı bir yaşam sürmesine katkıda bulunmayı amaçlamaktadır. Erciyes Üniversitesi Veteriner Fakültesi tarafından hazırlanan bu rehber, doğru bilgilerle bilinçli kararlar vermenize yardımcı olur.
+                </p>
+                <div class="footer-contact">
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kayseri, Türkiye</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+90 352 123 4567</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@kisirlasmtarehberi.com</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="footer-title">Hızlı Erişim</h3>
+                <div class="footer-links">
+                    <a href="cat-female.html">Dişi Kedi Kısırlaştırma</a>
+                    <a href="dog-female.html">Dişi Köpek Kısırlaştırma</a>
+                    <a href="form.html">Uygunluk Kontrolü</a>
+                    <a href="#">Hakkımızda</a>
+                    <a href="#">İletişim</a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="footer-title">Bülten</h3>
+                <p style="font-size: 15px; opacity: 0.9; margin-bottom: 15px; line-height: 1.7;">
+                    Evcil hayvan sağlığı hakkında güncel bilgiler almak için bültenimize abone olun.
+                </p>
+                <div class="footer-newsletter">
+                    <input type="email" placeholder="E-posta adresiniz">
+                    <button>Abone Ol</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-bottom">
+            <div>© 2025 Kısırlaştırma Rehberi. Tüm hakları saklıdır.</div>
+            <div>Gizlilik Politikası | Kullanım Şartları</div>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                
+                header.addEventListener('click', () => {
+                    // Diğer tüm accordion öğelerini kapat
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Tıklanan öğeyi aç/kapat
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // İlk accordion öğesini otomatik olarak aç
+            const firstAccordionItem = document.querySelector('.accordion-item');
+            if (firstAccordionItem) {
+                firstAccordionItem.classList.add('active');
+            }
+        });
+        
+        // Mobil menü toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                const faqSection = document.querySelector('.faq-section');
+                faqSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+        
+        // Sayfa yüklendiğinde header düzenlemesi
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobil cihazlarda header yüksekliğini ayarla
+            const adjustHeaderSize = () => {
+                if (window.innerWidth <= 480) {
+                    const header = document.querySelector('header');
+                    header.style.paddingTop = '25px';
+                    header.style.paddingBottom = '25px';
+                }
+            };
+            
+            adjustHeaderSize();
+            window.addEventListener('resize', adjustHeaderSize);
+        });
+    </script>
+</body>
+</html>
