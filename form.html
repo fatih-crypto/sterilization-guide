@@ -282,6 +282,28 @@
            height: auto;
            border-radius: 4px;
        }
+       
+       .download-button {
+           background: linear-gradient(90deg, #388e3c, #2e7d32);
+           color: white;
+           padding: 12px 24px;
+           border: none;
+           border-radius: 6px;
+           font-size: 15px;
+           font-weight: 500;
+           cursor: pointer;
+           margin-top: 15px;
+           display: none;
+           margin-left: auto;
+           margin-right: auto;
+           transition: all 0.3s ease;
+           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+       }
+       
+       .download-button:hover {
+           transform: translateY(-1px);
+           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+       }
 
        @media (max-width: 768px) {
            body {
@@ -354,19 +376,19 @@
            </div>
 
            <div class="form-group">
-               <label>3. Kediniz hangi ortamda yaşamaktadır?</label>
+               <label>3. Kedinizin yaşadığı ortam hangisidir?</label>
                <div class="radio-group">
                    <label class="radio-label">
                        <input type="radio" name="living_environment" value="ev">
-                       Sadece evde/kapalı ortam
+                       Sadece ev içinde (kapalı ortam)
                    </label>
                    <label class="radio-label">
                        <input type="radio" name="living_environment" value="dış">
-                       Sadece dış ortamda
+                       Sadece dışarıda (bahçe, sokak vb.)
                    </label>
                    <label class="radio-label">
                        <input type="radio" name="living_environment" value="karma">
-                       Hem dış hem kapalı ortamda
+                       Hem ev içinde hem dışarıda
                    </label>
                </div>
            </div>
@@ -447,20 +469,19 @@
 
            <div class="form-group">
                <label>6. Hiç kızgınlık belirtisi gösterdi mi?</label>
-               <div class</div>
-
-           <div class="form-group">
                <div class="info-note">
                    <p>Önemli kızgınlık belirtileri:</p>
                    <ul>
-                       <li>Normalden daha fazla ilgi beklemesi ve sürtünme isteği</li>
-                       <li>Sürekli yüksek sesle miyavlama</li>
+                       <li>Sahiplerine karşı artan ilgi</li>
+                       <li>Yere sürtünme ve yuvarlanma davranışı</li>
+                       <li>Yüksek sesle miyavlama (özellikle geceleri artabilir)</li>
                        <li class="with-image">
-                           Çiftleşme pozisyonu alma
-                           <img src="kedilerdekizginlik1.jpg" alt="Kedi çiftleşme pozisyonu">
+                           Çiftleşme pozisyonu alma (arka kısmı yukarı kaldırma ve kuyruk kenara eğilmesi)
+                           <img src="kisir.jpg" alt="Östrus semptomu gösteren kedi">
                        </li>
-                       <li>Daha hareketli ve huzursuz olma</li>
-                       <li>Dışarı çıkma isteğinde artış</li>
+                       <li>Daha huzursuz ve hareketli olma</li>
+                       <li>Evin dışına çıkma isteğinde artış ve kaçma girişimleri</li>
+                       <li>Diğer kedilere karşı artan ilgi ve onları cezbetme davranışı</li>
                    </ul>
                </div>
                <div class="radio-group">
@@ -536,6 +557,7 @@
            </div>
 
            <button type="button" id="submitButton" class="submit-button">Formu Onayla</button>
+           <button type="button" id="downloadButton" class="download-button">Formu İndir</button>
        </form>
 
        <div id="resultMessage" class="result-message"></div>
@@ -549,6 +571,7 @@
        const form = document.getElementById('catForm');
        const resultMessage = document.getElementById('resultMessage');
        const submitButton = document.getElementById('submitButton');
+       const downloadButton = document.getElementById('downloadButton');
        const currentHeatGroup = document.getElementById('currentHeatGroup');
 
        document.querySelectorAll('input[name="heat_history"]').forEach(radio => {
@@ -575,6 +598,9 @@
                } else if (this.value === 'hayır') {
                    treatmentOptionsYes.classList.add('hidden');
                    treatmentOptionsNo.classList.remove('hidden');
+               } else {
+                   treatmentOptionsYes.classList.add('hidden');
+                   treatmentOptionsNo.classList.add('hidden');
                }
            });
        });
@@ -592,143 +618,221 @@
            });
        });
 
-         submitButton.addEventListener('click', function() {
-             const formData = new FormData(form);
-             let canProceed = true;
-             let issues = [];
-             let warnings = [];
-             
-             // Initial checks and questions remain the same
-             const questions = {
-                 'gender': '1. Kediniz dişi mi?',
-                 'age': '2. Kediniz kaç aylık?',
-                 'living_environment': '3. Kediniz hangi ortamda yaşamaktadır?',
-                 'fertility': '4. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?',
-                 'vaccines': '5. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?',
-                 'heat_history': '6. Hiç kızgınlık belirtisi gösterdi mi?',
-                 'birth': '7. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?',
-                 'mating': '8. 2 Ay içinde çiftleşmiş olma ihtimali var mı?',
-                 'chronic': '9. Kedinizin bilinen kronik bir hastalığı var mı?'
-             };
-         
-             // Empty questions check
-             if (formData.get('heat_history') === 'evet' && !formData.get('current_heat')) {
-                 questions['current_heat'] = '6a. Şuan kızgınlık belirtisi var mı?';
-             }
-         
-             let emptyQuestions = [];
-             for (let [key, question] of Object.entries(questions)) {
-                 if (!formData.get(key)) {
-                     emptyQuestions.push(question);
-                 }
-             }
-         
-             if (emptyQuestions.length > 0) {
-                 let message = 'Lütfen aşağıdaki soruları cevaplayınız:';
-                 message += '<ul class="issue-list">';
-                 emptyQuestions.forEach(question => {
-                     message += `<li>${question}</li>`;
-                 });
-                 message += '</ul>';
-                 resultMessage.innerHTML = message;
-                 resultMessage.className = 'result-message warning';
-                 resultMessage.style.display = 'block';
-                 return;
-             }
-         
-             // Temel kontroller
-             if (formData.get('gender') === 'erkek') {
-                 canProceed = false;
-                 issues.push('Kedi dişi değil');
-             }
-             
-             if (formData.get('age') && parseInt(formData.get('age')) < 4) {
-                 canProceed = false;
-                 issues.push('Kedi 4 aylıktan küçük');
-             }
-         
-             if (formData.get('fertility') === 'evet') {
-                 canProceed = false;
-                 issues.push('Gelecekte yavru isteniyor');
-             } else if (formData.get('fertility') === 'kararsızım') {
-                 warnings.push('Cerrahi kısırlaştırma işlemi geri dönüşümsüz bir işlemdir. Kedinizin gebe kalması mümkün değildir. Bu konuda kararınızı kesinleştirdikten sonra kısırlaştırabilirsiniz');
-             }
-         
-             // Aşı durumu kontrolü
-             if (formData.get('vaccines') === 'evet') {
-                 const selectedTreatments = form.querySelectorAll('input[name="treatments"]:checked');
-                 const treatmentValues = Array.from(selectedTreatments).map(cb => cb.value);
-                 
-                 if (!treatmentValues.includes('kuduz') || !treatmentValues.includes('karma') || !treatmentValues.includes('parazit')) {
-                     canProceed = false;
-                     issues.push('Tüm aşı ve parazit tedavileri (kuduz, karma, iç-dış parazit) yapılmış olmalıdır');
-                 }
-             } else if (formData.get('vaccines') === 'hayır' || formData.get('vaccines') === 'bilmiyorum') {
-                 canProceed = false;
-                 issues.push('Aşıları eksik');
-                 warnings.push('Lütfen tüm aşıları ve parazit tedavilerini yaptırınız');
-             }
-         
-             // Önemli durumların kontrolü ve uyarılar
-             if (formData.get('birth') === 'hayır') {
-                 canProceed = false;
-                 issues.push('Doğumdan sonra 45 gün geçmemiş');
-                 // Doğum durumunda sadece ilgili uyarı gösterilir
-                 warnings = ['UYARI: Doğum sonrası 45 gün tamamlanana kadar beklenmelidir'];
-                 
-             } else {
-                 // Doğum durumu yoksa diğer kontroller yapılır
-                 const isDişi = formData.get('gender') !== 'erkek';
-                 const wantsOffspring = formData.get('fertility') === 'evet';
-                 
-                 if (formData.get('mating') === 'evet') {
-                     canProceed = false;
-                     issues.push('Son 2 ay içinde çiftleşme ihtimali var');
-                     if(isDişi && !wantsOffspring) {
-                         warnings.push('UYARI: Gebelik kontrolü gerekli, veteriner hekiminize danışın');
-                     }
-                 }
-         
-                 if (formData.get('chronic') === 'evet') {
-                     canProceed = false;
-                     issues.push('Kronik hastalık mevcut');
-                     warnings.push('UYARI: Kronik hastalığı hakkında veteriner hekiminize detaylı bilgi veriniz.');
-                 }
-         
-                 const environment = formData.get('living_environment');
-                 if ((environment === 'dış' || environment === 'karma') && isDişi && !wantsOffspring) {
-                     warnings.push('Kediniz dışarısıyla etkileşim hallinde olduğu için gebe olma durumuna karşı gebelik muayenesi yapılmalıdır');
-                 }
-         
-                 if (formData.get('current_heat') === 'evet' && isDişi && !wantsOffspring) {
-                     warnings.push('UYARI: Veteriner hekimin tercihine göre operasyon yapılabilir veya ertelenebilir.');
-                 }
-             }
-         
-             // Sonuç mesajının gösterilmesi
-             if (canProceed) {
-                 let message = 'Kediniz kısırlaştırma için uygun durumdadır. Randevu alabilirsiniz.';
-                 if (warnings.length > 0) {
-                     message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
-                 }
-                 resultMessage.innerHTML = message;
-                 resultMessage.className = 'result-message success';
-             } else {
-                 let message = 'Kısırlaştırma şu an uygun değildir. Lütfen hastane ile iletişime geçin.';
-                 message += '<ul class="issue-list">';
-                 issues.forEach(issue => {
-                     message += `<li>${issue}</li>`;
-                 });
-                 message += '</ul>';
-                 if (warnings.length > 0) {
-                     message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
-                 }
-                 resultMessage.innerHTML = message;
-                 resultMessage.className = 'result-message warning';
-             }
-             resultMessage.style.display = 'block';
-         });
+       submitButton.addEventListener('click', function() {
+           const formData = new FormData(form);
+           let canProceed = true;
+           let issues = [];
+           let warnings = [];
+           
+           // Initial checks and questions remain the same
+           const questions = {
+               'gender': '1. Kediniz dişi mi?',
+               'age': '2. Kediniz kaç aylık?',
+               'living_environment': '3. Kedinizin yaşadığı ortam hangisidir?',
+               'fertility': '4. Gelecekte kedinizin gebe kalmasını/yavrulamasını istiyor musunuz?',
+               'vaccines': '5. Kedinizin aşıları ve paraziter tedavileri düzenli olarak yapılıyor mu?',
+               'heat_history': '6. Hiç kızgınlık belirtisi gösterdi mi?',
+               'birth': '7. Kediniz doğum yaptıysa üzerinden 45 gün geçti mi?',
+               'mating': '8. 2 Ay içinde çiftleşmiş olma ihtimali var mı?',
+               'chronic': '9. Kedinizin bilinen kronik bir hastalığı var mı?'
+           };
        
+           // Empty questions check
+           if (formData.get('heat_history') === 'evet' && !formData.get('current_heat')) {
+               questions['current_heat'] = '6a. Şuan kızgınlık belirtisi var mı?';
+           }
+       
+           let emptyQuestions = [];
+           for (let [key, question] of Object.entries(questions)) {
+               if (!formData.get(key)) {
+                   emptyQuestions.push(question);
+               }
+           }
+       
+           if (emptyQuestions.length > 0) {
+               let message = 'Lütfen aşağıdaki soruları cevaplayınız:';
+               message += '<ul class="issue-list">';
+               emptyQuestions.forEach(question => {
+                   message += `<li>${question}</li>`;
+               });
+               message += '</ul>';
+               resultMessage.innerHTML = message;
+               resultMessage.className = 'result-message warning';
+               resultMessage.style.display = 'block';
+               downloadButton.style.display = 'none';
+               return;
+           }
+       
+           // Temel kontroller
+           if (formData.get('gender') === 'erkek') {
+               canProceed = false;
+               issues.push('Kedi dişi değil');
+           }
+           
+           if (formData.get('age') && parseInt(formData.get('age')) < 4) {
+               canProceed = false;
+               issues.push('Kedi 4 aylıktan küçük');
+           }
+       
+           if (formData.get('fertility') === 'evet') {
+               canProceed = false;
+               issues.push('Gelecekte yavru isteniyor');
+           } else if (formData.get('fertility') === 'kararsızım') {
+               warnings.push('Cerrahi kısırlaştırma işlemi geri dönüşümsüz bir işlemdir. Kedinizin gebe kalması mümkün değildir. Bu konuda kararınızı kesinleştirdikten sonra kısırlaştırabilirsiniz');
+           }
+       
+           // Aşı durumu kontrolü
+           if (formData.get('vaccines') === 'evet') {
+               const selectedTreatments = form.querySelectorAll('input[name="treatments"]:checked');
+               const treatmentValues = Array.from(selectedTreatments).map(cb => cb.value);
+               
+               if (!treatmentValues.includes('kuduz') || !treatmentValues.includes('karma') || !treatmentValues.includes('parazit')) {
+                   canProceed = false;
+                   issues.push('Tüm aşı ve parazit tedavileri (kuduz, karma, iç-dış parazit) yapılmış olmalıdır');
+               }
+           } else if (formData.get('vaccines') === 'hayır' || formData.get('vaccines') === 'bilmiyorum') {
+               canProceed = false;
+               issues.push('Aşıları eksik');
+               warnings.push('Lütfen tüm aşıları ve parazit tedavilerini yaptırınız');
+           }
+       
+           // Önemli durumların kontrolü ve uyarılar
+           if (formData.get('birth') === 'hayır') {
+               canProceed = false;
+               issues.push('Doğumdan sonra 45 gün geçmemiş');
+               // Doğum durumunda sadece ilgili uyarı gösterilir
+               warnings = ['UYARI: Doğum sonrası 45 gün tamamlanana kadar beklenmelidir'];
+               
+           } else {
+               // Doğum durumu yoksa diğer kontroller yapılır
+               const isDişi = formData.get('gender') !== 'erkek';
+               const wantsOffspring = formData.get('fertility') === 'evet';
+               
+               if (formData.get('mating') === 'evet') {
+                   canProceed = false;
+                   issues.push('Son 2 ay içinde çiftleşme ihtimali var');
+                   if(isDişi && !wantsOffspring) {
+                       warnings.push('UYARI: Gebelik kontrolü gerekli, veteriner hekiminize danışın');
+                   }
+               }
+       
+               if (formData.get('chronic') === 'evet') {
+                   canProceed = false;
+                   issues.push('Kronik hastalık mevcut');
+                   warnings.push('UYARI: Kronik hastalığı hakkında veteriner hekiminize detaylı bilgi veriniz.');
+               }
+       
+               const environment = formData.get('living_environment');
+               if ((environment === 'dış' || environment === 'karma') && isDişi && !wantsOffspring) {
+                   warnings.push('Kediniz dışarısıyla etkileşim hallinde olduğu için gebe olma durumuna karşı gebelik muayenesi yapılmalıdır');
+               }
+       
+               if (formData.get('current_heat') === 'evet' && isDişi && !wantsOffspring) {
+                   warnings.push('UYARI: Veteriner hekimin tercihine göre operasyon yapılabilir veya ertelenebilir.');
+               }
+           }
+       
+           // Sonuç mesajının gösterilmesi
+           if (canProceed) {
+               let message = 'Kediniz kısırlaştırma için uygun durumdadır. Randevu alabilirsiniz.';
+               if (warnings.length > 0) {
+                   message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
+               }
+               resultMessage.innerHTML = message;
+               resultMessage.className = 'result-message success';
+               downloadButton.style.display = 'block';
+           } else {
+               let message = 'Kısırlaştırma şu an uygun değildir. Lütfen hastane ile iletişime geçin.';
+               message += '<ul class="issue-list">';
+               issues.forEach(issue => {
+                   message += `<li>${issue}</li>`;
+               });
+               message += '</ul>';
+               if (warnings.length > 0) {
+                   message += '<div class="pregnancy-warning">' + warnings.join('<br>') + '</div>';
+               }
+               resultMessage.innerHTML = message;
+               resultMessage.className = 'result-message warning';
+               downloadButton.style.display = 'none';
+           }
+           resultMessage.style.display = 'block';
+       });
+       
+       // İndirme fonksiyonu
+       downloadButton.addEventListener('click', function() {
+           const formData = new FormData(form);
+           let formContent = "DİŞİ KEDİ KISIRLAŞTIRMA FORMU\n\n";
+           
+           // Form verilerini topla
+           formContent += "1. Cinsiyet: " + formData.get('gender') + "\n";
+           
+           // Yaş
+           const ageValue = formData.get('age');
+           let ageText = "";
+           if (ageValue <= 12) {
+               ageText = ageValue + " aylık";
+           } else {
+               ageText = (ageValue / 12) + " yaşında";
+           }
+           formContent += "2. Yaş: " + ageText + "\n";
+           
+           // Yaşam ortamı
+           let environment = "";
+           if (formData.get('living_environment') === 'ev') {
+               environment = "Sadece ev içinde (kapalı ortam)";
+           } else if (formData.get('living_environment') === 'dış') {
+               environment = "Sadece dışarıda (bahçe, sokak vb.)";
+           } else {
+               environment = "Hem ev içinde hem dışarıda";
+           }
+           formContent += "3. Yaşam Ortamı: " + environment + "\n";
+           
+           // Gelecekte yavru isteniyor mu
+           formContent += "4. Gelecekte yavru istiyor mu: " + formData.get('fertility') + "\n";
+           
+           // Aşı durumu
+           formContent += "5. Aşıları düzenli yapılıyor mu: " + formData.get('vaccines') + "\n";
+           
+           // Yaptırılan aşılar
+           const treatments = Array.from(form.querySelectorAll('input[name="treatments"]:checked'))
+               .map(cb => cb.value === 'kuduz' ? 'Kuduz aşısı' : 
+                          cb.value === 'karma' ? 'Karma aşı' : 
+                          cb.value === 'parazit' ? 'İç-dış parazit' : 'Hiçbiri');
+           
+           if (treatments.length > 0) {
+               formContent += "   Yaptırılan tedaviler: " + treatments.join(", ") + "\n";
+           }
+           
+           // Kızgınlık belirtileri
+           formContent += "6. Kızgınlık belirtisi gösterdi mi: " + formData.get('heat_history') + "\n";
+           
+           if (formData.get('heat_history') === 'evet') {
+               formContent += "   6a. Şuan kızgınlık belirtisi var mı: " + formData.get('current_heat') + "\n";
+           }
+           
+           // Doğum durumu
+           formContent += "7. Doğum yaptıysa 45 gün geçti mi: " + formData.get('birth') + "\n";
+           
+           // Çiftleşme durumu
+           formContent += "8. Son 60 gün içinde çiftleşme ihtimali: " + formData.get('mating') + "\n";
+           
+           // Kronik hastalık
+           formContent += "9. Kronik hastalık var mı: " + formData.get('chronic') + "\n\n";
+           
+           // Sonuç mesajını ekle
+           formContent += "SONUÇ:\n" + resultMessage.innerText;
+           
+           // Dosya oluştur ve indir
+           const blob = new Blob([formContent], { type: 'text/plain' });
+           const url = URL.createObjectURL(blob);
+           const a = document.createElement('a');
+           a.style.display = 'none';
+           a.href = url;
+           a.download = 'kedi_kisirlaştirma_formu.txt';
+           document.body.appendChild(a);
+           a.click();
+           window.URL.revokeObjectURL(url);
+       });
    </script>
 </body>
 </html>
