@@ -659,7 +659,6 @@
                resultMessage.innerHTML = message;
                resultMessage.className = 'result-message warning';
                resultMessage.style.display = 'block';
-               downloadButton.style.display = 'none';
                return;
            }
        
@@ -740,9 +739,8 @@
                }
                resultMessage.innerHTML = message;
                resultMessage.className = 'result-message success';
-               downloadButton.style.display = 'block';
            } else {
-               let message = 'Kısırlaştırma şu an uygun değildir. Lütfen hastane ile iletişime geçin.';
+               let message = 'Kısırlaştırma şu an uygun değildir. Lütfen hastane ile iletişime geçin. Bu formu hekiminize gösteriniz.';
                message += '<ul class="issue-list">';
                issues.forEach(issue => {
                    message += `<li>${issue}</li>`;
@@ -753,9 +751,9 @@
                }
                resultMessage.innerHTML = message;
                resultMessage.className = 'result-message warning';
-               downloadButton.style.display = 'none';
            }
            resultMessage.style.display = 'block';
+           downloadButton.style.display = 'block';
        });
        
        // İndirme fonksiyonu
